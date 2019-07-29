@@ -60,7 +60,7 @@ public class Customer implements Serializable {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-
+//test test
 	public String getCustomerAddress() {
 		return customerAddress;
 	}
@@ -82,9 +82,4 @@ public class Customer implements Serializable {
 		return "Farmer [farmerId=" + customerId + ", farmerName=" + customerName + ", farmerAddress=" + customerAddress
 				+ ", farmerEmail=" + customerEmail + "]";
 	}
-	
-	
-	
-
-
-}
+	}
