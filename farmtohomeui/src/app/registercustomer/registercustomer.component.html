@@ -1,0 +1,49 @@
+<div class="jumbotron text-center">
+<h2>Customer Registration</h2>
+</div>
+
+<h2>Please Enter Customer</h2>
+
+<form (submit)=addNewCustomer(customername,password,comfirmpassword,customeremail,customeraddress,tos) >
+<ul>
+    <li>
+        Customer Name: <input type="text" #customername>
+    </li>
+</ul>
+<ul>
+    <li>
+        Password: <input type="password" #password>
+    </li>
+</ul>
+<ul>
+    <li>
+       Comfirm Password: <input type="password" #comfirmpassword>
+    </li>
+</ul>
+<ul>
+    <li>
+        Customer Email: <input type="text" #customeremail>
+    </li>
+</ul>
+<ul>
+    <li>
+        Customer Address <input type="text" class="addresstextbox" #customeraddress>
+    </li>
+</ul>
+<ul>
+    <li>
+        Agree to the terms of service<input type="checkbox" #tos>
+    </li>
+</ul>
+<ul>
+    <li>
+        Register: <input type="submit" placeholder="Submit" value="Add">
+    </li>
+    <div [hidden]="ValidRegister">
+        {{invalidRegisterMessage}}
+    </div>
+</ul>
+
+</form>
+
+<footer></footer>

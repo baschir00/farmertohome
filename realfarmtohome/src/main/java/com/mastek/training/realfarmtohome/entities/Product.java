@@ -1,3 +1,4 @@
+
 package com.mastek.training.realfarmtohome.entities;
 
 import java.io.Serializable;
@@ -66,9 +67,4 @@ public class Product implements Serializable {
 		return "Product [productId=" + productId + ", productName=" + productName +
 				", description=" + description + "productType="+productType+"unitPrice="+unitPrice+"]";
 	}
-	
-
-	
-	
-	
 }
