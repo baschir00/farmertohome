@@ -9,7 +9,6 @@ import com.mastek.training.realfarmtohome.entities.Farmer;
 import com.mastek.training.realfarmtohome.repositories.FarmerRepository;
 
 
-
 @Component
 @Scope("singleton")
 public class FarmerService {
@@ -17,6 +16,7 @@ public class FarmerService {
 @Autowired
 FarmerRepository farmerRepository;
 	
+
 public Farmer registerOrUpdateFarmer(Farmer far) {
 	far = farmerRepository.save(far);
 	System.out.println("Farmer registered"+far);
@@ -39,5 +39,24 @@ public void deleteByFarmerId(int farmerId) {
 
 
 	
+public Farmer findByFarmerId(int farmerId) {
 	
+	try {
+		return farmerRepository.findById(farmerId).get();
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	
+}
+
+public void deleteByFarmerId(int farmerId) {
+	 farmerRepository.deleteById(farmerId);
+}
+
+
+
+
+
+
 }

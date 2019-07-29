@@ -23,10 +23,8 @@ public class Farmer implements Serializable {
 	private String farmerLocation;
 	private String farmerEmail;
 	
-	
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getFarmerId() {
 		return farmerId;
 	}

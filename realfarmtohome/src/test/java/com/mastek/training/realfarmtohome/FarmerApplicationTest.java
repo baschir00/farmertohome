@@ -25,13 +25,29 @@ public class FarmerApplicationTest {
 	@Test
 	public void addFarmUsingService() {
 		
-		far.setFarmerName("Luis");
+		far.setFarmerName("Ruis");
 		far.setFarmerEmail("Farmer");
 		far.setFarmerLocation("Leeds");
 		far = farmerService.registerOrUpdateFarmer(far);
 		assertNotNull(far);
 		
-	}///
+	}
+	@Test
+	public void findByFarmerIdUsingService() {
+		int farmerId =1;
+		assertNotNull(farmerService.findByFarmerId(farmerId));
+		
+	}
+	
+
+	@Test
+	public void deleteByDepnoUsingService() {
+		int farmerId =6;
+		farmerService.deleteByFarmerId(farmerId);
+		assertNull(farmerService.findByFarmerId(farmerId));
+		
+	}
+	
 	
 	@Test
 	public void findByFarmerIdUsingService() {
