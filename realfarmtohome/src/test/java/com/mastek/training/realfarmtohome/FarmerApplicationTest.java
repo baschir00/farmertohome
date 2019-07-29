@@ -30,7 +30,7 @@ public class FarmerApplicationTest {
 		far = farmerService.registerOrUpdateFarmer(far);
 		assertNotNull(far);
 		
-	}
+	}///
 	
 	
 	
