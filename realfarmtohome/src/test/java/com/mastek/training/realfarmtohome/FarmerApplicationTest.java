@@ -1,6 +1,7 @@
 package com.mastek.training.realfarmtohome;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,23 @@ public class FarmerApplicationTest {
 		assertNotNull(far);
 		
 	}///
+	
+	@Test
+	public void findByFarmerIdUsingService() {
+		int farmerId =1;
+		assertNotNull(farmerService.findByFarmerId(farmerId));
+		
+	}
+	
+
+	@Test
+	public void deleteByDepnoUsingService() {
+		int farmerId =6;
+		farmerService.deleteByFarmerId(farmerId);
+		assertNull(farmerService.findByFarmerId(farmerId));
+		
+	}
+	
 	
 	
 	
