@@ -22,20 +22,6 @@ public Farmer registerOrUpdateFarmer(Farmer far) {
 	System.out.println("Farmer registered"+far);
 	return far;
 }
-public Farmer findByFarmerId(int farmerId) {
-	
-	try {
-		return farmerRepository.findById(farmerId).get();
-	} catch (Exception e) {
-		e.printStackTrace();
-		return null;
-	}
-	
-}
-
-public void deleteByFarmerId(int farmerId) {
-	 farmerRepository.deleteById(farmerId);
-}
 
 
 	

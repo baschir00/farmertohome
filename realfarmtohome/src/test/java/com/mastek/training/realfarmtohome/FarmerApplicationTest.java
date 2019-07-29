@@ -41,30 +41,15 @@ public class FarmerApplicationTest {
 	
 
 	@Test
-	public void deleteByDepnoUsingService() {
+	public void deleteByFarmerIdUsingService() {
 		int farmerId =6;
 		farmerService.deleteByFarmerId(farmerId);
 		assertNull(farmerService.findByFarmerId(farmerId));
 		
 	}
 	
-	
-	@Test
-	public void findByFarmerIdUsingService() {
-		int farmerId =1;
-		assertNotNull(farmerService.findByFarmerId(farmerId));
-		
-	}
 	
 
-	@Test
-	public void deleteByDepnoUsingService() {
-		int farmerId =6;
-		farmerService.deleteByFarmerId(farmerId);
-		assertNull(farmerService.findByFarmerId(farmerId));
-		
-	}
-	
 	
 	
 	
