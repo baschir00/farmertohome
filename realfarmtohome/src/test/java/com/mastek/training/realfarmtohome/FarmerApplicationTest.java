@@ -49,9 +49,5 @@ public class FarmerApplicationTest {
 	}
 	
 	
-
-	
-	
-	
 	
 }
