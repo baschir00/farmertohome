@@ -3,6 +3,9 @@ package com.mastek.training.realfarmtohome.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
@@ -20,7 +23,8 @@ public class Farmer implements Serializable {
 	private String farmerLocation;
 	private String farmerEmail;
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getFarmerId() {
 		return farmerId;
 	}
