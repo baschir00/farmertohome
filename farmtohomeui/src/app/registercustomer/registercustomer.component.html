@@ -4,7 +4,7 @@
 
 <h2>Please Enter Customer</h2>
 
-<form (submit)=addNewCustomer(customername,password,comfirmpassword,customeremail,customeraddress,tos) >
+<form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,tos) >
 <ul>
     <li>
         Customer Name: <input type="text" #customername>
@@ -12,12 +12,12 @@
 </ul>
 <ul>
     <li>
-        Password: <input type="password" #password>
+        Password: <input type="password" #customerpassword>
     </li>
 </ul>
 <ul>
     <li>
-       Comfirm Password: <input type="password" #comfirmpassword>
+       Comfirm Password: <input type="password" #customercomfirmpassword>
     </li>
 </ul>
 <ul>
