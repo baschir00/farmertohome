@@ -10,13 +10,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mastek.training.realfarmtohome.apis.CustomerService;
 import com.mastek.training.realfarmtohome.entities.Customer;
+import com.mastek.training.realfarmtohome.entities.Farmer;
+import com.mastek.training.realfarmtohome.entities.Product;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CustomerApplicationTest {
 
 	@Autowired
-	CustomerService farmerService;
+	CustomerService customerService;
 	
 	@Autowired
 	Customer cust;
@@ -28,7 +30,7 @@ public class CustomerApplicationTest {
 		cust.setCustomerName("John");
 		cust.setCustomerEmail("Customer");
 		cust.setCustomerAddress("Leeds");
-		cust = farmerService.registerOrUpdateCustomer(cust);
+		cust = customerService.registerOrUpdateCustomer(cust);
 		assertNotNull(cust);
 		
 	}///
@@ -36,11 +38,34 @@ public class CustomerApplicationTest {
 	@Test
 	public void findByCustomerIdUsingService() {
 		int customerId =1;
-		assertNotNull(farmerService.findByCustomerId(customerId));
+		assertNotNull(customerService.findByCustomerId(customerId));
 		
 	}
 	
-	
+	@Test
+	public void manageAssociations() {
+		
+		Customer c1 = new Customer();
+		c1.setCustomerName("Ollie");
+		c1.setCustomerEmail("Ollie@gmail.com");
+		
+		Product p1 = new Product();
+		p1.setProductName("Potatos");
+		p1.setProductType("Veg");
+		
+		Product p2 = new Product();
+		p2.setProductName("Cucumber");
+		p2.setProductType("Veg");
+		
+		c1.getManyproduct().add(p1);
+		c1.getManyproduct().add(p2);
+		
+		p1.setCurrentCustomer(c1);
+		p2.setCurrentCustomer(c1);
+		
+		customerService.registerOrUpdateCustomer(c1);
+		
+	}
 	
 	
 }

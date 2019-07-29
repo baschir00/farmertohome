@@ -1,11 +1,17 @@
 package com.mastek.training.realfarmtohome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
@@ -22,6 +28,7 @@ public class Farmer implements Serializable {
 	private String farmerName;
 	private String farmerLocation;
 	private String farmerEmail;
+	private Set<Product> products = new HashSet<>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -55,6 +62,15 @@ public class Farmer implements Serializable {
 	public String toString() {
 		return "Farmer [farmerId=" + farmerId + ", farmerName=" + farmerName + ", farmerLocation=" + farmerLocation
 				+ ", farmerEmail=" + farmerEmail + "]";
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentFarmer")
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 	
 	

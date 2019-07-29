@@ -1,12 +1,16 @@
 package com.mastek.training.realfarmtohome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +30,7 @@ public class Customer implements Serializable {
  
 	
 	
-	@Value("-1")
+//	@Value("-1")
 	private int customerId;
 	
 	
@@ -40,6 +44,9 @@ public class Customer implements Serializable {
 	
 	//@Value("default email")
 	private String customerEmail;
+	
+	
+	private Set<Product> manyproduct = new HashSet<>();
 	
 	
 	@Id
@@ -81,5 +88,15 @@ public class Customer implements Serializable {
 	public String toString() {
 		return "Farmer [farmerId=" + customerId + ", farmerName=" + customerName + ", farmerAddress=" + customerAddress
 				+ ", farmerEmail=" + customerEmail + "]";
+	}
+
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCustomer")
+	public Set<Product> getManyproduct() {
+		return manyproduct;
+	}
+
+	public void setManyproduct(Set<Product> manyproduct) {
+		this.manyproduct = manyproduct;
 	}
 	}

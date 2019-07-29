@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -35,6 +37,8 @@ public class Product implements Serializable {
 	private String description;
 	private String productType;
 	private int unitPrice;
+	private Farmer currentFarmer;
+	private Customer currentCustomer;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -73,5 +77,23 @@ public class Product implements Serializable {
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName +
 				", description=" + description + "productType="+productType+"unitPrice="+unitPrice+"]";
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="FK_FarmerId")
+	public Farmer getCurrentFarmer() {
+		return currentFarmer;
+	}
+	public void setCurrentFarmer(Farmer currentFarmer) {
+		this.currentFarmer = currentFarmer;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="FK_CustomerId")
+	public Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+	public void setCurrentCustomer(Customer currentCustomer) {
+		this.currentCustomer = currentCustomer;
 	}
 }

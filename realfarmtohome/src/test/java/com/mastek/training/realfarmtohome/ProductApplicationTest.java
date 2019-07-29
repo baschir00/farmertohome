@@ -36,6 +36,9 @@ public class ProductApplicationTest {
 		assertNotNull(prod);		
 	}
 	
+	
+	
+	
 //	@Test
 //	public void findByProductIdUsingService() {
 //		int productId=1;
