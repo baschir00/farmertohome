@@ -12,6 +12,7 @@ import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 
 @Component
+
 @Scope("singleton")
 public class ProductService {
 
@@ -25,9 +26,9 @@ public class ProductService {
 //	@GET
 //	@Path("/list")
 //	@Produces(MediaType.APPLICATION_JSON)
-//	public Iterable<Product> listAllProducts(){
-//		return productRepository.findAll();
-//	}
+	public Iterable<Product> listAllProducts(){
+		return productRepository.findAll();
+	}
 	
 //	@POST
 //	@Path("/register")
