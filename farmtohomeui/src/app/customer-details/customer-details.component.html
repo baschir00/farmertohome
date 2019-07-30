@@ -1,0 +1,40 @@
+<div>
+<h2>Customer Details</h2>
+</div>
+<Table>
+    <tr>
+        <td>Customer Id</td>
+        <td>{{customerId}}</td>
+        <td><button (click)="toggleEdit()">{{(isEditable)?"Save":"Edit"}}</button></td>
+    </tr>
+    <tr>
+        <td>Customer Name: </td>
+        <td *ngIf="!isEditable">{{customerName}}</td>
+        <td *ngIf="isEditable" Type= number req></td>
+            <div>
+        <input
+        [(ngModel)]="name"
+        #inputCustName="ngModel"
+        min="6"
+        maxlength="48"?>
+        <span [hidden]=
+        "inputCustName.valid || inputCustName.pristine" > Error </span>
+        
+        <app-customer-details-app-customernavbar></app-customer-details-app-customernavbar>
+
+            </div>
+    </tr>
+    <tr>
+        <td>Customer Address: </td>
+        <td *ngIf="!isEditable">{{customerAddress}}</td>
+        <td *ngIf="isEditable"><input [(ngModel)]="customerAddress"></td>
+    </tr>
+    <tr>
+        <td>Customer Email</td>
+        <td *ngIf="!isEditable">{{customerEmail}}</td>
+        <td><input [(ngModel)]="customerEmail"></td>
+    </tr>
+
+
+</Table>
+

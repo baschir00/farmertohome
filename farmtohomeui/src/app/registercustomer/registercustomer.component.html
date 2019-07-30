@@ -4,7 +4,7 @@
 
 <h2>Please Enter Customer</h2>
 
-<form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,tos) >
+<form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,customertos) >
 <ul>
     <li>
         Customer Name: <input type="text" #customername>
@@ -17,11 +17,6 @@
 </ul>
 <ul>
     <li>
-       Comfirm Password: <input type="password" #customercomfirmpassword>
-    </li>
-</ul>
-<ul>
-    <li>
         Customer Email: <input type="text" #customeremail>
     </li>
 </ul>
@@ -30,20 +25,19 @@
         Customer Address <input type="text" class="addresstextbox" #customeraddress>
     </li>
 </ul>
+
 <ul>
     <li>
-        Agree to the terms of service<input type="checkbox" #tos>
-    </li>
-</ul>
-<ul>
-    <li>
-        Register: <input type="submit" placeholder="Submit" value="Add">
+        Register: <input type="submit" placeholder="Register" value="Add">
     </li>
     <div [hidden]="ValidRegister">
         {{invalidRegisterMessage}}
     </div>
 </ul>
 
+<app-registercustomer-root></app-registercustomer-root>
+
 </form>
+
 
 <footer></footer>

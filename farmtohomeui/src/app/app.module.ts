@@ -12,6 +12,11 @@ import { ProductTileComponent } from './product-tile/product-tile.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterfarmerComponent } from './registerfarmer/registerfarmer.component';
 import { LoginComponent } from './login/login.component';
+import { CustomernavbarComponent } from './customernavbar/customernavbar.component';
+import { CustomerBasketComponent } from './customer-basket/customer-basket.component';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderItemsComponent } from './order-items/order-items.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { LoginComponent } from './login/login.component';
     ProductTileComponent,
     RegistercustomerComponent,
     RegisterfarmerComponent,
-    LoginComponent
+    LoginComponent,
+    CustomernavbarComponent,
+    CustomerBasketComponent,
+    CustomerDetailsComponent,
+    OrdersComponent,
+    OrderItemsComponent
   ],
   imports: [
     BrowserModule,
