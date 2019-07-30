@@ -47,17 +47,17 @@ public class CustomerApplicationTest {
     public void manageAssociations() {
        
         Customer c1 = new Customer();
-        c1.setCustomerId(234);
+      //  c1.setCustomerId(999);
         c1.setCustomerName("Baschir");
 		c1.setCustomerEmail("Customer");
 		c1.setCustomerAddress("Leeds");
        
         Order o1 = new Order();
-        o1.setorderId(1);
+       //o1.setorderId(1);
         
        
         Order o2 = new Order();
-        o2.setorderId(2);
+        //o2.setorderId(2);
        
         c1.getOrders().add(o1);
         c1.getOrders().add(o2);

@@ -43,7 +43,7 @@ public class Customer implements Serializable {
 	
 	
 	@Id
-//    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 
 	public int getCustomerId() {
 		return customerId;

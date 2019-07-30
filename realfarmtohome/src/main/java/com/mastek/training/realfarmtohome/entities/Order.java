@@ -35,8 +35,11 @@ public class Order implements Serializable {
     
     private int orderId;
     private Customer currentCustomer;
+	private Set<OrderItem> orderitems = new HashSet<>();
+
    
     
+	
     @ManyToOne
     @JoinColumn(name="FK_CustomerId")
 	public Customer getCurrentCustomer() {
@@ -60,6 +63,15 @@ public class Order implements Serializable {
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + "]";
+	}
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentOrder")
+	public Set<OrderItem> getOrderitems() {
+		return orderitems;
+	}
+	public void setOrderitems(Set<OrderItem> orderitems) {
+		this.orderitems = orderitems;
 	}
     
 
