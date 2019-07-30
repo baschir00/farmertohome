@@ -22,12 +22,11 @@ import org.springframework.stereotype.Component;
 @Scope("prototype") // one copy for each test case
 @Entity // Declares the class as an entity
 @Table(name = "JPA_Product") // names the table created as JPA_EMPLOYEE
-//@EntityListeners({DepartmentLifeCycleListener.class})
-//@NamedQueries({
-//	@NamedQuery(name="Product.findByProductName",
-//			query="select e from Product e where e.ProductName = : productName")
-//	
-//})
+@NamedQueries({
+	@NamedQuery(name="Product.findByProductName",
+			query="select e from Product e where 'e.ProductName' = ':productName'")
+	
+})
 //@XmlRootElement
 @Component 
 public class Product implements Serializable {

@@ -2,15 +2,7 @@ package com.mastek.training.realfarmtohome.apis;
 
 import java.util.List;
 
-import javax.ws.rs.BeanParam;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -53,26 +45,30 @@ public class ProductService {
 //		MediaType.APPLICATION_JSON, // object to be given in json
 //		MediaType.APPLICATION_XML // Object to be given in XML
 //	})
-//	public Product findByProductId(
-//			@PathParam("")int productId) {
-//		try {
-//			return productRepository.findById(productId).get();			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//	}
+	public Product findByProductId( //@PathParam("")
+									int productId) {
+		try {
+			return productRepository.findById(productId).get();			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 //	
 //	@GET
 //	@Path("/fetchByProductName")
 //	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Product> fetchProductByProductName(String productName){
-//			return productRepository.findByProductName(productName);
-//	}
+	public List<Product> fetchProductByProductName(String productName){
+		return productRepository.findByProductName(productName);
+	}
 //		
 //	@DELETE //delete http method
 //	@Path("/delete/{productId}")
-//	public void deleteByProductId(@PathParam("productId")int productId) {
-//		productRepository.deleteById(productId);
-//	}
+	public void deleteProduct(@PathParam("product")Product product) {
+		productRepository.delete(product);
+	}
+	
+	public void deleteByProductId(@PathParam("productId")int productId) {
+		productRepository.deleteById(productId);
+	}
 }
