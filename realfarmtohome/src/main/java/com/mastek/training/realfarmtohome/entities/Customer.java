@@ -12,38 +12,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlTransient;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 @Scope("prototype")
 @Entity
-@Table(name="JPA_CUSTOMER") 
-
-
-
+@Table(name = "JPA_CUSTOMER")
 
 public class Customer implements Serializable {
-	
- 
-	
 
+	@FormParam("customerId")
 	private int customerId;
 
+	@FormParam("customerName")
 	private String customerName;
 
+	@FormParam("customerAddress")
 	private String customerAddress;
-	
+
+	@FormParam("customerEmail")
 	private String customerEmail;
 	
+	@FormParam("customerPassword")
+	private String customerPassword;
+
+	@XmlTransient
 	private Set<Order> orders = new HashSet<>();
 
-	
-	
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
 	public int getCustomerId() {
 		return customerId;
@@ -60,6 +61,7 @@ public class Customer implements Serializable {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
+
 //test test
 	public String getCustomerAddress() {
 		return customerAddress;
@@ -76,15 +78,15 @@ public class Customer implements Serializable {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Farmer [farmerId=" + customerId + ", farmerName=" + customerName + ", farmerAddress=" + customerAddress
 				+ ", farmerEmail=" + customerEmail + "]";
 	}
 
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCustomer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "currentCustomer")
+	@Transactional
 	public Set<Order> getOrders() {
 		return orders;
 	}
@@ -93,5 +95,4 @@ public class Customer implements Serializable {
 		this.orders = orders;
 	}
 
-
-	}
+}
