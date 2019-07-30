@@ -8,5 +8,5 @@ import com.mastek.training.realfarmtohome.entities.Order;
 @Component
 @Scope("singleton")
 public interface OrderRepository extends CrudRepository<Order, Integer> {
-
+	
 }

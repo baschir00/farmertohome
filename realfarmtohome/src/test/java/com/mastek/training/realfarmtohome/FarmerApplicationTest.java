@@ -74,8 +74,8 @@ public class FarmerApplicationTest {
 		p2.setProductName("Cucumber");
 		p2.setProductType("Veg");
 		
-		f1.getProducts().add(p1);
-		f1.getProducts().add(p2);
+		f1.getAssignment().add(p1);
+		f1.getAssignment().add(p2);
 		
 		p1.setCurrentFarmer(f1);
 		p2.setCurrentFarmer(f1);
