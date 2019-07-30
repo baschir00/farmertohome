@@ -38,7 +38,7 @@ public class Product implements Serializable {
 	private String productType;
 	private int unitPrice;
 	private Farmer currentFarmer;
-	private Customer currentCustomer;
+//	private Customer currentCustomer;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -88,12 +88,12 @@ public class Product implements Serializable {
 		this.currentFarmer = currentFarmer;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="FK_CustomerId")
-	public Customer getCurrentCustomer() {
-		return currentCustomer;
-	}
-	public void setCurrentCustomer(Customer currentCustomer) {
-		this.currentCustomer = currentCustomer;
-	}
+//	@ManyToOne
+//	@JoinColumn(name="FK_CustomerId")
+//	public Customer getCurrentCustomer() {
+//		return currentCustomer;
+//	}
+//	public void setCurrentCustomer(Customer currentCustomer) {
+//		this.currentCustomer = currentCustomer;
+//	}
 }
