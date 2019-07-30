@@ -25,7 +25,6 @@ public class FarmerApplicationTest {
 	
 	@Test
 	public void addFarmUsingService() {
-		
 		far.setFarmerName("Ruis");
 		far.setFarmerEmail("Farmer");
 		far.setFarmerLocation("Leeds");
@@ -35,17 +34,25 @@ public class FarmerApplicationTest {
 	}
 	@Test
 	public void findByFarmerIdUsingService() {
-		int farmerId =1;
-		assertNotNull(farmerService.findByFarmerId(farmerId));
+		far.setFarmerId(10);
+		far.setFarmerName("Ruis");
+		far.setFarmerEmail("Farmer");
+		far.setFarmerLocation("Leeds");
+		far = farmerService.registerOrUpdateFarmer(far);
+		assertNotNull(farmerService.findByFarmerId(far.getFarmerId()));
 		
 	}
 	
 
 	@Test
 	public void deleteByFarmerIdUsingService() {
-		int farmerId =6;
-		farmerService.deleteByFarmerId(farmerId);
-		assertNull(farmerService.findByFarmerId(farmerId));
+		far.setFarmerId(10);
+		far.setFarmerName("Ruis");
+		far.setFarmerEmail("Farmer");
+		far.setFarmerLocation("Leeds");
+		far = farmerService.registerOrUpdateFarmer(far);
+		farmerService.deleteByFarmerId(far.getFarmerId());
+		assertNull(farmerService.findByFarmerId(far.getFarmerId()));
 		
 	}
 	
@@ -72,6 +79,7 @@ public class FarmerApplicationTest {
 		
 		farmerService.registerOrUpdateFarmer(f1);
 		
+		assertNotNull(farmerService.findByFarmerId(f1.getFarmerId()));
 	}
 	
 }
