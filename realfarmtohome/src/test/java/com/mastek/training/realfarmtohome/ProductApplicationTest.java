@@ -24,11 +24,12 @@ public class ProductApplicationTest {
 	@Autowired
 	ProductService prodService;
 
-	@Autowired
+	//@Autowired
 	Product prod;
 
 	@Before
 	public void setup() {
+		prod = new Product();
 		prod.setProductName("blaaa");
 		prod.setDescription("this is blaaaaa");
 		prod.setProductType("Blaaaa");

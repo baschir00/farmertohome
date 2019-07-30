@@ -24,6 +24,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+//@Component 
+
 @Scope("prototype") // one copy for each test case
 @Entity // Declares the class as an entity
 @Table(name = "JPA_Product") // names the table created as JPA_EMPLOYEE
@@ -33,7 +35,7 @@ import org.springframework.stereotype.Component;
 	
 })
 //@XmlRootElement
-@Component 
+
 public class Product implements Serializable {
 	
 	private int productId;
