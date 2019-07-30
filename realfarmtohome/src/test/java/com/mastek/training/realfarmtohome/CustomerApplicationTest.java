@@ -1,6 +1,7 @@
 package com.mastek.training.realfarmtohome;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +27,7 @@ public class CustomerApplicationTest {
 	@Test
 	public void addCustomerUsingService() {
 		
-		//cust.setCustomerId(1);
+		cust.setCustomerId(1);
 		cust.setCustomerName("John");
 		cust.setCustomerEmail("Customer");
 		cust.setCustomerAddress("Leeds");
@@ -40,6 +41,13 @@ public class CustomerApplicationTest {
 		int customerId =1;
 		assertNotNull(customerService.findByCustomerId(customerId));
 		
+	}
+	
+	@Test
+	public void deleteCustomerUsingService() {
+		cust = customerService.registerOrUpdateCustomer(cust);
+		customerService.deleteCustomer(cust);
+		assertNull(customerService.findByCustomerId(cust.getCustomerId()));
 	}
 	
 	@Test
