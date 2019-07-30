@@ -2,8 +2,12 @@
 package com.mastek.training.realfarmtohome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,7 +42,8 @@ public class Product implements Serializable {
 	private String productType;
 	private int unitPrice;
 	private Farmer currentFarmer;
-	private Customer currentCustomer;
+	private Set<OrderItem> manyorderitems = new HashSet<>();
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -87,12 +93,14 @@ public class Product implements Serializable {
 		this.currentFarmer = currentFarmer;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="FK_CustomerId")
-	public Customer getCurrentCustomer() {
-		return currentCustomer;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentProduct")
+	public Set<OrderItem> getManyorderitems() {
+		return manyorderitems;
 	}
-	public void setCurrentCustomer(Customer currentCustomer) {
-		this.currentCustomer = currentCustomer;
+	public void setManyorderitems(Set<OrderItem> manyorderitems) {
+		this.manyorderitems = manyorderitems;
 	}
+	
+
 }

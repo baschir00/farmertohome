@@ -29,24 +29,17 @@ public class Customer implements Serializable {
 	
  
 	
-	
-//	@Value("-1")
+
 	private int customerId;
-	
-	
-	
-	
-	//@Value("default name")
+
 	private String customerName;
 
-	//@Value("default address")
 	private String customerAddress;
 	
-	//@Value("default email")
 	private String customerEmail;
 	
-	
-	private Set<Product> manyproduct = new HashSet<>();
+	private Set<Order> orders = new HashSet<>();
+
 	
 	
 	@Id
@@ -92,11 +85,13 @@ public class Customer implements Serializable {
 
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCustomer")
-	public Set<Product> getManyproduct() {
-		return manyproduct;
+	public Set<Order> getOrders() {
+		return orders;
 	}
 
-	public void setManyproduct(Set<Product> manyproduct) {
-		this.manyproduct = manyproduct;
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
+
+
 	}
