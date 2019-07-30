@@ -2,6 +2,9 @@ package com.mastek.training.realfarmtohome;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -80,6 +83,15 @@ public class FarmerApplicationTest {
 		farmerService.registerOrUpdateFarmer(f1);
 		
 		assertNotNull(farmerService.findByFarmerId(f1.getFarmerId()));
+	}
+	
+	
+	@Test
+	public void getAllFarmersUsingService() {
+		
+		Set<Farmer> farmers = farmerService.getFarmers();
+		assertNotNull(farmers);
+		assertTrue(farmers.size() > 0);
 	}
 	
 }
