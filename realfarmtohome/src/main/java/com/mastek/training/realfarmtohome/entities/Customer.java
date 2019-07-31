@@ -1,49 +1,50 @@
 package com.mastek.training.realfarmtohome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlTransient;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 @Scope("prototype")
 @Entity
-@Table(name="JPA_CUSTOMER") 
-
-
-
+@Table(name = "JPA_CUSTOMER")
 
 public class Customer implements Serializable {
-	
- 
-	
-	
-	@Value("-1")
+
+	@FormParam("customerId")
 	private int customerId;
-	
-	
-	
-	
-	//@Value("default name")
+
+	@FormParam("customerName")
 	private String customerName;
 
-	//@Value("default address")
+	@FormParam("customerAddress")
 	private String customerAddress;
-	
-	//@Value("default email")
+
+	@FormParam("customerEmail")
 	private String customerEmail;
 	
-	
+	@FormParam("customerPassword")
+	private String customerPassword;
+
+	@XmlTransient
+	private Set<Order> orders = new HashSet<>();
+
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
 	public int getCustomerId() {
 		return customerId;
@@ -61,6 +62,7 @@ public class Customer implements Serializable {
 		this.customerName = customerName;
 	}
 
+//test test
 	public String getCustomerAddress() {
 		return customerAddress;
 	}
@@ -76,15 +78,21 @@ public class Customer implements Serializable {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Farmer [farmerId=" + customerId + ", farmerName=" + customerName + ", farmerAddress=" + customerAddress
 				+ ", farmerEmail=" + customerEmail + "]";
 	}
-	
-	
-	
 
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "currentCustomer")
+	@Transactional
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
 
 }
