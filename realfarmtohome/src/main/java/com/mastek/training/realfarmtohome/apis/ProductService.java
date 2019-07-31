@@ -22,7 +22,6 @@ import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 
 @Component
-@Path("/product")
 @Scope("singleton")
 @Path("/product/")
 public class ProductService {
@@ -73,6 +72,7 @@ public class ProductService {
 	public List<Product> fetchProductByProductName(
 			@QueryParam("productName")String productName){
 		return productRepository.findByProductName(productName);
+		
 	}
 
 //	public void deleteProduct(@PathParam("product")Product product) {

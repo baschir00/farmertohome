@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { ProductTileComponent } from './product-tile/product-tile.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
+import { RegisterProductComponent } from './register-product/register-product.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegistercustomerComponent } from './registercustomer/registercustomer.c
     ProductsComponent,
     CustomersComponent,
     ProductTileComponent,
-    RegistercustomerComponent
+    RegistercustomerComponent,
+    RegisterProductComponent
   ],
   imports: [
     BrowserModule,
