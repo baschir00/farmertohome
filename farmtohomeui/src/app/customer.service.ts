@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Customer } from './customer';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CustomersComponent } from './customers/customers.component';
+import { customers } from './customers/customers.component';
+import { AppComponent } from './app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,12 @@ export class CustomerService {
   }
 
 
-updateCustomerOnServer(customer):Observable<Customer>{
+  findCustomerbyCustomerId(customerId):Observable<AppComponent> {
+    return this.httpsvc.get<AppComponent>(this.rootURL + "/find/" + customerId)
+  }
+
+
+updateCustomerOnServer(customer):Observable<AppComponent>{
   const httpOptions={
     headers: new HttpHeaders( {
       "Content-Type": "application/x-www-form-urlencoded"})
@@ -32,11 +38,15 @@ var reqBody = "customerId=" + customer.customerId+"&customerName"
                 + customer.customerEmail 
                 // post (URL,body,httpOptionsswitchHeaders)
 
-return this.httpsvc.post<Customer>(
+return this.httpsvc.post<AppComponent>(
   this.rootURL + "/register", 
   reqBody,httpOptions
 )
 
+
+
+
+}
 
 
 

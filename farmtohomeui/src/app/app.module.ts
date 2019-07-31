@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FarmerComponent } from './farmer/farmer.component';
 import { ProductsComponent } from './products/products.component';
-import { CustomersComponent } from './customers/customers.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { ProductTileComponent } from './product-tile/product-tile.component';
@@ -26,7 +25,6 @@ import { OrderItemsComponent } from './order-items/order-items.component';
     AppComponent,
     FarmerComponent,
     ProductsComponent,
-    CustomersComponent,
     ProductTileComponent,
     RegistercustomerComponent,
     RegisterfarmerComponent,
