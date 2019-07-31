@@ -1,41 +1,36 @@
 <div class="jumbotron text-center">
-<h2>Customer Registration</h2>
+    <h2>Customer Registration</h2>
 </div>
 
 <h2>Please Enter Customer</h2>
 
-<form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,customertos) >
-<ul>
-    <li>
-        Customer Name: <input type="text" #customername>
-    </li>
-</ul>
-<ul>
-    <li>
-        Password: <input type="password" #customerpassword>
-    </li>
-</ul>
-<ul>
-    <li>
-        Customer Email: <input type="text" #customeremail>
-    </li>
-</ul>
-<ul>
-    <li>
-        Customer Address <input type="text" class="addresstextbox" #customeraddress>
-    </li>
-</ul>
+<form
+    (submit)="addNewCustomer(customerName,customerEmail,customerAddress)">
+    <ul>
+        <li>
+            Customer Name: <input type="text" #customerName>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Customer Email: <input type="text" #customerEmail>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Customer Address <input type="text" class="addresstextbox" #customerAddress>
+        </li>
+    </ul>
 
-<ul>
-    <li>
-        Register: <input type="submit" placeholder="Register" value="Add">
-    </li>
-    <div [hidden]="ValidRegister">
-        {{invalidRegisterMessage}}
-    </div>
-</ul>
-
-</form>
-
-
-<footer></footer>
+    <ul>
+        <li>
+            Register: <input type="submit" placeholder="Register" value="Add">
+        </li>
+        <div [hidden]="ValidRegister">
+            {{invalidRegisterMessage}}
+            <div class="jumbotron text-center">
+            </div>
+            </div>
+            </ul>
+            </form>
+            

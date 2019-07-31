@@ -1,44 +1,8 @@
+
 <div class="jumbotron text-center">
-        <h2>Customer Registration</h2>
-        </div>
-        
-        <h2>Please Enter Customer</h2>
-        
-        <form (submit)="addNewCustomer(customeName,customerEmail,customerAddress)" >
-        <ul>
-            <li>
-                Customer Name: <input type="text" #customerName>
-            </li>
-        </ul>
-        <ul>
-           <!-- <li>
-                Password: <input type="password" #customerpassword>
-            </li> -->
-        </ul>
-        <ul>
-            <li>
-                Customer Email: <input type="text" #customerEmail>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                Customer Address <input type="text" class="addresstextbox" #customerAddress>
-            </li>
-        </ul>
-        
-        <ul>
-            <li>
-                Register: <input type="submit" placeholder="Register" value="Add">
-            </li>
-            <div [hidden]="ValidRegister">
-                {{invalidRegisterMessage}}
-            </div>
-        </ul>
-        
-        </form>
-        
-        
-        <footer></footer>
+<nav>
+  <a routerLink="/registerCustomer">Register Customer</a>
+  <a routerLink="/registerFarmer">Register Farmer</a>
+</nav>
 
-<!--<app-customernavbar></app-customernavbar>  -->
-
+<router-outlet></router-outlet>

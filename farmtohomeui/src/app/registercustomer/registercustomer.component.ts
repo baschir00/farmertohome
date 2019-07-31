@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../customer.service';
+import { from } from 'rxjs';
+import { Customer } from '../customer';
 
 @Component({
   selector: 'app-registercustomer',
@@ -7,35 +10,100 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistercustomerComponent implements OnInit {
 
+  title = 'farmtohome';
+    customerId:number
+    customerName:string
+    customerAddress:string
+    customerEmail:string
 
-  invalidRegisterMessage=String
+    isEditable: boolean
+    isProjectFormVisible:boolean
 
-
-  constructor() {
-
-
-   }
-
-  ngOnInit() {
+    isProjectFormValid:boolean
+    invalidFormMessage:String
     
+    allCustomers:Customer[]
+    
+
+
+
+
+  constructor(private customerSvc:CustomerService) {
+    this.customerId=1
+    this.customerName=""
+    this.customerAddress=""
+    this.customerEmail=""
+
   }
 
+ngOnInit() {
+  this.fetchCurrentCustomerFromService()
 
-  registerCustomerDetails() {
+}
 
-  }
+fetchCurrentCustomerFromService() {
+    this.customerSvc.findCustomerbyCustomerId(this.customerId).subscribe (
+     response => {
+       this.customerId = response.customerId
+        this.customerName = response.customerName
+         this.customerAddress = response.customerAddress
+         this.customerEmail = response.customerEmail
+        
 
-  checkPassword(password,comfirmpassword) {
-   if (password.value === comfirmpassword ) {
+     }
 
-   }
-   else {
-      
-  }
-} 
+     )
+}
+
+addNewCustomer(customerName,customerEmail,customerAddress){
+    
+     const cust = {
+    customerName:this.customerName,
+    customerAddress:this.customerAddress,
+    customerEmail:this.customerEmail
+     }
+     
+    }
+    updateCustomerDetails() {
+      this.customerSvc.updateCustomerOnServer ({
+        customerId:this.customerId, customerName: this.customerName,
+          customerAddress:this.customerAddress
+      }).subscribe (
+        response => {
+          // peforms the following operation on a succesful post
+          this.customerSvc.updateCustomerCustomerIdOnServer(this.customerName,this.customerId).subscribe(
+            response => {
+              this.fetchCurrentCustomerFromService()
+            }
+          )
+        }
+      )
+    }
+    
+    toggleEdit() {
+      this.isEditable=!this.isEditable
+      // if true , then details can be edited
+      this.updateCustomerDetails
+    
+
+    }
 
    
-}
+   
+    
+
   
 
+
+
+
+
+
+
+
+  
+
+
+
+  }
 

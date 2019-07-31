@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './customer.service';
-import {Customer} from './customers/customers.component'
+import { from } from 'rxjs';
+import { Customer } from './customer';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,29 @@ import {Customer} from './customers/customers.component'
 })
 export class AppComponent implements OnInit {
 
+  title = 'farmtohome';
+    customerId:number
+    customerName:string
+    customerAddress:string
+    customerEmail:string
+
+    isEditable: boolean
+    isProjectFormVisible:boolean
+
+    isProjectFormValid:boolean
+    invalidFormMessage:String
+    
+    allCustomers:Customer[]
+    
+
+
+
+
   constructor(private customerSvc:CustomerService) {
     this.customerId=1
+    this.customerName=""
+    this.customerAddress=""
+    this.customerEmail=""
 
   }
 
@@ -20,38 +42,40 @@ ngOnInit() {
 }
 
 fetchCurrentCustomerFromService() {
-    this.customerSvc.findCustomerbyCustomerId(this.).subscribe (
-     Response => {
+    this.customerSvc.findCustomerbyCustomerId(this.customerId).subscribe (
+     response => {
        this.customerId = response.customerId
         this.customerName = response.customerName
          this.customerAddress = response.customerAddress
          this.customerEmail = response.customerEmail
-
+        
 
      }
 
      )
-    
+}
 
-
-
-
-  title = 'farmtohome';
-  addNewCustomer(customerName,customerEmail,customerAddress){
+addNewCustomer(customerName,customerEmail,customerAddress){
     
      const cust = {
-    customerName:customerName,
-    customerAddress:customerAddress,
-    customerEmail:customerEmail
-
+    customerName:this.customerName,
+    customerAddress:this.customerAddress,
+    customerEmail:this.customerEmail
+     }
+     
+    }
     updateCustomerDetails() {
-      this.httpsvc.updateCustomerOnServer ({
+      this.customerSvc.updateCustomerOnServer ({
         customerId:this.customerId, customerName: this.customerName,
           customerAddress:this.customerAddress
       }).subscribe (
         response => {
           // peforms the following operation on a succesful post
-          this.httpsvc.updateE
+          this.customerSvc.updateCustomerCustomerIdOnServer(this.customerName,this.customerId).subscribe(
+            response => {
+              this.fetchCurrentCustomerFromService()
+            }
+          )
         }
       )
     }
@@ -67,19 +91,21 @@ fetchCurrentCustomerFromService() {
    
    
     
-  
-
-
-
-
-
-
-
 
   
 
 
 
-  };
 
-}
+
+
+
+
+  
+
+
+
+  }
+
+
+
