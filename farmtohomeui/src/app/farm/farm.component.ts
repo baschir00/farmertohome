@@ -10,9 +10,9 @@ import { Product } from '../product';
 export class FarmComponent implements OnInit {
 
   farmerId: number
-  farmName: string
-  farmLocation: string
-  farmEmail: string
+  farmerName: string
+  farmerLocation: string
+  farmerEmail: string
   assignment: Product[]
   isEditable:boolean;
   isProductFormVisible:boolean
@@ -20,17 +20,15 @@ export class FarmComponent implements OnInit {
   invalidFormMessage:String
   allProducts:Product[]
   selectedproductId:number
-  
-
 
   constructor(private farmSvc:FarmService) { 
     this.isEditable = false
     this.isProductFormVisible=false
     this.isProductFormValid=true
     this.farmerId=1
-    this.farmName="blaaaaa"
-    this.farmLocation="blaaaa"
-    this.farmEmail="blaaaa@blaaa.com"
+    this.farmerName="blaaaaa"
+    this.farmerLocation="blaaaa"
+    this.farmerEmail="blaaaa@blaaa.com"
     this.assignment = [{
       productId:1,
       productName:"tato",
@@ -55,9 +53,9 @@ export class FarmComponent implements OnInit {
     //use the response to initialize the component properties
   response=> {
     this.farmerId=response.farmerId
-    this.farmName=response.farmName
-    this.farmLocation=response.farmLocation
-    this.farmEmail=response.farmEmail
+    this.farmerName=response.farmerName
+    this.farmerLocation=response.farmerLocation
+    this.farmerEmail=response.farmerEmail
     this.assignment=response.assignment
   
   })
@@ -68,7 +66,7 @@ deleteProduct(index){
   this.assignment.splice(index,1)
 }
 
-addNewProject(pproductId,pproductName,pdescription
+addNewProduct(pproductId,pproductName,pdescription
   ,pproductType,punitPrice){
   if(isNaN(pproductId)){
     this.isProductFormValid=false
@@ -122,8 +120,8 @@ loadAllProducts(){
 
   updateFarmDetails(){
     this.farmSvc.updateFarmOnServer({
-      farmerId:this.farmerId, farmName: this.farmName,
-      farmLocation:this.farmLocation, farmEmail:this.farmEmail
+      farmerId:this.farmerId, farmName: this.farmerName,
+      farmerLocation:this.farmerLocation, farmEmail:this.farmerEmail
     }).subscribe(
       response =>{
         this.farmSvc.updateFarmProductOnServer

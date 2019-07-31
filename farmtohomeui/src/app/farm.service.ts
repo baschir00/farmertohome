@@ -10,11 +10,30 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FarmService {
   rootURL:string
 
-  constructor(private httpsvc:HttpClient) { 
-  this.rootURL="http://localhost:3333/farms"}
+  constructor(private httpsvc:HttpClient) {
+  this.rootURL="http://localhost:5980/farmer"}
 
   findFarmByFarmerId(farmerId):Observable<FarmComponent>{
     return this.httpsvc.get<FarmComponent>(this.rootURL+"/find/"+farmerId)
+  }
+
+  registerFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword) {
+    console.log('Registering farmer : registerFarmer');
+
+    const httpOptions= {
+      headers: new HttpHeaders({
+        "Content-Type":"application/x-www-form-urlencoded"
+      })
+    };
+
+    // TODO:
+    var reqBody= "farmerName=" + farmerName + "&farmerLocation=" + farmerLocation
+    + "&farmerEmail=" + farmerEmail// + "&farmerPassword=" + farmerPassword
+
+    console.log(reqBody);
+
+    return this.httpsvc.post<FarmComponent>(
+      this.rootURL+"/register", reqBody, httpOptions);
   }
 
   updateFarmOnServer(farm):Observable<FarmComponent>{
@@ -30,7 +49,7 @@ export class FarmService {
     return this.httpsvc.post<FarmComponent>(
       this.rootURL+"/register", reqBody, httpOptions)
     }
-  
+
   loadAllProductsFromServer():Observable<Product[]>{
     return this.httpsvc.get<Product[]>(
       "http://localhost:7700/Product/list")
