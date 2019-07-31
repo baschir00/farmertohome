@@ -84,12 +84,6 @@ public class ProductApplicationTest {
 	}
 
 	@Test
-	public void deleteProductUsingService() {
-		prodService.deleteProduct(prod);
-		assertNull(prodService.findByProductId(prod.getProductId()));
-	}
-
-	@Test
 	public void checkFetchByProductName() {
 		List<Product> prods = prodService.fetchProductByProductName("tatos");
 		for (Product product : prods) {

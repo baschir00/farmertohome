@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -50,10 +51,16 @@ public class Farmer implements Serializable {
 	
 	private Set<Product> assignment = new HashSet<>();
 	
-
-	public void setAssignments(Set<Product> assignment) {
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentFarmer")
+	@XmlTransient
+	public Set<Product> getAssignment() {
+		return assignment;
+	}
+	
+	public void setAssignment(Set<Product> assignment) {
 		this.assignment = assignment;
 	}
+	
 	
 	@Id
 	@Column(name = "farmer_number")
@@ -89,18 +96,6 @@ public class Farmer implements Serializable {
 		return "Farmer [farmerId=" + farmerId + ", farmerName=" + farmerName + ", farmerLocation=" + farmerLocation
 				+ ", farmerEmail=" + farmerEmail + "]";
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentFarmer")
-	public Set<Product> getAssignment() {
-		return assignment;
-	}
-	public void setAssignment(Set<Product> assignment) {
-		this.assignment = assignment;
-	}
-	
-	
-	
-	
-	
+		
 
 }
