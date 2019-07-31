@@ -2,17 +2,24 @@ package com.mastek.training.realfarmtohome.apis;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 
 @Component
 @Scope("singleton")
+@Path("/product/")
 public class ProductService {
 
 	@Autowired
@@ -29,10 +36,11 @@ public class ProductService {
 //		return productRepository.findAll();
 //	}
 	
-//	@POST
-//	@Path("/register")
-//	@Produces(MediaType.APPLICATION_JSON) // object to be given in json
-//	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) @BeanParam
+	@POST
+    @Path("/register")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
 	public Product registerOrUpdateProduct(Product prod) {
 		prod = productRepository.save(prod);
 		System.out.println("Product Registered" + prod);

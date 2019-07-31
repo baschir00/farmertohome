@@ -90,10 +90,10 @@ public class ProductApplicationTest {
 
 	@Test
 	public void checkFetchByProductName() {
-		List<Product> prods = prodService.fetchProductByProductName("tatos");
+		List<Product> prods = prodService.fetchProductByProductName("Potatos");
 		for (Product product : prods) {
 			System.out.println(product);
 		}
-		assertEquals(prods.size(), 2);
+		assertEquals(14,prods.size());
 	}
 }

@@ -18,8 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
- 
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -28,13 +28,18 @@ import org.springframework.stereotype.Component;
 
 
 @Entity 
-@Component
+//@Component
 @Scope("prototype")
 @Table (name="JPA_order")
 public class Order implements Serializable {
     
+	@FormParam("order")
     private int orderId;
+	
+	@FormParam("current")
     private Customer currentCustomer;
+    
+	@XmlTransient
 	private Set<OrderItem> orderitems = new HashSet<>();
 
    

@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -37,6 +38,7 @@ public class Customer implements Serializable {
 	private String customerAddress;
 	
 	private String customerEmail;
+	
 	
 	private Set<Order> orders = new HashSet<>();
 
@@ -85,6 +87,7 @@ public class Customer implements Serializable {
 
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCustomer")
+	@XmlTransient
 	public Set<Order> getOrders() {
 		return orders;
 	}
