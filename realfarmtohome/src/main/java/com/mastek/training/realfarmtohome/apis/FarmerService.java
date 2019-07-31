@@ -35,9 +35,6 @@ public class FarmerService {
 private FarmerRepository farmerRepository;
 
 @Autowired
-private ProductRepository productRepository;
-
-@Autowired
 private ProductService productService;
 	
 @POST
@@ -65,9 +62,12 @@ public Set<Farmer> getFarmers() {
 	MediaType.APPLICATION_XML // Object to be given in XML
 })
 @Transactional
-public Farmer findByFarmerId(int farmerId) {
+public Farmer findByFarmerId(@PathParam("farmerId")int farmerId) {
     try {
-        return farmerRepository.findById(farmerId).get();
+        Farmer far = farmerRepository.findById(farmerId).get();
+        System.out.println(far.getAssignment().size()
+					+"Assignment fetched");
+    	return far;
     } catch (Exception e) {
         e.printStackTrace();
         return null;
@@ -90,9 +90,13 @@ public Set<Product> assignProduct(
 		@FormParam("productId") int productId) {
 	try {
 		Farmer farm = findByFarmerId(farmerId);
+		System.out.println(farm);
 		Product prod = productService.findByProductId(productId);
-		farm.getAssignment().add(prod);
+		System.out.println(prod);
+		//farm.getAssignment().add(prod);
+		prod.setCurrentFarmer(farm);
 		farm= registerOrUpdateFarmer(farm);
+		System.out.println(farm);
 	return farm.getAssignment();
 } catch(Exception e) {
 	e.printStackTrace();

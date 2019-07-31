@@ -85,8 +85,9 @@ public class Customer implements Serializable {
 				+ ", farmerEmail=" + customerEmail + "]";
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "currentCustomer")
-	@Transactional
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCustomer")
+	@XmlTransient
 	public Set<Order> getOrders() {
 		return orders;
 	}

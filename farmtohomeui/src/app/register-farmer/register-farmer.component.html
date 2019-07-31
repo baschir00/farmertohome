@@ -1,0 +1,30 @@
+<p>register-farmer works!</p>
+
+<form (submit)="addFarmer(fname, flocation, femail, fpassword)">
+  <table class="table">
+    <tr>
+      <td>
+        <input name="name" placeholder="Name" #fname>
+      </td>
+
+      <td>
+        <input name="location" placeholder="location" #flocation>
+      </td>
+      <td>
+        <input name="email" placeholder="email" #femail>
+      </td>
+      <td>
+        <input name="password" placeholder="password" #fpassword>
+      </td>
+      <td>
+        <input type="submit" value="Add">
+      </td>
+
+      <td>
+        <div [hidden]="invalidFormMessage">
+          {{invalidFormMessage}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>
