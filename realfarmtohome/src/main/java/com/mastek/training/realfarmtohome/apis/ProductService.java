@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
@@ -23,6 +24,7 @@ import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 @Component
 @Path("/product")
 @Scope("singleton")
+@Path("/product/")
 public class ProductService {
 
 	@Autowired
