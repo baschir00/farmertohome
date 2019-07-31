@@ -10,6 +10,6 @@ import com.mastek.training.realfarmtohome.entities.Product;
 @Component
 @Scope("singleton")
 public interface ProductRepository extends CrudRepository<Product, Integer> {
-	public List<Product> findByProductName(String productName);
+//	public List<Product> findByProductName(String productName);
 }
 

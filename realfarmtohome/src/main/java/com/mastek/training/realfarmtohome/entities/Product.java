@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
 @Table(name = "JPA_Product") // names the table created as JPA_EMPLOYEE
 @NamedQueries({
 	@NamedQuery(name="Product.findByProductName",
-			query="select e from Product e where 'e.ProductName' = ':productName'")
+			query="select e from Product e where e.productName = :productName")
 	
 })
 //@XmlRootElement
