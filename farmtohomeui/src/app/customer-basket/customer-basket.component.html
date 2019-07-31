@@ -13,7 +13,7 @@
                             [(ngModel)]="productId"
                             #inputProductId
                             required=true>
-                        <span [hidden]="inputProductId.valid || inputProductId.pristine"> Error</span>
+                        <span [hidden]="inputProductId.valid || inputProductId.pristine">Error</span>
 
                     
                     
@@ -21,7 +21,7 @@
                     
                     
                     </td>
-            </div>
+            
             </tr>
             <tr>
                 <td>ProductName: </td>
@@ -33,8 +33,6 @@
                 
                 </td>
                
-                <app-customer-basket-app-customernavbar></app-customer-app-basket-customernavbar>
-
             </tr>
             <tr>
                     <td>Description: </td>
@@ -43,7 +41,7 @@
                                 #inputDescription
                                 required=true></td>
                                 <span [hidden]="inputDescription.valid || inputDescription.pristine"></span>
-                </div>
+                
             </tr>
             <tr>
                     <td>unitPrice:</td>
@@ -52,7 +50,7 @@
                                                         #inputUnitPrice
                                                         required=true></td>
                                                         <span [hidden]="inputUnitPrice.valid || inputUnitPrice.pristine"></span>
-                </div>
+                
             </tr>
             <tr>
                     <td>Product: </td>

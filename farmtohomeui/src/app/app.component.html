@@ -1,6 +1,91 @@
+<div class="jumbotron text-center">
+        <h2>Customer Registration</h2>
+        </div>
+        
+        <h2>Please Enter Customer</h2>
+        
+        <form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,customertos) >
+        <ul>
+            <li>
+                Customer Name: <input type="text" #customername>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                Password: <input type="password" #customerpassword>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                Customer Email: <input type="text" #customeremail>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                Customer Address <input type="text" class="addresstextbox" #customeraddress>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                Register: <input type="submit" placeholder="Register" value="Add">
+            </li>
+            <div [hidden]="ValidRegister">
+                {{invalidRegisterMessage}}
+            </div>
+        </ul>
+        
+        </form>
+        
+        
+        <footer></footer>
 
-<h2> Welcome ! </h2>
-<app-app-farmer></app-app-farmer>
-<app-app-customers></app-app-customers>
-<app-app-orders></app-app-orders>
+
+        <div class="jumbotron text-center">
+                <h2>Customer Registration</h2>
+                </div>
+                
+                <h2>Please Enter Customer</h2>
+                
+                <form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,customertos) >
+                <ul>
+                    <li>
+                        Customer Name: <input type="text" #customername>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Password: <input type="password" #customerpassword>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Customer Email: <input type="text" #customeremail>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Customer Address <input type="text" class="addresstextbox" #customeraddress>
+                    </li>
+                </ul>
+                
+                <ul>
+                    <li>
+                        Register: <input type="submit" placeholder="Register" value="Add">
+                    </li>
+                    <div [hidden]="ValidRegister">
+                        {{invalidRegisterMessage}}
+                    </div>
+                </ul>
+                
+                </form>
+                
+                
+                <footer></footer>
+
+
+
+
+
+<!--<app-customernavbar></app-customernavbar> -->
 
