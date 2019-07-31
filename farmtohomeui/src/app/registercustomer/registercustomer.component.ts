@@ -37,9 +37,18 @@ export class RegistercustomerComponent implements OnInit {
   }
 
 ngOnInit() {
-  this.fetchCurrentCustomerFromService()
-
+  
 }
+
+
+addFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword) {
+  customerName = farmerName.value;
+  customerLocation = farmerLocation.value;
+  farmerEmail = farmerEmail.value;
+  farmerPassword = farmerPassword.value;
+  console.log('Registering farmer : addFarmer');
+  console.log(farmerName, farmerLocation, farmerEmail, farmerPassword);
+
 
 fetchCurrentCustomerFromService() {
     this.customerSvc.findCustomerbyCustomerId(this.customerId).subscribe (

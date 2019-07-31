@@ -20,29 +20,14 @@ export class CustomerService {
 
 
   
+  registerCustomer(customerName, customerEmail, customerAddress) {
+    console.log('Registering farmer : registerFarmer');
 
-addCustomerToServer(customerName,customerAddress,customerEmail) {
-
-  const httpOptions = {
-  headers: new HttpHeaders (
-    {"Content-Type":"application/x-www-form-urlencoded"}
-  )
-  }
-// key and value pair
-
-
-var reqBody = "customerName=" 
-                + customer.customerName + "&customerAddress=" 
-                + customer.customerAddress + "&customerEmail="
-                + customer.customerEmail 
-
-
-                // post (URL,body,httpOptionsswitchHeaders)
-
-return this.httpsvc.post<RegistercustomerComponent>(
-  this.rootURL + "/register", 
-  reqBody,httpOptions
-)
+    const httpOptions= {
+      headers: new HttpHeaders({
+        "Content-Type":"application/x-www-form-urlencoded"
+      })
+    };
 }
 
 
