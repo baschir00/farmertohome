@@ -4,25 +4,25 @@
         
         <h2>Please Enter Customer</h2>
         
-        <form (submit)=addNewCustomer(customername,customerpassword,customercomfirmpassword,customeremail,customeraddress,customertos) >
+        <form (submit)="addNewCustomer(customeName,customerEmail,customerAddress)" >
         <ul>
             <li>
-                Customer Name: <input type="text" #customername>
+                Customer Name: <input type="text" #customerName>
             </li>
         </ul>
         <ul>
-            <li>
+           <!-- <li>
                 Password: <input type="password" #customerpassword>
+            </li> -->
+        </ul>
+        <ul>
+            <li>
+                Customer Email: <input type="text" #customerEmail>
             </li>
         </ul>
         <ul>
             <li>
-                Customer Email: <input type="text" #customeremail>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                Customer Address <input type="text" class="addresstextbox" #customeraddress>
+                Customer Address <input type="text" class="addresstextbox" #customerAddress>
             </li>
         </ul>
         
@@ -40,5 +40,5 @@
         
         <footer></footer>
 
-<!--<app-customernavbar></app-customernavbar> -->
+<!--<app-customernavbar></app-customernavbar>  -->
 

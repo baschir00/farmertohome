@@ -11,10 +11,10 @@ export class CustomerService {
 
   
 
-  rootURL
+  rootURL:string
   constructor(private httpsvc:HttpClient) {
       // intializes the url 
-  this.rootURL="http://localhost:3333/apis/customer"
+  this.rootURL="http://localhost:3333/customer"
   }
 
 

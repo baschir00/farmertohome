@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'farmtohome';
+  addNewCustomer(customerName,customerEmail,customerAddress){
+
+     const cust = {
+    customerName:customerName,
+    customerAddress:customerAddress,
+    customerEmail:customerEmail
+
+
+
+    }
+
+
+
+  };
+
 }

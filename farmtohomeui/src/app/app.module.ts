@@ -44,7 +44,12 @@ import { OrderItemsComponent } from './order-items/order-items.component';
     HttpClientModule,
     
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+ 
+
+
+}
