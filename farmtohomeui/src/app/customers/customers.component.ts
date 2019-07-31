@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from './customers.component.spec';
-import {}
+import { CustomerService } from '../customer.service'
+//import {}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class customers implements OnInit {
+
+customerId: number
+customerName:string
+customerAddress:string
+customerEmail:string
+
 
   constructor(private customerSvc:CustomerService) {
     this.customerId=1
@@ -22,8 +28,8 @@ ngOnInit() {
 }
 
 fetchCurrentCustomerFromService() {
-    this.customerSvc.findCustomerbyCustomerId(this.).subscribe (
-      Response => {
+    this.customerSvc.findCustomerbyCustomerId(this.customerId).subscribe (
+      response => {
         this.customerId = response.customerId
         this.customerName = response.customerName
         this.customerAddress = response.customerAddress
