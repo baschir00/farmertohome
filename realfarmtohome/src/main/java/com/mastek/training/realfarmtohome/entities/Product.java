@@ -35,7 +35,7 @@ import org.springframework.stereotype.Component;
 			query="select e from Product e where e.productName = :productName")
 	
 })
-//@XmlRootElement
+@XmlRootElement
 
 public class Product implements Serializable {
 	
