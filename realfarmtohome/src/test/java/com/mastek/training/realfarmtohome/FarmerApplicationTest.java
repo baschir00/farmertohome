@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mastek.training.realfarmtohome.apis.FarmerService;
+import com.mastek.training.realfarmtohome.apis.ProductService;
 import com.mastek.training.realfarmtohome.entities.Farmer;
 import com.mastek.training.realfarmtohome.entities.Product;
 
@@ -22,6 +23,10 @@ public class FarmerApplicationTest {
 
 	@Autowired
 	FarmerService farmerService;
+	
+	@Autowired
+	ProductService productServices;
+	
 	
 	@Autowired
 	Farmer far;
@@ -38,11 +43,8 @@ public class FarmerApplicationTest {
 	@Test
 	public void findByFarmerIdUsingService() {
 		far.setFarmerId(10);
-		far.setFarmerName("Ruis");
-		far.setFarmerEmail("Farmer");
-		far.setFarmerLocation("Leeds");
-		far = farmerService.registerOrUpdateFarmer(far);
-		assertNotNull(farmerService.findByFarmerId(far.getFarmerId()));
+		assertNotNull(farmerService.
+				findByFarmerId(far.getFarmerId()));
 		
 	}
 	
@@ -50,9 +52,7 @@ public class FarmerApplicationTest {
 	@Test
 	public void deleteByFarmerIdUsingService() {
 		far.setFarmerId(10);
-		far.setFarmerName("Ruis");
-		far.setFarmerEmail("Farmer");
-		far.setFarmerLocation("Leeds");
+		
 		far = farmerService.registerOrUpdateFarmer(far);
 		farmerService.deleteByFarmerId(far.getFarmerId());
 		assertNull(farmerService.findByFarmerId(far.getFarmerId()));
@@ -74,8 +74,8 @@ public class FarmerApplicationTest {
 		p2.setProductName("Cucumber");
 		p2.setProductType("Veg");
 		
-		f1.getProducts().add(p1);
-		f1.getProducts().add(p2);
+		f1.getAssignment().add(p1);
+		f1.getAssignment().add(p2);
 		
 		p1.setCurrentFarmer(f1);
 		p2.setCurrentFarmer(f1);

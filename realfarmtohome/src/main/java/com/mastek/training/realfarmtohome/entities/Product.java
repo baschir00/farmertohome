@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -31,17 +32,21 @@ import org.springframework.stereotype.Component;
 @Table(name = "JPA_Product") // names the table created as JPA_EMPLOYEE
 @NamedQueries({
 	@NamedQuery(name="Product.findByProductName",
-			query="select e from Product e where 'e.ProductName' = ':productName'")
+			query="select e from Product e where e.productName = :productName")
 	
 })
-//@XmlRootElement
+@XmlRootElement
 
 public class Product implements Serializable {
 	
 	private int productId;
+	@FormParam("productName")
 	private String productName;
+	@FormParam("description")
 	private String description;
+	@FormParam("productType")
 	private String productType;
+	@FormParam("unitPrice")
 	private int unitPrice;
 	private Farmer currentFarmer;
 	private Set<OrderItem> manyorderitems = new HashSet<>();
@@ -97,6 +102,7 @@ public class Product implements Serializable {
 	
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentProduct")
+	@XmlTransient
 	public Set<OrderItem> getManyorderitems() {
 		return manyorderitems;
 	}
