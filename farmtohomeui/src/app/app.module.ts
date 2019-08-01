@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 // import { RegisterProductComponent } from './register-product/register-product.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
+import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 
 
 
@@ -38,8 +39,8 @@ import { RegisterproductComponent } from './registerproduct/registerproduct.comp
     OrderItemsComponent,
     CustomersComponent,
     RegisterproductComponent,
-    
-  //   RegisterProductComponent
+    RegisterProductComponent,
+    DisplayProductsTableComponent
   ],
   imports: [
     BrowserModule,

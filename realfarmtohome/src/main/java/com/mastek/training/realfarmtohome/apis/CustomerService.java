@@ -41,7 +41,7 @@ public class CustomerService {
 		return cust;
 	}
 
-	@Path("/{customerId}") // Method with path param
+	@Path("find/{customerId}") // Method with path param
 	@GET // http method
 	@Produces({ // Declare all possible types of return value
 			MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -57,29 +57,39 @@ public class CustomerService {
 
 	}
 
-	@Path("/delete") // Method with path param
+	
+	@Path("/delete/{customerId}") // Method with path param
 	@DELETE // http method
-	@Consumes({ // Declare all possible types of return value
-			MediaType.APPLICATION_FORM_URLENCODED })
-	@Produces({ // Declare all possible types of return value
-			MediaType.APPLICATION_JSON })
-	@Transactional
-	public Customer deleteCustomer(@BeanParam Customer customer) {
-		try {
-			if (customerRepository.findById(customer.getCustomerId()).get() != null) {
-				customerRepository.delete(customer);
-				return customer;
-			} else {
-				throw new NoSuchElementException();
-			}
-		} catch (NoSuchElementException e) {
-			System.out.println("Customer not found");
-			return null;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-
+	public void deleteByCustomerId(@PathParam("customerId") int customerId) {
+    customerRepository.deleteById(customerId);
 	}
-
 }
+	
+	
+//	@Path("/delete") // Method with path param
+//	@DELETE // http method
+//	@Consumes({ // Declare all possible types of return value
+//			MediaType.APPLICATION_FORM_URLENCODED })
+//	@Produces({ // Declare all possible types of return value
+//			MediaType.APPLICATION_JSON })
+//	@Transactional
+//	public Customer deleteCustomer(@BeanParam Customer customer) {
+//		try {
+//			if (customerRepository.findById(customer.getCustomerId()).get() != null) {
+//				customerRepository.delete(customer);
+//				return customer;
+//			} else {
+//				throw new NoSuchElementException();
+//			}
+//		} catch (NoSuchElementException e) {
+//			System.out.println("Customer not found");
+//			return null;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//
+//	}
+//
+//}
+	
