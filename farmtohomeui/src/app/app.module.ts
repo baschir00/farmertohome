@@ -14,8 +14,9 @@ import { OrderItemsComponent } from './order-items/order-items.component';
 import { CustomersComponent } from './customers/customers.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RegisterProductComponent } from './register-product/register-product.component';
+// import { RegisterProductComponent } from './register-product/register-product.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
+import { RegisterproductComponent } from './registerproduct/registerproduct.component';
 
 
 
@@ -36,7 +37,9 @@ import { RegisterFarmerComponent } from './register-farmer/register-farmer.compo
     OrdersComponent,
     OrderItemsComponent,
     CustomersComponent,
-    RegisterProductComponent
+    RegisterproductComponent,
+    
+  //   RegisterProductComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
 
 
   constructor(private productSvc: ProductService) {
-    // intialize the sample data for each one
+    
   }
 
   ngOnInit() {
