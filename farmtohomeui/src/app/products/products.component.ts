@@ -16,32 +16,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  
-  
-  products:Product[]
-  
-  
+
+
+  products: Product[];
+
+
   constructor(private productSvc: ProductService) {
     // intialize the sample data for each one
-    
-
-
-
-
-
-
-   }
-
-  ngOnInit() {
-    
   }
 
+  ngOnInit() {
 
-
-}
-
-
-
+  }
 }
 
 
