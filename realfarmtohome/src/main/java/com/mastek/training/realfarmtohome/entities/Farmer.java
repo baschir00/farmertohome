@@ -63,7 +63,7 @@ public class Farmer implements Serializable {
 	
 	
 	@Id
-	@Column(name = "farmer_number")
+	//@Column(name = "farmer_number")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getFarmerId() {
 		return farmerId;
