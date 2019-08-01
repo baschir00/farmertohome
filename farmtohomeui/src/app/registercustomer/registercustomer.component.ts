@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-registercustomer',
@@ -7,35 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistercustomerComponent implements OnInit {
 
+  invalidRegisterMessage = String
 
-  invalidRegisterMessage=String
-
-
-  constructor() {
+  constructor(private custSvc: CustomerService) {
 
 
-   }
+  }
 
   ngOnInit() {
-    
-  }
-
-
-  registerCustomerDetails() {
 
   }
 
-  checkPassword(password,comfirmpassword) {
-   if (password.value === comfirmpassword ) {
-
-   }
-   else {
-      
+  addNewCustomer() {
+    this.custSvc.createCustomer();
   }
-} 
 
-   
+  checkPassword(password, comfirmpassword) {
+    if (password.value === comfirmpassword) {
+
+    }
+    else {
+
+    }
+  }
+
+
 }
-  
+
 
 
