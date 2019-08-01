@@ -16,6 +16,7 @@ import { OrderItemsComponent } from './order-items/order-items.component';
 import { CustomersComponent } from './customers/customers.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RegisterProductComponent } from './register-product/register-product.component';
 
 
 
@@ -37,8 +38,7 @@ import { AppRoutingModule } from './app-routing.module';
     OrdersComponent,
     OrderItemsComponent,
     CustomersComponent,
-    
-    
+    RegisterProductComponent
   ],
   imports: [
     BrowserModule,
