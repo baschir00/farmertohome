@@ -3,6 +3,7 @@ import { Product } from './product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { ProductsComponent } from './products/products.component';
+import { Customer } from './customer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,41 +12,36 @@ export class ProductService {
 
   products: Product[]
 
-  rootURL
-  constructor(private httpsvc:HttpClient) {
-      // intializes the url 
-  this.rootURL="http://localhost:3333/apis/products"
+  rootURL: string;
+  constructor(private httpsvc: HttpClient) {
+    // intializes the url
+    this.rootURL = 'http://localhost:3333/apis/projects'
 
-   }
+  }
 
-  
-  
-  updateProductOnServer(product):Observable<Product>{
-    const httpOptions= {
-      headers: new HttpHeaders ( {
-        "Content-Type": "application/x-www-form-urlencoded"})
-      }
+  loadAllProjectsFromSever(): Observable<Product[]> {
+    // [] ??
+    return this.httpsvc.get<Product[]>(this.rootURL)
+  }
+  createCustomerDetails(): Observable<Customer> {
 
-      var reqBody = "productId=" + product.productId + "&productName"
-                      "&description=" + product.description + 
-                      "&productType" + product.productType 
-                        + "&unitPrice" + product.unitPrice
+    return this.httpsvc.get<Customer>(this.rootURL)
 
 
-      return this.httpsvc.post<Product>(
-          this.rootURL + "/register", 
-                          reqBody,httpOptions
-                        )
-    
+  }
+
+  findProductsByName(productName: string): Observable<Product[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
     }
+    const reqBody = '?productName=' + productName;
+    return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByProductName' + reqBody, httpOptions)
   }
 
 
 
 
 
-
-
-
-
-
+}

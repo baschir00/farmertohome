@@ -17,38 +17,19 @@ import { CustomersComponent } from '../customers/customers.component';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  
-  
-  products:Product[]
-  
-  
-  constructor() {
+
+
+  products: Product[];
+
+
+  constructor(private productSvc: ProductService) {
     // intialize the sample data for each one
-    
-
-
-
-
-
-
-   }
+  }
 
   ngOnInit() {
 
-    
   }
-
-
-  
-
-
-
 }
-
-
-
-
-
 
 
 
