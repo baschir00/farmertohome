@@ -10,92 +10,50 @@ import { Customer } from '../customer';
 })
 export class RegistercustomerComponent implements OnInit {
 
-  title = 'farmtohome';
-    customerId:number
-    customerName:string
-    customerAddress:string
-    customerEmail:string
-
-    isEditable: boolean
-    isProjectFormVisible:boolean
-
-    isProjectFormValid:boolean
-    invalidFormMessage:String
     
-    allCustomers:Customer[]
-    
+    isCustomerFormValid:boolean
+    invalidFormMessage:string
+
+constructor(private customerSvc: CustomerService) {
+
+}
 
 
 
-
-  constructor(private customerSvc:CustomerService) {
-    this.customerId=1
-    this.customerName=""
-    this.customerAddress=""
-    this.customerEmail=""
-
-  }
 
 ngOnInit() {
   
 }
 
 
-addFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword) {
-  customerName = farmerName.value;
-  customerLocation = farmerLocation.value;
-  farmerEmail = farmerEmail.value;
-  farmerPassword = farmerPassword.value;
-  console.log('Registering farmer : addFarmer');
-  console.log(farmerName, farmerLocation, farmerEmail, farmerPassword);
+addCustomer(customerName, customerEmail, customerAddress,  //customerPassword
+  ) {
+  customerName = customerName.value;
+  customerEmail = customerEmail.value;
+  customerAddress = customerAddress.value;
+ // customerPassword = customerPassword.value;
+  console.log('Registering Customer : addCustomer');
+  console.log(customerName,customerAddress,customerEmail,//customerPassword
+    );
 
 
-fetchCurrentCustomerFromService() {
-    this.customerSvc.findCustomerbyCustomerId(this.customerId).subscribe (
-     response => {
-       this.customerId = response.customerId
-        this.customerName = response.customerName
-         this.customerAddress = response.customerAddress
-         this.customerEmail = response.customerEmail
-        
+  if (customerName.length < 2) {
+    this.isCustomerFormValid = false;
+    this.invalidFormMessage =
+      'Customer Name numst be greater then 2 characters';
+  } else {
 
-     }
-
-     )
-}
-
-addNewCustomer(customerName,customerEmail,customerAddress){
-    
-     const cust = {
-    customerName:this.customerName,
-    customerAddress:this.customerAddress,
-    customerEmail:this.customerEmail
-     }
-     
-    }
-    updateCustomerDetails() {
-      this.customerSvc.updateCustomerOnServer ({
-        customerId:this.customerId, customerName: this.customerName,
-          customerAddress:this.customerAddress
-      }).subscribe (
-        response => {
-          // peforms the following operation on a succesful post
-          this.customerSvc.updateCustomerCustomerIdOnServer(this.customerName,this.customerId).subscribe(
-            response => {
-              this.fetchCurrentCustomerFromService()
-            }
-          )
-        }
+    this.customerSvc.registerCustomer(customerName, customerAddress, customerEmail, //customerPassword
       )
-    }
-    
-    toggleEdit() {
-      this.isEditable=!this.isEditable
-      // if true , then details can be edited
-      this.updateCustomerDetails
-    
+      .subscribe(
+      responseDep=>{
+        console.log("registered customer");
 
-    }
+      }
+    );
+
+    this.isCustomerFormValid = true;
+    this.invalidFormMessage = '';
 
    
    
@@ -116,3 +74,5 @@ addNewCustomer(customerName,customerEmail,customerAddress){
 
   }
 
+}
+}
