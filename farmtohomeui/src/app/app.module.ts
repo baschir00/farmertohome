@@ -39,7 +39,6 @@ import { DisplayProductsTableComponent } from './display-products-table/display-
     OrderItemsComponent,
     CustomersComponent,
     RegisterproductComponent,
-    RegisterProductComponent,
     DisplayProductsTableComponent
   ],
   imports: [

@@ -4,6 +4,7 @@ import { RegistercustomerComponent } from './registercustomer/registercustomer.c
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
+import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 
 const routes: Routes = [
   { path: 'registerFarmer', component: RegisterFarmerComponent },
