@@ -1,0 +1,75 @@
+<div class="jumbotron text-center">
+<h2>Customer Details</h2>
+</div>
+
+<div class="container">
+
+        <div class="row">
+        
+        <div class="col-md-6 col-md-offset-3">
+
+<table class="table table-bordered table striped table-hover">
+        
+    <thead>
+            <tr>
+                <td class="col-md-6">Customer</td>
+                <td>Customer Details</td>
+            </tr>
+
+    </thead>
+    <tbody>
+            <tr>
+                    <th class="text-center">Customer Id</th>
+                    <td class="text-center">{{customerId}}</td>
+                    <td class="text-center"><button (click)="toggleEdit()">{{(isEditable)?"Save":"Edit"}}</button></td>
+            </tr>
+            <tr>
+                    <td>Customer Name: </td>
+                    <td *ngIf="!isEditable">{{customerName}}</td>
+                    <td *ngIf="isEditable" Type= number req></td>
+                        
+                    <input
+                    [(ngModel)]="customerName"
+                    #inputCustName="ngModel"
+                    min="6"
+                    maxlength="48"?>
+                    <span [hidden]=
+                    "inputCustName.valid || inputCustName.pristine" > Error </span>
+                    
+                        
+                
+            </tr>
+            <tr>
+
+                    <td>Customer Address: </td>
+                    <td *ngIf="!isEditable">{{customerAddress}}</td>
+                    <td *ngIf="isEditable" Type= number req></td>
+                        
+                    <input
+                    [(ngModel)]="customerAddress"
+                    #inputCustAddress="ngModel"
+                    min="6"
+                    maxlength="48"?>
+                    <span [hidden]=
+                    "inputCustAddress.valid || inputCustAddress.pristine" > Error </span>
+                
+            </tr>
+            <tr>
+                    <td>Customer Address: </td>
+                    <td *ngIf="!isEditable">{{customerAddress}}</td>
+                    <td *ngIf="isEditable" Type= number req></td>
+                        
+                    <input
+                    [(ngModel)]="customerAddress"
+                    #inputCustAddress="ngModel"
+                    min="6"
+                    maxlength="48"?>
+                    <span [hidden]=
+                    "inputCustAddress.valid || inputCustAddress.pristine" > Error </span>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+</div>

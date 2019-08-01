@@ -1,8 +1,6 @@
 package com.mastek.training.realfarmtohome.apis;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -18,13 +16,10 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 
 @Component
-
 @Scope("singleton")
 @Path("/product/")
 public class ProductService {
@@ -36,14 +31,11 @@ public class ProductService {
 		System.out.println("Product Service Created");
 	}
 	
-	@Path("/list")
 	@GET
+	@Path("/list")
 	@Produces({MediaType.APPLICATION_JSON})
-	@Transactional
-	public Set<Product> listAllProducts(){
-		Set<Product> target = new HashSet<Product>();
-		productRepository.findAll().forEach(target::add);
-        return target;
+	public Iterable<Product> listAllProducts(){
+		return productRepository.findAll();
 	}
 	
 	@POST
@@ -78,7 +70,15 @@ public class ProductService {
 	public List<Product> fetchProductByProductName(
 			@QueryParam("productName")String productName){
 		return productRepository.findByProductName(productName);
+		
 	}
+	
+    @GET //http method
+    @Path("/fetchByFarmer") //url pattern
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> fetchProductByFarmerId(@QueryParam("currentFarmer")int currentFarmer){
+        return productRepository.fetchProductByFarmerId(currentFarmer);
+    }
 
 //	public void deleteProduct(@PathParam("product")Product product) {
 //		productRepository.delete(product);

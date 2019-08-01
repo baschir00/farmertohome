@@ -1,0 +1,41 @@
+<div>
+
+   <h2>Orders</h2> 
+</div>
+
+
+
+<table>
+
+    <tr>
+        <td >Basket Id: </td>
+        <td ngIf="!IsDataPresent">{{basketId}}</td>
+        <td ngIf="IsDataPresent"><input [(ngModel)]="basketId" 
+                                            #inputBasketId
+                                            required=true>
+                        <span [hidden]="inputBasketId.valid || inputBasketId.pristine"></span>
+                                        
+                                        </td>
+    </tr>
+    <tr>
+        <td>Customer Id: </td>
+        <td *ngIf="!isDataPresent">{{customerId}}</td>
+        <td *ngIf="isDataPresent"><input [(ngModel)]="customerId"
+                                #inputCustomerId
+                                required=true>
+                                <span [hidden]="inputCustomerId || inputCustomerId"></span>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td *ngIf="!isDataPresent">{{date}}</td>
+        <td *ngIf="!isDataPresent"> <input [(ngModel)]="date"
+                                    #inputDate
+                                    required=true>
+            <span [hidden]="inputDate.valid || inputDate.pristine"></span>
+            
+            
+            </td>
+    </tr>
+</table>
+

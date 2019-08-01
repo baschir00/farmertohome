@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { HttpClient } from 'selenium-webdriver/http';
 import { FarmService } from '../farm.service';
 
@@ -11,9 +11,9 @@ export class RegisterFarmerComponent implements OnInit {
   isFarmerFormValid: boolean;
   invalidFormMessage: string;
 
-  constructor(private farmSvc: FarmService) {}
+  constructor(private farmSvc: FarmService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword) {
     farmerName = farmerName.value;
@@ -31,11 +31,11 @@ export class RegisterFarmerComponent implements OnInit {
 
       this.farmSvc.registerFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword)
         .subscribe(
-        responseDep=>{
-          console.log("registered farmer");
+          responseDep => {
+            console.log('registered farmer');
 
-        }
-      );
+          }
+        );
 
       this.isFarmerFormValid = true;
       this.invalidFormMessage = '';
