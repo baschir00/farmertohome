@@ -16,6 +16,7 @@ import { RegistercustomerComponent } from './registercustomer/registercustomer.c
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterProductComponent } from './register-product/register-product.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
+import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 
 
 
@@ -36,7 +37,8 @@ import { RegisterFarmerComponent } from './register-farmer/register-farmer.compo
     OrdersComponent,
     OrderItemsComponent,
     CustomersComponent,
-    RegisterProductComponent
+    RegisterProductComponent,
+    DisplayProductsTableComponent
   ],
   imports: [
     BrowserModule,

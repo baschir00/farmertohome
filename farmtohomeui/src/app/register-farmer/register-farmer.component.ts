@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { HttpClient } from 'selenium-webdriver/http';
 import { FarmService } from '../farm.service';
 
