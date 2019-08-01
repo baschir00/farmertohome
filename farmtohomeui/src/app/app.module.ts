@@ -10,11 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { ProductTileComponent } from './product-tile/product-tile.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
-<<<<<<< HEAD
 import { ProductSearchComponent } from './product-search/product-search.component';
-=======
-import { RegisterProductComponent } from './register-product/register-product.component';
->>>>>>> refs/remotes/origin/master
 
 @NgModule({
   declarations: [
@@ -24,11 +20,7 @@ import { RegisterProductComponent } from './register-product/register-product.co
     CustomersComponent,
     ProductTileComponent,
     RegistercustomerComponent,
-<<<<<<< HEAD
     ProductSearchComponent
-=======
-    RegisterProductComponent
->>>>>>> refs/remotes/origin/master
   ],
   imports: [
     BrowserModule,
