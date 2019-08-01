@@ -72,6 +72,13 @@ public class ProductService {
 		return productRepository.findByProductName(productName);
 		
 	}
+	
+    @GET //http method
+    @Path("/fetchByFarmer") //url pattern
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> fetchProductByFarmerId(@QueryParam("currentFarmer")int currentFarmer){
+        return productRepository.fetchProductByFarmerId(currentFarmer);
+    }
 
 //	public void deleteProduct(@PathParam("product")Product product) {
 //		productRepository.delete(product);
