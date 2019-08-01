@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Observable } from 'rxjs';
+import { CustomersComponent } from '../customers/customers.component';
 
 
 

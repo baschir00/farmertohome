@@ -16,8 +16,6 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 
@@ -74,6 +72,13 @@ public class ProductService {
 		return productRepository.findByProductName(productName);
 		
 	}
+	
+    @GET //http method
+    @Path("/fetchByFarmer") //url pattern
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> fetchProductByFarmerId(@QueryParam("currentFarmer")int currentFarmer){
+        return productRepository.fetchProductByFarmerId(currentFarmer);
+    }
 
 //	public void deleteProduct(@PathParam("product")Product product) {
 //		productRepository.delete(product);

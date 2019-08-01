@@ -1,46 +1,90 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Customer } from './customer';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
+import { CustomersComponent } from './customers/customers.component';
+import { Customer } from './customer'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  rootURL: string;
 
-  constructor(private httpsvs: HttpClient) {
-    // init base url
-    this.rootURL = 'http://localhost:5980/customers/register';
+
+
+  rootURL: string
+  constructor(private httpsvc: HttpClient) {
+    // intializes the url
+    this.rootURL = "http://localhost:5980/customer"
   }
 
-  // Identify params and return type for requests
-  findCustomerById(customerId: number): Observable<Customer> {
-    console.log(this.rootURL +  customerId);
-    return this.httpsvs.get<Customer>(this.rootURL +  customerId);
+  findCustomerById(customerId): Observable<CustomersComponent> {
+    return this.httpsvc.get<CustomersComponent>(this.rootURL + "/find/" + customerId)
   }
 
-  createCustomer(customer: {name: any; address: any; email: any; password: any; }): Observable<'Customer'> {
-    const options = {
-      headers: new HttpHeaders({'Content-Type': 'application/w-www-form-urlencoded'})
-    };
 
-    const reqBody = 'customerName=' + customer.name + '&customerAddress=' + customer.address + '&customerEmail=' + customer.email
-    + '&customerPassword=' + customer.password;
 
-    console.log('posting to ' + this.rootURL);
-    return this.httpsvs.post<'Customer'>(this.rootURL, reqBody, options);
+  registerCustomer(customerName, customerAddress, customerEmail, // customerPassword
+  ) {
+    console.log('Registering customer : registerCustomer');
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    }
+
+
+    var reqBody = "customerName=" + customerName + "&customerAddress=" + customerAddress
+      + "&customerEmail=" + customerEmail
+
+    console.log(reqBody);
+
+    return this.httpsvc.post<CustomersComponent>(
+      this.rootURL + "/register", reqBody, httpOptions);
   }
 
-  updateCustomer(customer: {name: any; address: any; email: any; password: any; }): Observable<'Customer'> {
-    const options = {
-      headers: new HttpHeaders({'Content-Type': 'application/w-www-form-urlencoded'})
-    };
+  updateFarmOnServer(customer): Observable<CustomersComponent> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    }
 
-    const reqBody = 'customer-id=' + customer.id + 'customerName=' + customer.name + '&customerAddress=' + customer.address
-      + '&customerEmail=' + customer.email + '&customerPassword=' + customer.password;
-
-    console.log('posting to ' + this.rootURL);
-    return this.httpsvs.post<'Customer'>(this.rootURL, reqBody, options);
+    var reqBody = "customerId=" + customer.customerId +
+      "&customerName=" + customer.CustomersComponent + "&customerAddress=" +
+      customer.CustomersComponent + "&customerEmail" + customer.customerEmail
+    // post(URL,body,httpOptionswithHeaders)
+    return this.httpsvc.post<CustomersComponent>(
+      this.rootURL + "/register", reqBody, httpOptions)
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
