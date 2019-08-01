@@ -1,6 +1,8 @@
 package com.mastek.training.realfarmtohome.apis;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -22,7 +24,7 @@ import com.mastek.training.realfarmtohome.entities.Product;
 import com.mastek.training.realfarmtohome.repositories.ProductRepository;
 
 @Component
-@Path("/product")
+
 @Scope("singleton")
 @Path("/product/")
 public class ProductService {
@@ -34,11 +36,14 @@ public class ProductService {
 		System.out.println("Product Service Created");
 	}
 	
-	@GET
 	@Path("/list")
+	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public Iterable<Product> listAllProducts(){
-		return productRepository.findAll();
+	@Transactional
+	public Set<Product> listAllProducts(){
+		Set<Product> target = new HashSet<Product>();
+		productRepository.findAll().forEach(target::add);
+        return target;
 	}
 	
 	@POST

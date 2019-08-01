@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 
 import com.mastek.training.realfarmtohome.entities.Product;
 @Component
-@Scope("singleton")
+//@Scope("singleton")
 public interface ProductRepository extends CrudRepository<Product, Integer> {
+	
 	public List<Product> findByProductName(
 			@Param("productName") String productName);
 }
