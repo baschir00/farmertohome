@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
+import { BasketComponent } from './basket/basket.component';
+import { DisplayBasketComponent } from './display-basket/display-basket.component';
 
 
 
@@ -39,7 +41,9 @@ import { DisplayProductsTableComponent } from './display-products-table/display-
     OrderItemsComponent,
     CustomersComponent,
     RegisterproductComponent,
-    DisplayProductsTableComponent
+    DisplayProductsTableComponent,
+    BasketComponent,
+    DisplayBasketComponent
   ],
   imports: [
     BrowserModule,
