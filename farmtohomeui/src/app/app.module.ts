@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -39,13 +40,15 @@ import { DisplayProductsTableComponent } from './display-products-table/display-
     OrderItemsComponent,
     CustomersComponent,
     RegisterproductComponent,
-    DisplayProductsTableComponent
+    DisplayProductsTableComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule
     
   ],
 
