@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Directive } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { CustomersComponent } from './customers/customers.component';
 import {Customer} from './customer'
- 
+
 @Injectable({
   providedIn: 'root'
 })
