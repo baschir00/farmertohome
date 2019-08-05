@@ -17,7 +17,7 @@
   <tbody>
 
 
-    <tr *ngFor = "let p of products |filter:term" >
+    <tr *ngFor = "let p of products |filter:term | paginate: { itemsPerPage: 10, currentPage: p_no }; let i = index" >
           <td> {{p.productName}}</td> 
            <td>
               {{p.unitPrice}}
@@ -33,4 +33,5 @@
       <td>location Default</td>
     </tr> -->
   </tbody>
+  <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
 </table>

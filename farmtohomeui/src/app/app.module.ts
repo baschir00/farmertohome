@@ -19,7 +19,7 @@ import { RegisterFarmerComponent } from './register-farmer/register-farmer.compo
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -48,7 +48,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+   NgxPaginationModule
     
   ],
 
