@@ -18,6 +18,10 @@ import { RegisterProductComponent } from './register-product/register-product.co
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { FarmComponent } from './farm/farm.component';
 import { CustomerService } from './customer.service';
+import { LogindashboardComponent } from './logindashboard/logindashboard.component';
+import { LogincustomerComponent } from './logincustomer/logincustomer.component';
+import { LoginfarmerComponent } from './loginfarmer/loginfarmer.component';
+import { LoggedinuserComponent } from './loggedinuser/loggedinuser.component';
 
 
 
@@ -39,7 +43,11 @@ import { CustomerService } from './customer.service';
     OrderItemsComponent,
     CustomersComponent,
     RegisterProductComponent,
-    FarmComponent
+    FarmComponent,
+    LogindashboardComponent,
+    LogincustomerComponent,
+    LoginfarmerComponent,
+    LoggedinuserComponent
   ],
   imports: [
     BrowserModule,

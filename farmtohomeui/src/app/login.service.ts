@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { CustomersComponent } from './customers/customers.component';
 import { FarmComponent } from './farm/farm.component';
+import { Config } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -13,28 +14,62 @@ export class LoginService {
   rootURLfarmer:string
 constructor(private httpSvc:HttpClient) {
 
-  this.rootURLcustomer="http://localhost:5980/customers"
-  this.rootURLfarmer="http://localhost:5980/farmer"
+  this.rootURLcustomer="http://localhost:5980/LoginCustomers"
+  this.rootURLfarmer="http://localhost:5980/loginFarmer"
  }
 
 
   ngOnInit() {
   }
 
-  findCustomerByEmail(customerEmail):Observable<CustomersComponent> {
-    return this.httpSvc.get<CustomersComponent>(this.rootURLcustomer + "/find"+ customerEmail)
+  loginFarmer(loginDetails):Observable<Config> {
+    const httpOptions= {
+      headers: new HttpHeaders({
+        "Content-Type":"application/x-www-form-urlencoded"
+      })
+    };
+
+    
+    var reqBody= "email=" + loginDetails.email +
+        "&password" + loginDetails.password
+
+    console.log(reqBody);
+
+    return this.httpSvc.post<FarmComponent>(
+      this.rootURLfarmer+"/farmer", reqBody, httpOptions);
+
+    
+
   }
 
-  findFarmerByEmail(farmerEmail):Observable<FarmComponent> {
-    return this.httpSvc.get<FarmComponent>(this.rootURLcustomer + "/find"+ farmerEmail)
+
+  loginCustomer(loginDetails):Observable<Config> {
+    const httpOptions = {
+      headers: new HttpHeaders ({
+        "Content-Type":"application/x-www-form-urlencoded"
+      })
+
+    };
+    var reqBody = "email=" + loginDetails.email +
+        "&password" + loginDetails.password
+console.log(reqBody)
+
+return this.httpSvc.post<CustomersComponent> (
+  this.rootURLcustomer+"/customer" ,reqBody , httpOptions);
+    
+
+
+
+
+
   }
 
 
 
   
 
-
-  }
+}
+  
 
 
 

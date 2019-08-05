@@ -1,0 +1,17 @@
+<form form (submit)="loginFarmerDetails()">   
+        <div class="email">
+             <label for="email"> Email  :</label>
+             <input type="text" name="email" id="email" value="" placeholder="Please enter your email" [(ngModel)]="farmerLoginDetails.farmerEmail">
+
+        </div>
+        <div class="password">
+             <label for="password">Password   :</label>
+             <input type="password" name="password" id="password" value="" placeholder="please enter your password" [(ngModel)]="farmerLoginDetails.farmerPassword" >
+
+        </div>
+
+   <div class="login">
+        <label for="login">Login  :</label>
+        <input  type="submit" name="Login" id="login" placeholder="login" value="Login">
+        </div>
+   </form>
