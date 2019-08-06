@@ -14,5 +14,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 	public List<Product> findByProductName(
 			@Param("productName") String productName);
 	public List<Product> fetchProductByFarmerId(@Param("currentFarmer") int currentFarmer);
+	public List<Product> fetchProductByLocation(@Param("farmerLocation") String farmerLocation);
 }
 

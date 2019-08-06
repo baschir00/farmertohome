@@ -34,7 +34,10 @@ import org.springframework.stereotype.Component;
 	@NamedQuery(name="Product.findByProductName",
 			query="select e from Product e where e.productName = :productName"),
 	@NamedQuery(name="Product.fetchProductByFarmerId",
-    query="select d from Product d where d.currentFarmer.farmerId = :currentFarmer")
+    query="select d from Product d where d.currentFarmer.farmerId = :currentFarmer"),
+	
+	@NamedQuery(name="Product.fetchProductByLocation",
+    query="select f from Product f where f.currentFarmer.farmerLocation = :farmerLocation")
 	
 })
 //@XmlRootElement

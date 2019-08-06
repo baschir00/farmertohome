@@ -2,8 +2,11 @@
   <thead>
       <tr>
           <td>
-             <input type="text" [(ngModel)]="term" placeholder="Search Prdocut">
+             <input type="text" [(ngModel)]="term" placeholder="Search Product">
            </td>
+           <td>
+              <input type="text" [(ngModel)]="term2" placeholder="Search Location">
+            </td>
       </tr>  
      
 
@@ -17,10 +20,13 @@
   <tbody>
 
 
-    <tr *ngFor = "let p of products |filter:term | paginate: { itemsPerPage: 10, currentPage: p_no }; let i = index" >
+    <tr *ngFor = "let p of products |filter:term |filter:term2| paginate: { itemsPerPage: 10, currentPage: p_no }; let i = index" >
           <td> {{p.productName}}</td> 
            <td>
               {{p.unitPrice}}
+           </td>
+           <td>
+              {{p.currentFarmer.farmerLocation}}
            </td>
           
    

@@ -9,11 +9,11 @@ import { ProductService } from '../product.service';
 })
 export class DisplayProductsTableComponent implements OnInit {
 
-  products: Product[];
+  products: Product[];z
 
   constructor(private prodSvc: ProductService) {
     this.products = [
-      { productId: -1, unitPrice: 0.0, description: "test product", productType: "test product", productName: "test product" }
+      { productId: -1, unitPrice: 0.0, description: "test product", productType: "test product", productName: "test product", currentFarmer:[] }
     ];
   }
 

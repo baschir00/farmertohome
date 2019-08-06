@@ -79,6 +79,14 @@ public class ProductService {
     public List<Product> fetchProductByFarmerId(@QueryParam("currentFarmer")int currentFarmer){
         return productRepository.fetchProductByFarmerId(currentFarmer);
     }
+    
+    
+    @GET //http method
+    @Path("/fetchProductByLocation") //url pattern
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> fetchProductByLocation(@QueryParam("farmerLocation")String farmerLocation){
+        return productRepository.fetchProductByLocation(farmerLocation);
+    }
 
 //	public void deleteProduct(@PathParam("product")Product product) {
 //		productRepository.delete(product);

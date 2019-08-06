@@ -1,3 +1,5 @@
+import { CurrentFarmer } from './current-farmer';
+
 export interface Product {
 
 
@@ -5,7 +7,8 @@ export interface Product {
     unitPrice:number,
     description:string,
     productType:string,
-    productName:string
+    productName:string,
+    currentFarmer: [] 
 
 
 
