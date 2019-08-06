@@ -1,75 +1,58 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Config } from 'protractor';
 import { Observable } from 'rxjs';
 import { CustomersComponent } from './customers/customers.component';
 import { FarmComponent } from './farm/farm.component';
-import { Config } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  rootURLcustomer:string
-  rootURLfarmer:string
-constructor(private httpSvc:HttpClient) {
-
-  this.rootURLcustomer="http://localhost:5980/LoginCustomers"
-  this.rootURLfarmer="http://localhost:5980/loginFarmer"
- }
+  rootURLcustomer: string;
+  rootURLfarmer: string;
+  httpOptions;
 
 
-  ngOnInit() {
-  }
+  constructor(private httpSvc: HttpClient) {
 
-  loginFarmer(loginDetails):Observable<Config> {
-    const httpOptions= {
+    this.rootURLcustomer = 'http://localhost:5980/LoginCustomers';
+    this.rootURLfarmer = 'http://localhost:5980/loginFarmer';
+
+    // Set http options
+    this.httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type":"application/x-www-form-urlencoded"
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
     };
+  }
 
-    
-    var reqBody= "email=" + loginDetails.email +
-        "&password" + loginDetails.password
+  loginFarmer(loginDetails): Observable<Config> {
+
+    const reqBody = 'email=' + loginDetails.email +
+      '&password' + loginDetails.password;
 
     console.log(reqBody);
 
     return this.httpSvc.post<FarmComponent>(
-      this.rootURLfarmer+"/farmer", reqBody, httpOptions);
-
-    
-
+      this.rootURLfarmer + '/farmer', reqBody, this.httpOptions);
   }
 
+  loginCustomer(loginDetails): Observable<Config> {
+    // Create request body content
+    const reqBody = 'email=' + loginDetails.email +
+      '&password' + loginDetails.password;
 
-  loginCustomer(loginDetails):Observable<Config> {
-    const httpOptions = {
-      headers: new HttpHeaders ({
-        "Content-Type":"application/x-www-form-urlencoded"
-      })
+    // DEBUG: print request body
+    console.log(reqBody);
 
-    };
-    var reqBody = "email=" + loginDetails.email +
-        "&password" + loginDetails.password
-console.log(reqBody)
-
-return this.httpSvc.post<CustomersComponent> (
-  this.rootURLcustomer+"/customer" ,reqBody , httpOptions);
-    
-
-
-
-
-
+    return this.httpSvc.post<CustomersComponent>(
+      this.rootURLcustomer + '/customer', reqBody, this.httpOptions);
   }
-
-
-
-  
 
 }
-  
+
 
 
 

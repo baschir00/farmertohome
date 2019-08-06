@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { LoggedinuserComponent } from '../loggedinuser/loggedinuser.component';
+import { Router } from '@angular/router';
+import { LoginDetailsService } from '../login-details.service';
 
 @Component({
   selector: 'app-loginfarmer',
@@ -8,61 +9,50 @@ import { LoggedinuserComponent } from '../loggedinuser/loggedinuser.component';
   styleUrls: ['./loginfarmer.component.css']
 })
 
-
-
-
 export class LoginfarmerComponent implements OnInit {
 
-  incorrectUserDetailsMessage:String
-  isInvalidLogin:boolean
+  // Bad login message and flag
+  incorrectUserDetailsMessage: string;
+  isInvalidLogin: boolean;
 
-  farmerLoginDetails:{
-    farmerEmail:string
-    farmerPassword:string
+  // User input storage object for ngModle
+  farmerLoginDetails: {
+    farmerEmail: string
+    farmerPassword: string
+  };
+
+  constructor(private loginSvc: LoginService, private loginDetails: LoginDetailsService, private router: Router) {
+    // Defaults
+    this.incorrectUserDetailsMessage = '';
+    this.isInvalidLogin = false;
   }
-
-
-
-  constructor(private loginSvc: LoginService ) {
-
-    this.incorrectUserDetailsMessage="",
-    this.isInvalidLogin=false
-
-
-   }
-
-  
-
-
 
   ngOnInit() {
   }
 
-
-
+  // Login with farmer details form UI form
   loginFarmer() {
-    console.log("Authenicating Farmer")
+    console.log('Authenicating Farmer');
     this.loginSvc.loginFarmer(this.farmerLoginDetails).subscribe(
-      response => { 
-        if(response.status !=200) {
-              console.log("Authenication failure")
-              this.incorrectUserDetailsMessage= "invalid user credentials"
-              this.isInvalidLogin=true
+      response => {
+        // If login unsuccessful display the login failure message
+        if (response.status !== 200) {
+          console.log('Authenication failure');
+          this.incorrectUserDetailsMessage = 'invalid user credentials';
+          this.isInvalidLogin = true;
+
+        // If login successful then save responce and nav to farmer hone page
+        } else {
+          console.log('Authenication Success');
+          console.log(response.body);
+          this.loginDetails.userDetails = response.body;
+          this.loginDetails.userDetails = response.body;
+          this.router.navigate(['/farmerhome']);
         }
-
-        else {
-          console.log("Authenication Success")
-          LoggedinuserComponent.tempUserInfo=response.body
-        }
-
-
-
       }
-    )
-
-    
+    );
   }
 }
-  
+
 
 
