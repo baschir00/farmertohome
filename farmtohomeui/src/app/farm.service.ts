@@ -29,7 +29,7 @@ export class FarmService {
 
     // TODO:
     var reqBody = "farmerName=" + farmerName + "&farmerLocation=" + farmerLocation
-      + "&farmerEmail=" + farmerEmail// + "&farmerPassword=" + farmerPassword
+      + "&farmerEmail=" + farmerEmail // + "&farmerPassword=" + farmerPassword
 
     console.log(reqBody);
 
@@ -57,7 +57,7 @@ export class FarmService {
   }
 
   assignProductToFarm(farmerId, productId):
-    Observable<Product[]> {
+    Observable<Product> {
     console.log("assignProductToFarm", farmerId, productId);
       
     const httpOptions = {
@@ -66,7 +66,7 @@ export class FarmService {
       })
     }
     var reqBody = "farmerId=" + farmerId + "&productId=" + productId
-    return this.httpsvc.post<Product[]>(
+    return this.httpsvc.post<Product>(
       this.rootURL + "/assign/product", reqBody, httpOptions)
   }
 
