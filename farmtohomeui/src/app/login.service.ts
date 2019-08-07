@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Config } from 'protractor';
 import { Observable } from 'rxjs';
-import { CustomersComponent } from './customers/customers.component';
-import { FarmComponent } from './farm/farm.component';
+import { Customer } from './customer';
+import { Farmer } from './farmer';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class LoginService {
 
     console.log(reqBody);
 
-    return this.httpSvc.post<any>(
+    return this.httpSvc.post<Farmer>(
       this.rootURL + '/farmer', reqBody, this.httpOptions);
   }
 
@@ -45,7 +45,7 @@ export class LoginService {
     // DEBUG: print request body
     console.log(reqBody);
 
-    return this.httpSvc.post<CustomersComponent>(
+    return this.httpSvc.post<Customer>(
       this.rootURL + '/customer', reqBody, this.httpOptions);
   }
 
