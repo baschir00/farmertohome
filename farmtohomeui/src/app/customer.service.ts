@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CustomersComponent } from './customers/customers.component';
+import { Customer } from './customer';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class CustomerService {
     this.rootURL = "http://localhost:5980/customer";
   }
 
-  findCustomerById(customerId): Observable<CustomersComponent> {
-    return this.httpsvc.get<CustomersComponent>(this.rootURL + "/find/" + customerId);
+  findCustomerById(customerId): Observable<Customer> {
+    return this.httpsvc.get<Customer>(this.rootURL + "/find/" + customerId);
   }
 
   registerCustomer(customerName, customerAddress, customerEmail, ) { // customerPassword
@@ -33,11 +33,11 @@ export class CustomerService {
 
     console.log(reqBody);
 
-    return this.httpsvc.post<CustomersComponent>(
+    return this.httpsvc.post<Customer>(
       this.rootURL + "/register", reqBody, httpOptions);
   }
 
-  updateFarmOnServer(customer): Observable<CustomersComponent> {
+  updateFarmOnServer(customer): Observable<Customer> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/x-www-form-urlencoded"
@@ -45,10 +45,10 @@ export class CustomerService {
     };
 
     const reqBody = "customerId=" + customer.customerId +
-      "&customerName=" + customer.CustomersComponent + "&customerAddress=" +
-      customer.CustomersComponent + "&customerEmail" + customer.customerEmail;
+      "&customerName=" + customer.Customer + "&customerAddress=" +
+      customer.Customer + "&customerEmail" + customer.customerEmail;
     // post(URL,body,httpOptionswithHeaders)
-    return this.httpsvc.post<CustomersComponent>(
+    return this.httpsvc.post<Customer>(
       this.rootURL + "/register", reqBody, httpOptions);
   }
 }
