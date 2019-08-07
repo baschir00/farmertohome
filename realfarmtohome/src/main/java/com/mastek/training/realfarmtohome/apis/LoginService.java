@@ -35,11 +35,14 @@ public class LoginService {
 			@FormParam("farmerPassword") String farmerPassword) {
 		System.out.println(farmerEmail + " : " + farmerPassword);
 		try {
+			// Attempt farmer login with provided details
 			Farmer farmer = farmerLogin(farmerEmail, farmerPassword);
 			System.out.println(farmer);
-			System.out.println("Farmer value: " + farmer.getClass());
-			if (farmer.getClass() != null) {
-				return Response.ok(farmer, MediaType.APPLICATION_JSON).build();
+			System.out.println("Farmer value: " + farmer);
+			
+			// Return details on successful login
+			if (farmer != null) {
+				return Response.status(Response.Status.OK).entity(farmer).build();
 			} else {
 				return Response.status(Response.Status.BAD_REQUEST).entity("FARMER_AUTH_FAILURE").build();
 			}
@@ -52,10 +55,12 @@ public class LoginService {
 	// Check password for farmer based on email
 	public Farmer farmerLogin(String farmerEmail, String farmerPassword) throws Exception {
 		try {
+			// Get farmer by email
 			Farmer farmer = farmRepo.findByEmail(farmerEmail);
-			System.out.println(farmer);
-			System.out.println(farmerPassword + " : " + farmer.getFarmerPassword());
-			if (farmerPassword.equals(farmer.getFarmerPassword())) {
+			System.out.println("farmer email search by :" + farmerEmail + " : " + farmer);
+			
+			// Check if farmer with email exists and if password matches expected
+			if (farmer != null && farmerPassword.equals(farmer.getFarmerPassword())) {
 				return farmer;
 			} else {
 				return null;

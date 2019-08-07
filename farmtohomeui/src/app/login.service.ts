@@ -10,15 +10,13 @@ import { FarmComponent } from './farm/farm.component';
 })
 export class LoginService {
 
-  rootURLcustomer: string;
-  rootURLfarmer: string;
+  rootURL: string;
   httpOptions;
 
 
   constructor(private httpSvc: HttpClient) {
 
-    this.rootURLcustomer = 'http://localhost:5980/LoginCustomers';
-    this.rootURLfarmer = 'http://localhost:5980/loginFarmer';
+    this.rootURL = 'http://localhost:5980/login';
 
     // Set http options
     this.httpOptions = {
@@ -28,27 +26,27 @@ export class LoginService {
     };
   }
 
-  loginFarmer(loginDetails): Observable<Config> {
+  loginFarmer(loginDetails): Observable<any> {
 
-    const reqBody = 'email=' + loginDetails.email +
-      '&password' + loginDetails.password;
+    const reqBody = 'farmerEmail=' + loginDetails.farmerEmail +
+      '&farmerPassword=' + loginDetails.farmerPassword;
 
     console.log(reqBody);
 
-    return this.httpSvc.post<FarmComponent>(
-      this.rootURLfarmer + '/farmer', reqBody, this.httpOptions);
+    return this.httpSvc.post<any>(
+      this.rootURL + '/farmer', reqBody, this.httpOptions);
   }
 
   loginCustomer(loginDetails): Observable<Config> {
     // Create request body content
-    const reqBody = 'email=' + loginDetails.email +
-      '&password' + loginDetails.password;
+    const reqBody = 'customerEmail=' + loginDetails.farmerEmail +
+      '&customerPassword=' + loginDetails.farmerPassword;
 
     // DEBUG: print request body
     console.log(reqBody);
 
     return this.httpSvc.post<CustomersComponent>(
-      this.rootURLcustomer + '/customer', reqBody, this.httpOptions);
+      this.rootURL + '/customer', reqBody, this.httpOptions);
   }
 
 }
