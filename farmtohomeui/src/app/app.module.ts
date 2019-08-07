@@ -56,7 +56,7 @@ import { ProductService } from './product.service';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     //added for basket
-    routing
+
 
   ],
 

@@ -21,12 +21,10 @@ const routes: Routes = [
   { path: '**', redirectTo: '' }
 ];
 
-NgModule({
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-
 })
 //added for basket
-export const routing = RouterModule.forRoot(routes);
 
-export class AppRoutingModule { }
+export class AppRoutingModule {}
