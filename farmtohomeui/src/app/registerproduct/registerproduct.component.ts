@@ -14,12 +14,9 @@ export class RegisterproductComponent implements OnInit {
   farmerId: number
   isProductFormValid: boolean
   invalidFormMessage: string
-  productId: number
-
-
 
   constructor(private productSvc: ProductService, private farmSvc: FarmService) { 
-    this.farmerId = 8;
+    this.farmerId = 4;
   }
 
   ngOnInit() {
@@ -49,14 +46,10 @@ export class RegisterproductComponent implements OnInit {
       this.productSvc.registerProduct(productName, productType, description, unitPrice)
         .subscribe(
           responseDep => {
-           // console.log("registered product");
+            console.log("registered product");
             this.result = responseDep;
-           // console.log(this.result, "results in");
-            this.farmSvc.assignProductToFarm(this.farmerId, this.result.productId).subscribe(
-              responseassign => {this.result.farmerId=responseassign.farmerId
-                this.result.productId= responseassign.productId
-              }
-            );
+            console.log(this.result, "results in");
+            this.farmSvc.assignProductToFarm(this.farmerId, this.result.productId);
           }
         );
 
