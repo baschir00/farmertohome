@@ -12,5 +12,9 @@ import com.mastek.training.realfarmtohome.entities.Farmer;
 @Scope("singleton")
 public interface FarmerRepository extends CrudRepository<Farmer, Integer>{
 	public List<Farmer> findByLocation(
-			@Param("location") String location);
+			@Param("farmerLocation") String location);
+	// Specification for farmer findByEmail form Farmer class. 
+	// Is expanded on in FarmerService.
+	public Farmer findByEmail(
+			@Param("farmerEmail") String email);
 }

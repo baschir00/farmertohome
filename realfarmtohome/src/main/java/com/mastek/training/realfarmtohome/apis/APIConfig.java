@@ -14,5 +14,6 @@ public class APIConfig extends ResourceConfig {
 		register(ProductService.class);
 		register(OrderService.class);
 		register(OrderItemService.class);
+		register(LoginService.class);
 	}
 }
