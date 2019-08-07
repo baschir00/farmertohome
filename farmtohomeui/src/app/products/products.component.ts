@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-import { Product } from '../product';
+import { Product } from '../product.entity';
 import { Observable } from 'rxjs';
 import { CustomersComponent } from '../customers/customers.component';
 
@@ -23,11 +23,12 @@ export class ProductsComponent implements OnInit {
 
 
   constructor(private productSvc: ProductService) {
-    
+
   }
 
   ngOnInit() {
-
+    //added for basket
+    this.products=this.productSvc.findAll();
   }
 }
 

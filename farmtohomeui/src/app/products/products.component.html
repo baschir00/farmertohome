@@ -26,10 +26,32 @@
         <li>
             Regihhster: <input type="submit" placeholder="Add Product" value="Add">
         </li>
-      
+
             <div class="jumbotron text-center">
-            
+
             </div>
             </ul>
             </form>
-            
+
+<!-- added for basket-->
+            <table border="1">
+              <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Photo</th>
+                  <th>Buy</th>
+              </tr>
+              <tr *ngFor="let product of products">
+                  <td>{{product.productId}}</td>
+                  <td>{{product.productName}}</td>
+                  <td>{{product.unitPrice}}</td>
+                  <td>{{product.productType}}</td>
+                  <td>{{product.description}}</td>
+                  <td>
+                      <a [routerLink]="['/basket', { productId:product.productId }]">Buy Now</a>
+                  </td>
+              </tr>
+            </table>
+
+

@@ -5,19 +5,28 @@ import { RegisterFarmerComponent } from './register-farmer/register-farmer.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
+import { ProductsComponent } from './products/products.component';
+import { BasketComponent } from './basket/basket.component';
 
 const routes: Routes = [
   { path: 'registerFarmer', component: RegisterFarmerComponent },
   { path: 'registerProduct', component: RegisterproductComponent },
   { path: 'products', component: DisplayProductsTableComponent },
   { path: 'registerCustomer', component: RegistercustomerComponent },
-  { path: 'login', component: LoginComponent }
-
+  { path: 'login', component: LoginComponent },
+  //added for basket
+  { path: '', component: ProductsComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'basket', component: BasketComponent },
+  { path: '**', redirectTo: '' }
 ];
 
-@NgModule({
+NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 
 })
+//added for basket
+export const routing = RouterModule.forRoot(routes);
+
 export class AppRoutingModule { }

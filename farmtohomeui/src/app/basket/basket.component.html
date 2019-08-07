@@ -1,0 +1,30 @@
+<h3>Basket Info</h3>
+<!--//added for basket-->
+<table border="1">
+    <tr>
+        <th>Option</th>
+        <th>productId</th>
+        <th>productName</th>
+        <th>unitPrice</th>
+        <th>description</th>
+        <th>productType</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    <tr *ngFor="let item of items">
+        <td align="center">
+            <a (click)="remove(item.product.productId)">X</a>
+        </td>
+        <td>{{item.product.productId}}</td>
+        <td>{{item.product.productName}}</td>
+        <td>{{item.product.unitPrice}}</td>
+        <th>{{item.product.description}}</th>
+        <th>{{item.product.productType}}</th>
+        <td>{{item.quantity}}</td>
+        <td>{{item.product.unitPrice * item.quantity}}</td>
+    </tr>
+    <tr>
+        <td colspan="6" align="right">Total</td>
+        <td>{{total}}</td>
+    </tr>
+</table>

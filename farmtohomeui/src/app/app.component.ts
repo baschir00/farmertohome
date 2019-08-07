@@ -8,25 +8,11 @@ import { Customer } from './customer';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent   {
 
-  
-
-   
-    
-
-  
-
-
-
-
-
-
-
-
-  
-
-
+//implements OnInit added for basket
+export class AppComponent implements OnInit {
+  //added for basket
+  ngOnInit(){}
 
   }
 

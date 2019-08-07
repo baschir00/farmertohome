@@ -13,13 +13,16 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderItemsComponent } from './order-items/order-items.component';
 import { CustomersComponent } from './customers/customers.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routing } from './app-routing.module';
 // import { RegisterProductComponent } from './register-product/register-product.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { BasketComponent } from './basket/basket.component';
+import { ProductService } from './product.service';
+
 
 
 
@@ -41,7 +44,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CustomersComponent,
     RegisterproductComponent,
     DisplayProductsTableComponent,
-    
+    //added for basket
+    BasketComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -49,15 +54,19 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-   NgxPaginationModule
-    
+    NgxPaginationModule,
+    //added for basket
+    routing
+
   ],
 
-  providers: [],
+  // changed from providers: [] to the below for basket
+  providers: [ProductService],
+
   bootstrap: [AppComponent]
 })
-export class AppModule { 
- 
+export class AppModule {
+
 
 
 }

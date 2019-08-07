@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product';
+import { Product } from './product.entity';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { ProductsComponent } from './products/products.component';
@@ -12,12 +12,39 @@ export class ProductService {
 
   products: Product[]
 
-  rootURL: string;
+  //added for basket
+  findAll(): Product[] {
+    return this.products;
+}
+
+rootURL: string;
   constructor(private httpsvc: HttpClient) {
     // intializes the url
     this.rootURL = 'http://localhost:5980/product';
 
+    //added for basket
+    this.products = [
+      { productId: 101, productName: 'potatos', unitPrice: 5, description:'potatos', productType:'veg' },
+      { productId: 102, productName: 'bananas', unitPrice: 5, description:'bananas', productType:'fruit' },
+      { productId: 103, productName: 'fish', unitPrice: 5, description:'fish', productType:'fish' },
+  ];
+}
+
+//added for basket
+find(productId: number): Product {
+  return this.products[this.getSelectedIndex(productId)];
+}
+
+//added for basket
+private getSelectedIndex(productId: number) {
+  for (var i = 0; i < this.products.length; i++) {
+      if (this.products[i].productId == productId) {
+          return i;
+      }
   }
+  return -1;
+}
+
 
   loadAllProjectsFromSever(): Observable<Product[]> {
     // [] ??
@@ -34,7 +61,7 @@ export class ProductService {
         "Content-Type": "application/x-www-form-urlencoded"
       })
     }
-    
+
     var reqBody = "productName=" + productName + "&productType=" + productType
       + "&description=" + description + "&unitPrice=" + unitPrice
 
