@@ -13,5 +13,6 @@ import com.mastek.training.realfarmtohome.entities.Product;
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 	public List<Product> findByProductName(
 			@Param("productName") String productName);
+	public List<Product> fetchProductByFarmerId(@Param("currentFarmer") int currentFarmer);
 }
 

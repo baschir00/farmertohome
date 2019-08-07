@@ -1,0 +1,40 @@
+<div class="jumbotron text-center">
+    <h2>Product Addition</h2>
+</div>
+
+<h2>Please Enter Product to add</h2>
+
+<form
+    (submit)="addProduct(productName,productType, description, unitPrice)">
+    <ul>
+        <li>
+            Product Name: <input type="text" #productName>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Product Type: <input type="text" #productType>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Description <input type="text" class="addresstextbox" #description>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Unit Price<input type="text" class="addresstextbox" #unitPrice>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            Add: <input type="submit" placeholder="Register" value="Add">
+        </li>
+        <div [hidden]="ValidRegister">
+            {{invalidRegisterMessage}}
+            <div class="jumbotron text-center">
+            </div>
+            </div>
+            </ul>
+            </form>

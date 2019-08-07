@@ -94,7 +94,7 @@ public Set<Product> assignProduct(
 		System.out.println(farm);
 		Product prod = productService.findByProductId(productId);
 		System.out.println(prod);
-		//farm.getAssignment().add(prod);
+		farm.getAssignment().add(prod);
 		prod.setCurrentFarmer(farm);
 		farm= registerOrUpdateFarmer(farm);
 		System.out.println(farm);

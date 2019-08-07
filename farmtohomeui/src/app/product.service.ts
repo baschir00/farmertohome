@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { ProductsComponent } from './products/products.component';
+import { Customer } from './customer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,41 +12,54 @@ export class ProductService {
 
   products: Product[]
 
-  rootURL
-  constructor(private httpsvc:HttpClient) {
-      // intializes the url 
-  this.rootURL="http://localhost:3333/apis/products"
+  rootURL: string;
+  constructor(private httpsvc: HttpClient) {
+    // intializes the url
+    this.rootURL = 'http://localhost:5980/product';
 
-   }
+  }
 
-  
-  
-  updateProductOnServer(product):Observable<Product>{
-    const httpOptions= {
-      headers: new HttpHeaders ( {
-        "Content-Type": "application/x-www-form-urlencoded"})
-      }
+  loadAllProjectsFromSever(): Observable<Product[]> {
+    // [] ??
+    return this.httpsvc.get<Product[]>(this.rootURL + "/list");
+  }
 
-      var reqBody = "productId=" + product.productId + "&productName"
-                      "&description=" + product.description + 
-                      "&productType" + product.productType 
-                        + "&unitPrice" + product.unitPrice
+  createCustomerDetails(): Observable<Customer> {
 
-
-      return this.httpsvc.post<Product>(
-          this.rootURL + "/register", 
-                          reqBody,httpOptions
-                        )
-    
+    return this.httpsvc.get<Customer>(this.rootURL);
+  }
+  registerProduct(productName, productType, description, unitPrice): Observable<Product> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
     }
+    
+    var reqBody = "productName=" + productName + "&productType=" + productType
+      + "&description=" + description + "&unitPrice=" + unitPrice
+
+    console.log(reqBody);
+
+    return this.httpsvc.post<Product>(
+      this.rootURL + "/register", reqBody, httpOptions);
+  }
+
+
+
+  findProductsByName(productName: string): Observable<Product[]> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      params: new HttpParams()
+        .set('productName', productName)
+    };
+    return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByProductName', httpOptions);
   }
 
 
 
 
 
-
-
-
-
-
+}
