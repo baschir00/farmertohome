@@ -1,65 +1,69 @@
 import { Injectable } from "@angular/core";
 import { Item } from "./item.entity";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class BasketService {
-  constructor() {}
+  rootURL: string;
+  httpOptions: { headers: HttpHeaders; };
+
+  constructor(private httpSvc: HttpClient) {
+
+    this.rootURL = 'http://localhost:5980/';
+
+    // Set http options
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+  }
 
   getBasketFromStore(): Item[] {
+    console.log("getBasketFromStore");
+
     const basket: Item[] = JSON.parse(localStorage.getItem("basket"))
       .map(item => JSON.parse(item));
+    console.log(basket);
+
     return basket;
   }
 
   saveBasketToStore(items: Item[]): void {
-    const basket: Item[] = JSON.parse(localStorage.getItem("basket"))
-      .map(item => JSON.parse(item));
-    return basket;
+    console.log("saveBasketToStore");
+    const stringedTtems = items.map(item => JSON.stringify(item));
+    const newBasket = JSON.stringify(stringedTtems);
+    console.log(newBasket);
+    localStorage.setItem("basket", newBasket);
   }
 
-  addItemToBasket(item: Item) {
-    const basket: any = [];
+  addItemToBasket(newItem: Item) {
+    let basket: Item[] = [];
     // If basket is not initalised
     if (localStorage.getItem("basket") == null) {
       // Then create new basket in memmory and add item
-      basket.push(JSON.stringify(item));
-      localStorage.setItem("basket", JSON.stringify(basket));
+      basket.push(newItem);
+      this.saveBasketToStore(basket);
 
       // If basket is initalised
     } else {
       // get basket
-      const basket: any = JSON.parse(localStorage.getItem("basket"));
-
-      // index flag
-      let index = -1;
-
-      // for each item in basket
-      for (let i = 0; i < basket.length; i++) {
-        // get item from item json
-        const currentItem: Item = JSON.parse(basket[i]);
-
-        // if item in basket get index and break loop
-        if (item.product.productId === currentItem.product.productId) {
-          index = i;
-          break;
-        }
-      }
+      basket = this.getBasketFromStore();
+      const index = basket.findIndex(x => x.product.productId === newItem.product.productId);
 
       // If new item in basket
-      if (index == -1) {
+      if (index === -1) {
         // Add item to basket
-        basket.push(JSON.stringify(item));
-        localStorage.setItem("basket", JSON.stringify(basket));
+        basket.push(newItem);
+        this.saveBasketToStore(basket);
 
         // If item exists in basket
       } else {
         // Add to quantity of item in basket
-        const currentItem: Item = JSON.parse(basket[index]);
-        item.quantity += currentItem.quantity;
-        basket[index] = JSON.stringify(item);
-        localStorage.setItem("basket", JSON.stringify(basket));
+        basket[index].quantity += newItem.quantity;
+        this.saveBasketToStore(basket);
       }
     }
   }
@@ -69,7 +73,7 @@ export class BasketService {
     const index = -1;
     for (let i = 0; i < basket.length; i++) {
       const item: Item = JSON.parse(basket[i]);
-      if (item.product.productId == productId) {
+      if (item.product.productId === productId) {
         basket.splice(i, 1);
         break;
       }
@@ -79,11 +83,13 @@ export class BasketService {
 
   updateItem(item: Item) {
     console.log("updateItem: ", item);
-    const basket: any = JSON.parse(localStorage.getItem("basket"));
-    const index: number = basket.findIndex(
-      b => b.product.productId === item.product.productId
-    );
-    basket[index] = JSON.stringify(item);
-    localStorage.setItem("basket", JSON.stringify(basket));
+    const basket: Item[] = this.getBasketFromStore();
+    const index = basket.findIndex(b => b.product.productId === item.product.productId);
+    basket.splice(index, 1, item);
+    this.saveBasketToStore(basket);
+  }
+
+  submit(basket: Item[]){
+
   }
 }
