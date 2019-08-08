@@ -2,82 +2,53 @@ import { Component, OnInit } from "@angular/core";
 import { Item } from "../item.entity";
 import { ProductService } from "../product.service";
 import { ActivatedRoute } from "@angular/router";
-import { Product } from '../product.entity';
+import { Product } from "../product.entity";
+import { BasketService } from "../basket.service";
 
-//all added for basket
+// all added for basket
 @Component({
   templateUrl: "basket.component.html"
 })
 export class BasketComponent implements OnInit {
-  private items: Item[] = [];
-  private total: number = 0;
-  //private obseverstore;
+  items: Item[] = [];
+  total: number;
+  private basket: any[];
+  // private obseverstore;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private product: Product
-  ) {}
+    private basketService: BasketService
+  ) {
+    this.items = [];
+  }
 
   ngOnInit() {
+    // On redirect to basket
     this.activatedRoute.params.subscribe(params => {
-      //console.log(params);
-      // let productId = params.productId;
-      // if (productId) {
-      //   this.productService.findProductsById(productId).subscribe(resp => this.obseverstore = resp)
-      //   this.obseverstore
-      //   let item: Item = {
-      //     product: this.obseverstore,
-      //     quantity: 1
-      //   };
-      // console.log(item);
-      let productId = params['productId'];
-			if (productId) {
-				let item: Item = {
-					product: this.productService.findProductsById(productId),
-					quantity: 1
+      console.log(params);
+      const addedProduct: Product = params.product;
+      // If new item added
+      if (addedProduct) {
+        // then get new item details and quantities
+        const item: Item = {
+          product: addedProduct,
+          quantity: 1
         };
-        if (localStorage.getItem("basket") == null) {
-          let basket: any = [];
-          basket.push(JSON.stringify(item));
-          localStorage.setItem("basket", JSON.stringify(basket));
-        } else {
-          let basket: any = JSON.parse(localStorage.getItem("basket"));
-          let index: number = -1;
-          for (let i = 0; i < basket.length; i++) {
-            let item: Item = JSON.parse(basket[i]);
-            if (item.product.productId == productId) {
-              index = i;
-              break;
-            }
-          }
-
-          if (index == -1) {
-            basket.push(JSON.stringify(item));
-            localStorage.setItem("basket", JSON.stringify(basket));
-          } else {
-            let item: Item = JSON.parse(basket[index]);
-            item.quantity += 1;
-            basket[index] = JSON.stringify(item);
-            localStorage.setItem("basket", JSON.stringify(basket));
-          }
-        }
-        this.loadBasket();
-      } else {
-        this.loadBasket();
+        // add new item to basket
+        this.basketService.addItemToBasket(item);
       }
+      // Display basket items and total
+      this.loadBasket();
     });
   }
 
-
-
-
-  loadBasket(): void {
+  loadBasket() {
     this.total = 0;
     this.items = [];
-    let basket = JSON.parse(localStorage.getItem("basket"));
-    for (let i = 0; i < basket.length; i++) {
-      let item = JSON.parse(basket[i]);
+    const basket = JSON.parse(localStorage.getItem("basket"));
+    for (const basketItem of basket) {
+      const item = JSON.parse(basketItem);
       this.items.push({
         product: item.product,
         quantity: item.quantity
@@ -86,17 +57,15 @@ export class BasketComponent implements OnInit {
     }
   }
 
-  remove(productId: number): void {
-    let basket: any = JSON.parse(localStorage.getItem("basket"));
-    let index: number = -1;
-    for (let i = 0; i < basket.length; i++) {
-      let item: Item = JSON.parse(basket[i]);
-      if (item.product.productId == productId) {
-        basket.splice(i, 1);
-        break;
-      }
-    }
-    localStorage.setItem("basket", JSON.stringify(basket));
+  removeItemFromBasket(productId) {
+    console.log("removeItemFromBasket: ", productId);
+    this.basketService.remove(productId);
+    this.loadBasket();
+  }
+
+  updateBasket(item) {
+    console.log("updateBasket: ", item);
+    this.basketService.updateItem(item);
     this.loadBasket();
   }
 }

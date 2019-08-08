@@ -1,10 +1,10 @@
 <table class="table">
   <thead>
-      <tr>
-          <td>
-             <input type="text" [(ngModel)]="term" placeholder="Search Prdocut">
-           </td>
-      </tr>
+    <tr>
+      <td>
+        <input type="text" [(ngModel)]="term" placeholder="Search Prdocut" >
+      </td>
+    </tr>
 
 
     <tr>
@@ -19,14 +19,14 @@
   <tbody>
 
 
-    <tr *ngFor = "let p of products |filter:term | paginate: { itemsPerPage: 10, currentPage: p_no }; let i = index" >
-          <td> {{p.productName}}</td>
-          <td>{{p.unitPrice}}</td>
-          <td>{{p.description}}</td>
-          <td>{{p.productType}}</td>
-
-          <td><a [routerLink]="['/basket', { productId:p.productId }]">Buy Now</a></td>
-      </tr>
+    <tr *ngFor="let item of items |filter:term| paginate: { itemsPerPage: 10, currentPage: p_no }; let i = index">
+      <td>{{item.product.productName}}</td>
+      <td>{{item.product.unitPrice}}</td>
+      <td>{{item.product.description}}</td>
+      <td>{{item.product.productType}}</td>
+      <td><input type="number" [(ngModel)]="item.quantity"></td>
+      <td><button (click)="addProductToBasket(item)">Add to basket</button></td>
+    </tr>
   </tbody>
   <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
 </table>

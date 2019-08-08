@@ -16,14 +16,14 @@
     <tbody>
     <tr *ngFor="let item of items">
         <td align="center">
-            <a (click)="remove(item.product.productId)">X</a>
+            <a (click)="removeItemFromBasket(item.product.productId)">X</a>
         </td>
 
         <td>{{item.product.productName}}</td>
         <td>{{item.product.unitPrice}}</td>
         <th>{{item.product.description}}</th>
         <th>{{item.product.productType}}</th>
-        <td>{{item.quantity}}</td>
+        <td><input type="number" [(ngModel)]="item.quantity" (change)="updateBasket(item)"></td>
         <td>{{item.product.unitPrice * item.quantity}}</td>
     </tr>
     <tr>
