@@ -17,6 +17,7 @@ import { ProductsComponent } from './products/products.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
 
 
 
@@ -37,6 +38,7 @@ import { RegisterproductComponent } from './registerproduct/registerproduct.comp
     FarmerHomeComponent,
     DisplayProductsTableComponent,
     RegisterproductComponent,
+    CustomerHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { RegisterproductComponent } from './registerproduct/registerproduct.comp
   ],
 
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [CustomerHomeComponent]
 })
 export class AppModule {
 

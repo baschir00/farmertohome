@@ -8,6 +8,7 @@ import { LoginfarmerComponent } from './loginfarmer/loginfarmer.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
 
 const routes: Routes = [
   { path: 'registerFarmer', component: RegisterFarmerComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'loginCustomer', component: LogincustomerComponent },
   { path: 'loginFarmer', component: LoginfarmerComponent },
   { path: 'farmerhome', component: FarmerHomeComponent },
+  { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
 
 ];
