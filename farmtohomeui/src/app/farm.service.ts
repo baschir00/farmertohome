@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FarmComponent } from './farm/farm.component';
+//import { FarmComponent } from './farm/farm.component';
 import { Product } from './product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
