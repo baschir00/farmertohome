@@ -7,6 +7,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BasketComponent } from './basket/basket.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 import { FarmerHomeComponent } from './farmer-home/farmer-home.component';
 import { LogincustomerComponent } from './logincustomer/logincustomer.component';
@@ -42,6 +43,7 @@ import { RegisterproductComponent } from "./registerproduct/registerproduct.comp
     //added for basket
     BasketComponent,
     RegisterproductComponent,
+    CustomerHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,8 +57,8 @@ import { RegisterproductComponent } from "./registerproduct/registerproduct.comp
 
   // changed from providers: [] to the below for basket
   providers: [ProductService],
-
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [CustomerHomeComponent]
 })
 export class AppModule {
 

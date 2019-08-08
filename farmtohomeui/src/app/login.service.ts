@@ -37,10 +37,10 @@ export class LoginService {
       this.rootURL + '/farmer', reqBody, this.httpOptions);
   }
 
-  loginCustomer(loginDetails): Observable<Config> {
+  loginCustomer(loginDetails): Observable<any> {
     // Create request body content
-    const reqBody = 'customerEmail=' + loginDetails.farmerEmail +
-      '&customerPassword=' + loginDetails.farmerPassword;
+    const reqBody = 'customerEmail=' + loginDetails.customerEmail +
+      '&customerPassword=' + loginDetails.customerPassword;
 
     // DEBUG: print request body
     console.log(reqBody);

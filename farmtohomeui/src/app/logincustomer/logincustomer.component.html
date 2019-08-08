@@ -1,17 +1,42 @@
-<form form (submit)="loginFarmerDetails()">   
-        <div class="email">
-             <label for="email"> Email  :</label>
-             <input type="text" name="email" id="email" value="" placeholder="Please enter your email" [(ngModel)]="farmerLoginDetails.farmerEmail">
+<form class="" form (click)="loginCustomer()">
+  <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
+    {{ incorrectUserDetailsMessage }}
+  </p>
 
-        </div>
-        <div class="password">
-             <label for="password">Password   :</label>
-             <input type="password" name="password" id="password" value="" placeholder="please enter your password" [(ngModel)]="farmerLoginDetails.farmerPassword" >
+  <div class="email">
+    <label for="email">Email</label>
+    <input
+      class="form-field"
+      type="text"
+      name="email"
+      id="email"
+      value=""
+      placeholder="Please enter your email"
+      [(ngModel)]="customerLoginDetails.customerEmail"
+    />
+  </div>
+  <div class="password">
+    <label for="password">Password</label>
+    <input
+      class="form-field"
+      type="password"
+      name="password"
+      id="password"
+      value=""
+      placeholder="please enter your password"
+      [(ngModel)]="customerLoginDetails.customerPassword"
+    />
+  </div>
 
-        </div>
-
-   <div class="login">
-        <label for="login">Login  :</label>
-        <input  type="submit" name="Login" id="login" placeholder="login" value="Login">
-        </div>
-   </form>
+  <div class="login">
+    <label for="login"></label>
+    <input
+      class="btn btn-primary"
+      type="submit"
+      name="Login"
+      id="login"
+      placeholder="login"
+      value="Login"
+    />
+  </div>
+</form>

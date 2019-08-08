@@ -10,9 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -22,7 +23,9 @@ import org.springframework.context.annotation.Scope;
 @Scope("prototype")
 @Entity
 @Table(name = "JPA_CUSTOMER")
-
+@NamedQueries({
+		// Query to find customer by customerId
+		@NamedQuery(name = "Customer.findByEmail", query = "select e from Customer e where e.customerEmail = :customerEmail") })
 public class Customer implements Serializable {
 
 	@FormParam("customerId")
@@ -36,7 +39,7 @@ public class Customer implements Serializable {
 
 	@FormParam("customerEmail")
 	private String customerEmail;
-	
+
 	@FormParam("customerPassword")
 	private String customerPassword;
 
@@ -79,14 +82,21 @@ public class Customer implements Serializable {
 		this.customerEmail = customerEmail;
 	}
 
-	@Override
-	public String toString() {
-		return "Farmer [farmerId=" + customerId + ", farmerName=" + customerName + ", farmerAddress=" + customerAddress
-				+ ", farmerEmail=" + customerEmail + "]";
+	public String getCustomerPassword() {
+		return customerPassword;
 	}
 
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCustomer")
+	public void setCustomerPassword(String customerPassword) {
+		this.customerPassword = customerPassword;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
+				+ customerAddress + ", customerEmail=" + customerEmail + "]";
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "currentCustomer")
 	@XmlTransient
 	public Set<Order> getOrders() {
 		return orders;
