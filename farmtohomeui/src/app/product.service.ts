@@ -23,12 +23,21 @@ rootURL: string;
     this.rootURL = 'http://localhost:5980/product';
 
     //added for basket
-    this.products = [
-      { productId: 101, productName: 'potatos', unitPrice: 5, description:'potatos', productType:'veg' },
-      { productId: 102, productName: 'bananas', unitPrice: 5, description:'bananas', productType:'fruit' },
-      { productId: 103, productName: 'fish', unitPrice: 5, description:'fish', productType:'fish' },
-  ];
+  //   this.products = [
+  //     { productId: 1, productName: 'Potatos', unitPrice: 3, description:'British Veg', productType:'Fruit & Veg' },
+  //     { productId: 2, productName: 'Bananas', unitPrice: 2, description:'Yellow Bananas', productType:'Fruit & Veg' },
+  //     { productId: 3, productName: 'Salmon', unitPrice: 7, description:'Fresh Salmon', productType:'Meat & Fish' },
+  //     { productId: 4, productName: 'Chicken', unitPrice: 5, description:'Poultry', productType:'Meat & Fish' },
+  //     { productId: 5, productName: 'Ham', unitPrice: 6, description:'From a Pig', productType:'Meat & Fish' },
+  //     { productId: 6, productName: 'PorkChops', unitPrice: 5, description:'From a Pig', productType:'Meat & Fish' },
+  //     { productId: 7, productName: 'Onion', unitPrice: 1, description:'Large Onions', productType:'Fruit & Veg' },
+  //     { productId: 8, productName: 'Orange', unitPrice: 2, description:'its Orange', productType:'Fruit & Veg' },
+  //     { productId: 9, productName: 'Beef', unitPrice: 6, description:'British Beef', productType:'Meat & Fish' },
+  //     { productId: 10, productName: 'Apple', unitPrice: 1, description:'Green apples', productType:'Fruit & Veg' },
+  // ];
 }
+
+
 
 //added for basket
 find(productId: number): Product {
@@ -37,7 +46,7 @@ find(productId: number): Product {
 
 //added for basket
 private getSelectedIndex(productId: number) {
-  for (var i = 0; i < this.products.length; i++) {
+  for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].productId == productId) {
           return i;
       }
@@ -45,8 +54,19 @@ private getSelectedIndex(productId: number) {
   return -1;
 }
 
+//basket
+findProductsById(productId: number): Observable<Product> {
 
-  loadAllProjectsFromSever(): Observable<Product[]> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+  };
+  return this.httpsvc.get<Product>(this.rootURL + '/find/' + productId, httpOptions);
+}
+
+
+  loadAllProductsFromSever(): Observable<Product[]> {
     // [] ??
     return this.httpsvc.get<Product[]>(this.rootURL + "/list");
   }
@@ -55,6 +75,10 @@ private getSelectedIndex(productId: number) {
 
     return this.httpsvc.get<Customer>(this.rootURL);
   }
+
+
+
+
   registerProduct(productName, productType, description, unitPrice): Observable<Product> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -71,8 +95,6 @@ private getSelectedIndex(productId: number) {
       this.rootURL + "/register", reqBody, httpOptions);
   }
 
-
-
   findProductsByName(productName: string): Observable<Product[]> {
 
     const httpOptions = {
@@ -84,9 +106,5 @@ private getSelectedIndex(productId: number) {
     };
     return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByProductName', httpOptions);
   }
-
-
-
-
 
 }

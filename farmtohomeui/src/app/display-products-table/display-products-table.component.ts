@@ -9,7 +9,7 @@ import { ProductService } from '../product.service';
 })
 export class DisplayProductsTableComponent implements OnInit {
 
-  products: Product[];
+  private products: Product[];
 
   constructor(private prodSvc: ProductService) {
     this.products = [
@@ -18,7 +18,8 @@ export class DisplayProductsTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.prodSvc.loadAllProjectsFromSever().subscribe(
+    this.products = this.prodSvc.findAll();
+    this.prodSvc.loadAllProductsFromSever().subscribe(
       resp => {
         this.products = resp;
         console.log(resp);

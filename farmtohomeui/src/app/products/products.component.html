@@ -1,40 +1,7 @@
 <p>products works!</p>
 
-<form
-    (submit)="addProduct(productName,description,productType,unitPrice)">
-    <ul>
-        <li>
-            Customehhhr Name: <input type="text" #productName>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            Custhhhmer Email: <input type="text" #description>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            Customhher Address <input type="text" class="addresstextbox" #productType>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            Customhher Address <input type="text" class="addresstextbox" #unitPrice>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            Regihhster: <input type="submit" placeholder="Add Product" value="Add">
-        </li>
-
-            <div class="jumbotron text-center">
-
-            </div>
-            </ul>
-            </form>
-
 <!-- added for basket-->
-            <table border="1">
+            <table>
               <tr>
                   <th>Id</th>
                   <th>Name</th>
@@ -49,7 +16,7 @@
                   <td>{{product.productType}}</td>
                   <td>{{product.description}}</td>
                   <td>
-                      <a [routerLink]="['/basket', { productId:product.productId }]">Buy Now</a>
+                  <a [routerLink]="['/basket', { productId:product.productId }]">Buy Now</a>
                   </td>
               </tr>
             </table>

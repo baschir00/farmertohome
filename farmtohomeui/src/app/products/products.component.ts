@@ -4,13 +4,6 @@ import { Product } from '../product.entity';
 import { Observable } from 'rxjs';
 import { CustomersComponent } from '../customers/customers.component';
 
-
-
-
-
-
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

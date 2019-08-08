@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'login', component: LoginComponent },
   //added for basket
-  { path: '', component: ProductsComponent },
-  { path: 'products', component: ProductsComponent },
+  { path: '', component: DisplayProductsTableComponent},
+ //{ path: 'products', component: ProductsComponent },
   { path: 'basket', component: BasketComponent },
   { path: '**', redirectTo: '' }
 ];

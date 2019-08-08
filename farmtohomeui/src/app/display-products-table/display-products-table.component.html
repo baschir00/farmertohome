@@ -4,13 +4,15 @@
           <td>
              <input type="text" [(ngModel)]="term" placeholder="Search Prdocut">
            </td>
-      </tr>  
-     
+      </tr>
+
 
     <tr>
       <th>Product Name</th>
       <th>Price(kg)</th>
-      <th>Location</th>
+      <th>Section</th>
+      <th>description</th>
+      <th>basket</th>
     </tr>
   </thead>
 
@@ -18,20 +20,13 @@
 
 
     <tr *ngFor = "let p of products |filter:term | paginate: { itemsPerPage: 10, currentPage: p_no }; let i = index" >
-          <td> {{p.productName}}</td> 
-           <td>
-              {{p.unitPrice}}
-           </td>
-          
-   
-           
-<!--  
-</tr>
-    <tr *ngFor="let p of products">
-      <td>{{p.productName}}</td>
-      <td>{{p.unitPrice}}</td>
-      <td>location Default</td>
-    </tr> -->
+          <td> {{p.productName}}</td>
+          <td>{{p.unitPrice}}</td>
+          <td>{{p.description}}</td>
+          <td>{{p.productType}}</td>
+
+          <td><a [routerLink]="['/basket', { productId:p.productId }]">Buy Now</a></td>
+      </tr>
   </tbody>
   <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
 </table>
