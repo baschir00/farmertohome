@@ -74,6 +74,7 @@ public Farmer findByFarmerId(@PathParam("farmerId")int farmerId) {
     }
 }
 
+
 @DELETE //delete http method
 @Path("/delete/{farmerId}")
 public void deleteByFarmerId(@PathParam("farmerId") int farmerId) {
