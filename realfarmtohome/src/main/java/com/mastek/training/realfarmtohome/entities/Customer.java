@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -35,8 +37,11 @@ public class Customer implements Serializable {
 	private String customerAddress;
 
 	@FormParam("customerEmail")
+	@Column(unique=true)
+	@NotNull
 	private String customerEmail;
 	
+	@NotNull
 	@FormParam("customerPassword")
 	private String customerPassword;
 
