@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BasketComponent } from './basket/basket.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 import { FarmerHomeComponent } from './farmer-home/farmer-home.component';
 import { LogincustomerComponent } from './logincustomer/logincustomer.component';
@@ -20,12 +21,18 @@ const routes: Routes = [
   { path: 'farmerhome', component: FarmerHomeComponent },
   { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
-
+  { path: 'registerCustomer', component: RegistercustomerComponent },
+  //added for basket
+  { path: '', component: DisplayProductsTableComponent},
+ //{ path: 'products', component: ProductsComponent },
+  { path: 'basket', component: BasketComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-
 })
-export class AppRoutingModule { }
+//added for basket
+
+export class AppRoutingModule {}
