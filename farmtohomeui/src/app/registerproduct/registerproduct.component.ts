@@ -15,7 +15,7 @@ export class RegisterproductComponent implements OnInit {
   isProductFormValid: boolean
   invalidFormMessage: string
 
-  constructor(private productSvc: ProductService, private farmSvc: FarmService) { 
+  constructor(private productSvc: ProductService, private farmSvc: FarmService) {
     this.farmerId = 4;
   }
 

@@ -4,6 +4,7 @@ import { Config } from 'protractor';
 import { Observable } from 'rxjs';
 import { Customer } from './customer';
 import { Farmer } from './farmer';
+import { Admin } from "./admin";
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,17 @@ export class LoginService {
 
     return this.httpSvc.post<Customer>(
       this.rootURL + '/customer', reqBody, this.httpOptions);
+  }
+
+  loginAdmin(loginDetails): Observable<any> {
+
+    const reqBody = 'adminUsername=' + loginDetails.adminUsername +
+      '&adminPassword=' + loginDetails.adminPassword;
+
+    console.log(reqBody);
+
+    return this.httpSvc.post<Admin>(
+      this.rootURL + '/admin', reqBody, this.httpOptions);
   }
 
 }

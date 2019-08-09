@@ -1,0 +1,6 @@
+{
+    "typescript.preferences.quoteStyle": "double",
+    "javascript.preferences.quoteStyle": "double",
+    "tslint.configFile": "D:\\Graduate Program\\Java EE App\\farmertohome\\farmtohomeui\\.vscode\\tslint.json",
+    "tslint.jsEnable": true,
+}

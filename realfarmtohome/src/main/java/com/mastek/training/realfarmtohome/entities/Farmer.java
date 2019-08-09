@@ -50,10 +50,13 @@ public class Farmer implements Serializable {
 
 	// Farmer login and contact email
 	@FormParam("farmerEmail")
+	@Column(unique=true)
+	@NotNull
 	private String farmerEmail;
 
 	// Farmer login password
 	@FormParam("farmerPassword")
+	@NotNull
 	private String farmerPassword;
 
 	private Set<Product> assignment = new HashSet<>();
