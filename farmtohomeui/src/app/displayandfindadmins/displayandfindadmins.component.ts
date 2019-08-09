@@ -9,14 +9,34 @@ import { AdminServiceService } from '../admin-service.service';
 })
 export class DisplayandfindadminsComponent implements OnInit {
 
-  admin: Admin[]
+  admin: Admin
 
   constructor( private admSvc: AdminServiceService) { }
 
-  ngOnInit() {
-    this.admSvc.loadAllAdminsFromSever().subscribe(resp => {
+  ngOnInit() { 
+    this.loadAdmins()
+ 
 
-      this.admin = resp;
-  })
   }
+
+loadAdmins() {
+  this.admSvc.loadAllAdminsFromSever().subscribe(resp => {
+
+    this.admin = resp;
+  })
+}
+
+  deleteAdmin(adminId){
+
+    this.admSvc.deleteAdmin(adminId).subscribe(() => {
+      this.loadAdmins()
+    })
+
+ 
+
+  }
+
+
+
+
 }
