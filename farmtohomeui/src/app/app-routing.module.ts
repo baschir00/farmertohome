@@ -13,6 +13,9 @@ import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { LoginAdminComponent } from "./login-admin/login-admin.component";
 import { RegisterAdminComponent } from "./register-admin/register-admin.component";
 import { AdminhomeComponent } from "./adminhome/adminhome.component";
+import { DisplayandfindadminsComponent } from "./displayandfindadmins/displayandfindadmins.component";
+
+
 
 const routes: Routes = [
   { path: 'registerFarmer', component: RegisterFarmerComponent },
@@ -27,6 +30,7 @@ const routes: Routes = [
   { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'adminhome', component: AdminhomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
+  { path: 'displayandfindadmins', component: DisplayandfindadminsComponent},
   //added for basket
   { path: '', component: DisplayProductsTableComponent},
  //{ path: 'products', component: ProductsComponent },
