@@ -12,20 +12,21 @@ import { RegisterproductComponent } from './registerproduct/registerproduct.comp
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { LoginAdminComponent } from "./login-admin/login-admin.component";
 import { RegisterAdminComponent } from "./register-admin/register-admin.component";
+import { AdminhomeComponent } from "./adminhome/adminhome.component";
 
 const routes: Routes = [
   { path: 'registerFarmer', component: RegisterFarmerComponent },
   { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'registerProduct', component: RegisterproductComponent },
+  { path: 'registerAdmin', component: RegisterAdminComponent },
   { path: 'loginDashBoard', component: LogindashboardComponent },
   { path: 'loginCustomer', component: LogincustomerComponent },
   { path: 'loginFarmer', component: LoginfarmerComponent },
   { path: 'loginAdmin', component: LoginAdminComponent },
   { path: 'farmerhome', component: FarmerHomeComponent },
   { path: 'customerhome', component: CustomerHomeComponent },
+  { path: 'adminhome', component: AdminhomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
-  { path: 'registerCustomer', component: RegistercustomerComponent },
-  { path: 'registerAdmin', component: RegisterAdminComponent },
   //added for basket
   { path: '', component: DisplayProductsTableComponent},
  //{ path: 'products', component: ProductsComponent },
