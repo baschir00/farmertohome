@@ -5,7 +5,7 @@
 <h2>Please Enter Customer</h2>
 
 <form
-    (submit)="addCustomer(customerName,customerEmail,customerAddress)">
+    (submit)="addCustomer(customerName,customerEmail,customerAddress,customerPassword)">
     <ul>
         <li>
             Customer Name: <input type="text" #customerName>
@@ -19,6 +19,11 @@
     <ul>
         <li>
             Customer Address <input type="text" class="addresstextbox" #customerAddress>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Customer Password <input type="text"  #customerPassword>
         </li>
     </ul>
 

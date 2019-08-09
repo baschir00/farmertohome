@@ -1,4 +1,5 @@
 export enum LoginTypes {
   CUSTOMER,
-  FARMER
+  FARMER,
+  ADMIN
 }

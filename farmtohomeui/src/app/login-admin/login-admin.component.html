@@ -1,0 +1,42 @@
+<form class="" form (click)="loginAdmin()">
+  <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
+    {{ incorrectUserDetailsMessage }}
+  </p>
+
+  <div class="username">
+    <label for="username">Username</label>
+    <input
+      class="form-field"
+      type="text"
+      name="username"
+      id="username"
+      value=""
+      placeholder="Please enter your admin username"
+      [(ngModel)]="adminLoginDetails.adminUsername"
+    />
+  </div>
+  <div class="password">
+    <label for="password">Password</label>
+    <input
+      class="form-field"
+      type="password"
+      name="password"
+      id="password"
+      value=""
+      placeholder="please enter your password"
+      [(ngModel)]="adminLoginDetails.adminPassword"
+    />
+  </div>
+
+  <div class="login">
+    <label for="login"></label>
+    <input
+      class="btn btn-primary"
+      type="submit"
+      name="Login"
+      id="login"
+      placeholder="login"
+      value="Login"
+    />
+  </div>
+</form>
