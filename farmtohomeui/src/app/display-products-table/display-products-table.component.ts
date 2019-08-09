@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../product";
+import { Product } from "../product.entity";
 import { ProductService } from "../product.service";
 import { BasketService } from "../basket.service";
 import { Item } from "../item.entity";
@@ -17,23 +17,16 @@ export class DisplayProductsTableComponent implements OnInit {
     private prodSvc: ProductService,
     private basketService: BasketService
   ) {
-    this.products = [
-      {
-        productId: -1,
-        unitPrice: 0.0,
-        description: "test product",
-        productType: "test product",
-        productName: "test product"
-      }
-    ];
+    this.products = [];
   }
 
-  addProductToBasket(item) {{
-    console.log("adding item to basket: ", item);
+  addProductToBasket(item) {
+    {
+      console.log("adding item to basket: ", item);
 
-    this.basketService.addItemToBasket(item);
-  }
-    item.quantity=1;
+      this.basketService.addItemToBasket(item);
+    }
+    item.quantity = 1;
   }
 
   ngOnInit() {
@@ -41,8 +34,8 @@ export class DisplayProductsTableComponent implements OnInit {
     this.prodSvc.loadAllProductsFromSever().subscribe(resp => {
 
       this.products = resp;
-      this.items = this.products.map( product =>  {
-        return {product: product, quantity: 1 };
+      this.items = this.products.map(product => {
+        return { product: product, quantity: 1 };
       });
 
       console.log(resp);

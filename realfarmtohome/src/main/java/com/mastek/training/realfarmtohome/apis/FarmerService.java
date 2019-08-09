@@ -75,6 +75,19 @@ public Farmer findByFarmerId(@PathParam("farmerId")int farmerId) {
 }
 
 
+//@Transactional
+//public Farmer findByFarmerLocation(@PathParam("location")String location) {
+//    try {
+//        Farmer far = farmerRepository.findByLocation(location).get();
+//        System.out.println(far.getAssignment().size()
+//					+"Assignment fetched");
+//    	return far;
+//    } catch (Exception e) {
+//        e.printStackTrace();
+//        return null;
+//    }
+//}
+
 @DELETE //delete http method
 @Path("/delete/{farmerId}")
 public void deleteByFarmerId(@PathParam("farmerId") int farmerId) {

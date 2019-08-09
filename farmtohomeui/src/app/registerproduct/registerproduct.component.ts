@@ -15,7 +15,7 @@ export class RegisterproductComponent implements OnInit {
   isProductFormValid: boolean
   invalidFormMessage: string
 
-  constructor(private productSvc: ProductService, private farmSvc: FarmService) { 
+  constructor(private productSvc: ProductService, private farmSvc: FarmService) {
     this.farmerId = 4;
   }
 
@@ -46,12 +46,18 @@ export class RegisterproductComponent implements OnInit {
       this.productSvc.registerProduct(productName, productType, description, unitPrice)
         .subscribe(
           responseDep => {
-            console.log("registered product");
+            //console.log("registered product");
             this.result = responseDep;
-            console.log(this.result, "results in");
-            this.farmSvc.assignProductToFarm(this.farmerId, this.result.productId);
-          }
-        );
+            //console.log(this.result, "results in");
+            this.farmSvc.assignProductToFarm(this.farmerId, this.result.productId)
+            .subscribe(
+              respone => {
+              this.result.productId = respone.productId
+              this.result.farmerId = respone.farmerId
+            }
+          );
+         }
+       );
 
       this.isProductFormValid = true;
       this.invalidFormMessage = '';

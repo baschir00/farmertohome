@@ -33,10 +33,10 @@ import org.springframework.stereotype.Component;
 @Table (name="JPA_order")
 public class Order implements Serializable {
     
-	@FormParam("order")
+	//@FormParam("order")
     private int orderId;
 	
-	@FormParam("current")
+	//v@FormParam("current")
     private Customer currentCustomer;
     
 	@XmlTransient
