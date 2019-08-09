@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminServiceService } from "../admin-service.service";
 
 @Component({
   selector: 'app-register-admin',
@@ -10,11 +11,11 @@ export class RegisterAdminComponent implements OnInit {
   isAdminFormValid: boolean;
   invalidFormMessage: string;
 
-  constructor(private adminSvc: AdminService) { }
+  constructor(private adminSvc: AdminServiceService) { }
 
   ngOnInit() { }
 
-  addFarmer(adminUsername, adminPassword) {
+  addAdmin(adminUsername, adminPassword) {
     adminUsername = adminUsername.value;
     adminPassword = adminPassword.value;
     console.log('Registering admin : addAdmin');

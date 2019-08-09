@@ -14,11 +14,11 @@ export class AdminServiceService {
     this.rootURL = "http://localhost:5980/admin";
   }
 
-  findAdminById(Id): Observable<Admin> {
+  findAdminById(adminId): Observable<Admin> {
     return this.httpsvc.get<Admin>(this.rootURL + "/find/" + adminId);
   }
 
-  registerFarmer(adminUsername, adminPassword) {
+  registerAdmin(adminUsername, adminPassword) {
     console.log('Registering admin : registerAdmin');
 
     const httpOptions = {
@@ -28,7 +28,7 @@ export class AdminServiceService {
     };
 
     // TODO:
-    const reqBody = "adminusername=" + adminUsername + "&adminPassword=" + adminPassword
+    const reqBody = "adminUsername=" + adminUsername + "&adminPassword=" + adminPassword
 
     console.log(reqBody);
 
@@ -36,7 +36,7 @@ export class AdminServiceService {
       this.rootURL + "/register", reqBody, httpOptions);
   }
 
-  updateAdminOnServer(farm): Observable<Admin> {
+  updateAdminOnServer(admin): Observable<Admin> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/x-www-form-urlencoded"

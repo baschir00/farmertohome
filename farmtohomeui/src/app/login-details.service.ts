@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoginTypes } from './login-types.enum';
 import { Customer } from './customer';
 import { Admin } from "./admin";
+import { Farmer } from "./farmer";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class LoginDetailsService {
   }
 
   // user getter and setter
-  loginFarmer(details) {
+  loginFarmer(details: Farmer) {
     this.userType = LoginTypes.FARMER;
     this.userDetails = details;
   }

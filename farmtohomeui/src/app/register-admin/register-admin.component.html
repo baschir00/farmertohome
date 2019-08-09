@@ -1,1 +1,29 @@
 <p>register-admin works!</p>
+
+<form (submit)="addAdmin(aadminUsername, aadminPassword)">
+
+  <table class="table">
+    <tr>
+      <td>
+        <input name="username" placeholder="username" #aadminUsername>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input name="password" placeholder="password" #aadminPassword>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="submit" value="Add">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div [hidden]="invalidFormMessage">
+          {{invalidFormMessage}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>
