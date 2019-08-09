@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginTypes } from './login-types.enum';
 import { Customer } from './customer';
+import { Admin } from "./admin";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,11 @@ export class LoginDetailsService {
     this.userDetails = details;
   }
 
+  loginAdmin(details: Admin) {
+    this.userType = LoginTypes.ADMIN;
+    this.userDetails = details;
+  }
+
   // Check loggedin user is a customer
   isCustomer() {
     return this.userType === LoginTypes.CUSTOMER;
@@ -41,4 +47,8 @@ export class LoginDetailsService {
   isFarmer() {
     return this.userType === LoginTypes.FARMER;
   }
-}
+
+  isAdmin() {
+    return this.userType === LoginTypes.ADMIN;
+  }
+  }
