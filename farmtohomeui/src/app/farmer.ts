@@ -3,4 +3,5 @@ export interface Farmer {
   farmerName: string;
   farmerLocation: string;
   farmerEmail: string;
+  farmerPassword: string;
 }

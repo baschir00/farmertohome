@@ -19,7 +19,7 @@ export class CustomerService {
     return this.httpsvc.get<Customer>(this.rootURL + "/find/" + customerId);
   }
 
-  registerCustomer(customerName, customerAddress, customerEmail, ) { // customerPassword
+  registerCustomer(customerName, customerAddress, customerEmail, customerPassword ) { 
     console.log('Registering customer : registerCustomer');
 
     const httpOptions = {
@@ -29,7 +29,7 @@ export class CustomerService {
     };
 
     const reqBody = "customerName=" + customerName + "&customerAddress=" + customerAddress
-      + "&customerEmail=" + customerEmail;
+      + "&customerEmail=" + customerEmail +"&customerPassword=" + customerPassword;
 
     console.log(reqBody);
 
@@ -46,7 +46,7 @@ export class CustomerService {
 
     const reqBody = "customerId=" + customer.customerId +
       "&customerName=" + customer.Customer + "&customerAddress=" +
-      customer.Customer + "&customerEmail" + customer.customerEmail;
+      customer.Customer + "&customerEmail" + customer.customerEmail+ "&customerPassword" + customer.customerPassword;
     // post(URL,body,httpOptionswithHeaders)
     return this.httpsvc.post<Customer>(
       this.rootURL + "/register", reqBody, httpOptions);
