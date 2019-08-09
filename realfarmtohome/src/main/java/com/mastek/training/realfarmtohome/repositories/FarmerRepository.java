@@ -15,6 +15,5 @@ public interface FarmerRepository extends CrudRepository<Farmer, Integer>{
 			@Param("farmerLocation") String location);
 	// Specification for farmer findByEmail form Farmer class. 
 	// Is expanded on in FarmerService.
-	public Farmer findByEmail(
-			@Param("farmerEmail") String email);
+	public Farmer findByEmail(@Param("farmerEmail") String email);
 }

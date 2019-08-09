@@ -68,4 +68,10 @@ export class BasketComponent implements OnInit {
     this.basketService.updateItem(item);
     this.loadBasket();
   }
+
+  submitOrder() {
+    console.log("updateBasket: ", );
+    this.updateBasket([])
+    this.loadBasket();
+  }
 }

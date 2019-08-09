@@ -50,7 +50,7 @@ public class OrderService {
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Transactional 
 	public Order findByOrderId(@PathParam("orders") int orderId) {
-		// use the path paramter as the arguements for the method
+		// use the path parameter as the arguments for the method
 		///fetches the Employee Details from DB by empno
 		
 		try {
