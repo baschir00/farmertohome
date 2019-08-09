@@ -30,7 +30,9 @@ const routes: Routes = [
   { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'adminhome', component: AdminhomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
-  { path: 'displayandfindadmins', component: DisplayandfindadminsComponent},
+  { path: 'registerCustomer', component: RegistercustomerComponent },
+  { path: 'registerAdmin', component: RegisterAdminComponent },
+  { path: 'displayAdmins', component:  DisplayandfindadminsComponent},
   //added for basket
   { path: '', component: DisplayProductsTableComponent},
  //{ path: 'products', component: ProductsComponent },

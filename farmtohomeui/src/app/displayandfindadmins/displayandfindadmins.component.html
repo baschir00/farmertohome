@@ -1,0 +1,33 @@
+<p>Manage Admins</p>
+<table class="table">
+      <tr>
+        <th>Admin Id</th>
+        <th>Admin Username</th>
+      </tr>
+   
+  
+   
+     
+      <tr 
+        *ngFor="
+          let a of admin
+            | filter: term
+            | paginate: { itemsPerPage: 10, currentPage: p_no };
+          let i = index
+        "
+      >
+        <!-- Display item details -->
+        <td>{{ a.adminId }} </td>
+        <td>{{ a.adminUsername}}</td>
+        <td><button (click)="deleteAdmin(a.adminId)">Delete</button></td>
+    
+        <!-- set quantity of item to add to basket -->
+     
+        <!-- Add quantity of items to basket -->
+        
+      </tr>
+
+  
+    <!-- Product page navicgation controls  -->
+    <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+  </table>

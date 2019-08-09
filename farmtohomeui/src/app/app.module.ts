@@ -24,6 +24,7 @@ import { RegisterproductComponent } from "./registerproduct/registerproduct.comp
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { DisplayandfindadminsComponent } from './displayandfindadmins/displayandfindadmins.component';
 
 
 
@@ -50,6 +51,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
     LoginAdminComponent,
     RegisterAdminComponent,
     AdminhomeComponent,
+    DisplayandfindadminsComponent,
   ],
   imports: [
     BrowserModule,
