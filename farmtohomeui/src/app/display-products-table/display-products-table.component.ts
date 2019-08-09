@@ -9,7 +9,7 @@ import { ProductService } from '../product.service';
 })
 export class DisplayProductsTableComponent implements OnInit {
 
-  products: Product[];z
+  products: Product[];
 
   constructor(private prodSvc: ProductService) {
     // this.products = [

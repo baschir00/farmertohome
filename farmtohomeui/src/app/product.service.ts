@@ -57,6 +57,18 @@ export class ProductService {
     };
     return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByProductName', httpOptions);
   }
+  findProductsByFarmerId(farmerId: string): Observable<Product[]> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      params: new HttpParams()
+        .set("currentFarmer", farmerId)//.toString())
+    };
+    return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByFarmer', httpOptions);
+  }
+
 
 
 
