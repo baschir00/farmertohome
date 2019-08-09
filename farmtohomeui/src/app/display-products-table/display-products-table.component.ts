@@ -12,9 +12,9 @@ export class DisplayProductsTableComponent implements OnInit {
   products: Product[];z
 
   constructor(private prodSvc: ProductService) {
-    this.products = [
-      { productId: -1, unitPrice: 0.0, description: "test product", productType: "test product", productName: "test product", currentFarmer:[] }
-    ];
+    // this.products = [
+    //   { productId: -1, unitPrice: 0.0, description: "test product", productType: "test product", productName: "test product", currentFarmer:[] }
+    // ];
   }
 
   ngOnInit() {

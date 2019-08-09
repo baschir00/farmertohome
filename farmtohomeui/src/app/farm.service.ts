@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-//import { FarmComponent } from './farm/farm.component';
+
 import { Product } from './product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CurrentFarmer } from './current-farmer';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class FarmService {
     this.rootURL = "http://localhost:5980/farmer"
   }
 
-  findFarmByFarmerId(farmerId): Observable<FarmComponent> {
-    return this.httpsvc.get<FarmComponent>(this.rootURL + "/find/" + farmerId)
+  findFarmByFarmerId(farmerId): Observable<CurrentFarmer> {
+    return this.httpsvc.get<CurrentFarmer>(this.rootURL + "/find/" + farmerId)
   }
 
   registerFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword) {
@@ -33,11 +34,11 @@ export class FarmService {
 
     console.log(reqBody);
 
-    return this.httpsvc.post<FarmComponent>(
+    return this.httpsvc.post<CurrentFarmer>(
       this.rootURL + "/register", reqBody, httpOptions);
   }
 
-  updateFarmOnServer(farm): Observable<FarmComponent> {
+  updateFarmOnServer(farm): Observable<CurrentFarmer> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/x-www-form-urlencoded"
@@ -47,7 +48,7 @@ export class FarmService {
       farm.farmName + "&farmLocation=" + farm.farmLocation +
       "&farmEmail" + farm.farmEmail
     // post(URL,body,httpOptionswithHeaders)
-    return this.httpsvc.post<FarmComponent>(
+    return this.httpsvc.post<CurrentFarmer>(
       this.rootURL + "/register", reqBody, httpOptions)
   }
 
@@ -57,7 +58,7 @@ export class FarmService {
   }
 
   assignProductToFarm(farmerId, productId):
-    Observable<Product[]> {
+    Observable<Product> {
     console.log("assignProductToFarm", farmerId, productId);
       
     const httpOptions = {
@@ -66,19 +67,19 @@ export class FarmService {
       })
     }
     var reqBody = "farmerId=" + farmerId + "&productId=" + productId
-    return this.httpsvc.post<Product[]>(
+    return this.httpsvc.post<Product>(
       this.rootURL + "/assign/product", reqBody, httpOptions)
   }
 
   updateFarmProductOnServer(farmerId, productId)
-    : Observable<FarmComponent> {
+    : Observable<CurrentFarmer> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/x-www-form-urlencoded"
       })
     }
     var reqBody = "farmerId=" + farmerId + "&productId" + productId
-    return this.httpsvc.post<FarmComponent>(
+    return this.httpsvc.post<CurrentFarmer>(
       this.rootURL + "/assign/product",
       reqBody, httpOptions
     )

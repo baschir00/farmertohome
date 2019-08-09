@@ -8,6 +8,7 @@ export interface Product {
     description:string,
     productType:string,
     productName:string,
+    farmerId:number,
     currentFarmer: [] 
 
 
