@@ -29,7 +29,7 @@ export class FarmService {
 
     // TODO:
     const reqBody = "farmerName=" + farmerName + "&farmerLocation=" + farmerLocation
-      + "&farmerEmail=" + farmerEmail; // + "&farmerPassword=" + farmerPassword
+      + "&farmerEmail=" + farmerEmail  + "&farmerPassword=" + farmerPassword;
 
     console.log(reqBody);
 
