@@ -1,0 +1,33 @@
+<p>displayandfindadmins works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Admin Id</th>
+        <th>Admin Username</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+     
+      <tr
+        *ngFor="
+          let a of admin
+            | filter: term
+            | paginate: { itemsPerPage: 10, currentPage: p_no };
+          let i = index
+        "
+      >
+        <!-- Display item details -->
+        <td>{{ a.adminId }}</td>
+        <td>{{ a.adminUsername}}</td>
+    
+        <!-- set quantity of item to add to basket -->
+     
+        <!-- Add quantity of items to basket -->
+        
+      </tr>
+    </tbody>
+  
+    <!-- Product page navicgation controls  -->
+    <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+  </table>

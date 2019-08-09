@@ -14,7 +14,7 @@ export class AdminServiceService {
     this.rootURL = "http://localhost:5980/admin";
   }
 
-  findAdminById(Id): Observable<Admin> {
+  findAdminById(adminId): Observable<Admin> {
     return this.httpsvc.get<Admin>(this.rootURL + "/find/" + adminId);
   }
 
