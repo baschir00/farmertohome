@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 
@@ -16,6 +18,12 @@ import org.springframework.context.annotation.Scope;
 @Scope("prototype")
 @Entity
 @Table(name = "JPA_ADMIN")
+@NamedQueries({
+	// Query to find customer by customerId
+	@NamedQuery(name = "Admin.findByUsername", 
+			query = "select e from Admin e where e.adminUsername = :adminUsername") 
+	}
+)
 public class Admin implements Serializable{
 
 	
@@ -37,7 +45,7 @@ public class Admin implements Serializable{
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
-	@Column(length=100)
+	
 	public String getAdminUsername() {
 		return adminUsername;
 	}
@@ -45,7 +53,7 @@ public class Admin implements Serializable{
 	public void setAdminUsername(String adminUsername) {
 		this.adminUsername = adminUsername;
 	}
-	@Column(length=100)
+	
 	public String getAdminPassword() {
 		return adminPassword;
 	}
