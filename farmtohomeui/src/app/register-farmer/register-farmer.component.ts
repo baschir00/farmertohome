@@ -1,6 +1,7 @@
-import { OnInit, Component } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FarmService } from '../farm.service';
+
 
 @Component({
   selector: 'app-register-farmer',
