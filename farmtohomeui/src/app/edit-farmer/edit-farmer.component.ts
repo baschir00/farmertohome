@@ -62,6 +62,15 @@ export class EditFarmerComponent implements OnInit {
     // this.updateEmployeeDetails()
 
   }
+  deleteProduct(index,productId){
+   // this.assignments.splice(index,1)
+    this.prod2Svc.deleteProductById(productId).subscribe(response=> {
+      this.loadFarmerProducts()
+    })
+    
+      
+    }
+    
 
   ngOnInit() {
     console.log("Login datails: ", this.details.userDetails);
@@ -76,23 +85,7 @@ export class EditFarmerComponent implements OnInit {
       this.router.navigate(['/loginFarmer'])
     }
   }
-  // fetchCurrentFarmerFromService() {
-  //   const farmerId = this.details.userDetails.farmerId
-  //   //will be called by angular after object creation
-  //   this.farmerSvc.findFarmByFarmerId(farmerId).subscribe(
-  //     response => {
-  //       // // this.empSvc.findEmpByEmpno(this.empno).subscribe(
-  //       // // response =>{
-  //       // this.farmerId = response.farmerId
-  //       // this.farmerName = response.farmerName
-  //       // // this.fa = response.salary
-  //       // // this.currentDepartment = response.currentDepartment
-  //       // // this.assignments = response.assignments
 
-
-  //     }
-  //   )
-  // }
   loadFarmerProducts() {
     this.prod2Svc.findProductsByFarmerId(this.farmer.farmerId.toString())
       .subscribe(

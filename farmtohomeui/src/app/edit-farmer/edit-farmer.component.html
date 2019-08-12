@@ -44,6 +44,7 @@
             <tr *ngFor ="let p of assignments; let i = index">
                     <td>{{p.productId}}</td>
                     <td>{{p.productName}}</td>
+                    <td><button (click)="deleteProduct(i, p.productId)">X</button></td>
                     <!-- <td>{{a.proName}}</td> -->
                     <!-- <td><button (click)="deleteProject(i)">x</button></td> -->
     
