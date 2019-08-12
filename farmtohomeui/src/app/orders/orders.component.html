@@ -1,6 +1,6 @@
 <div>
 
-   <h2>Orders</h2> 
+   <h2>Orders</h2>
 </div>
 
 
@@ -9,12 +9,12 @@
 
     <tr>
         <td >Basket Id: </td>
-        <td ngIf="!IsDataPresent">{{basketId}}</td>
-        <td ngIf="IsDataPresent"><input [(ngModel)]="basketId" 
+        <td ngIf="!IsDataPresent">{{orderId}}</td>
+        <td ngIf="IsDataPresent"><input [(ngModel)]="orderId"
                                             #inputBasketId
                                             required=true>
                         <span [hidden]="inputBasketId.valid || inputBasketId.pristine"></span>
-                                        
+
                                         </td>
     </tr>
     <tr>
@@ -33,8 +33,8 @@
                                     #inputDate
                                     required=true>
             <span [hidden]="inputDate.valid || inputDate.pristine"></span>
-            
-            
+
+
             </td>
     </tr>
 </table>
