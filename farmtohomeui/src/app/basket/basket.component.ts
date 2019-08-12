@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Item } from "../item.entity";
 import { ProductService } from "../product.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Product } from "../product.entity";
 import { BasketService } from "../basket.service";
+import { LoginDetailsService } from "../login-details.service";
+import { async } from "rxjs/internal/scheduler/async";
 
 // all added for basket
 @Component({
@@ -18,7 +20,9 @@ export class BasketComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private basketService: BasketService
+    private basketService: BasketService,
+    private details: LoginDetailsService,
+    private router: Router
   ) {
     this.items = [];
   }
@@ -69,9 +73,25 @@ export class BasketComponent implements OnInit {
     this.loadBasket();
   }
 
-  submitOrder() {
-    console.log("updateBasket: ", );
-    this.updateBasket([])
-    this.loadBasket();
+
+
+  async submitOrder() {
+    console.log("submitOrder: ");
+
+    if (this.details.isCustomer()) {
+
+      let result = await this.basketService.submit()
+      console.log(result);
+
+      console.log("basketService.submit: inner func");
+      console.log("basketService.clear")
+      this.basketService.clear();
+      console.log("loadBasket")
+
+      this.loadBasket();
+    } else {
+      console.log("Not loggedin");
+      this.router.navigate(['/loginCustomer']);
+    }
   }
 }

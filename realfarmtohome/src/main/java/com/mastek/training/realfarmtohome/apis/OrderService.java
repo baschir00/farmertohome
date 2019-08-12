@@ -100,20 +100,20 @@ public class OrderService {
 	@Path("/assign/orderItem")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //form data
 	@Produces({MediaType.APPLICATION_JSON})
-	public Order assignOrderItem(@FormParam("orderId") int orderId, @FormParam("orderItemId")int orderItemId) {
+	public OrderItem assignOrderItem(@FormParam("orderId") int orderId, @FormParam("orderItemId")int orderItemId) {
 		try {
 			//fetch the entities to be associated
 			Order ord = findByOrderId(orderId);
 			OrderItem item = orderItemService.findByOrderItemId(orderItemId);
 			//manage the association
-			ord.getOrderitems().add(item);//One assigned with many
+			//ord.getOrderitems().add(item);//One assigned with many
 			item.setCurrentOrder(ord); //many assigned with
 			//update the entity to save the association
-			ord = registerOrUpdateOrder(ord);
-		
+			item = orderItemService.registerOrUpdateOrderItem(item);
 			
 			
-			return ord;
+			
+			return item;
 			
 			
 		} catch (Exception e) {

@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Item } from "./item.entity";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { OrderService } from "./order.service";
+import { LoginDetailsService } from "./login-details.service";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -9,7 +12,7 @@ export class BasketService {
   rootURL: string;
   httpOptions: { headers: HttpHeaders; };
 
-  constructor(private httpSvc: HttpClient) {
+  constructor(private orderSvc: OrderService, private details: LoginDetailsService) {
 
     this.rootURL = 'http://localhost:5980/';
 
@@ -81,6 +84,13 @@ export class BasketService {
     localStorage.setItem("basket", JSON.stringify(basket));
   }
 
+  clear() {
+    let basket = this.getBasketFromStore()
+    basket.forEach( item => {
+      this.remove(item.product.productId);
+    });
+  }
+
   updateItem(item: Item) {
     console.log("updateItem: ", item);
     const basket: Item[] = this.getBasketFromStore();
@@ -89,7 +99,30 @@ export class BasketService {
     this.saveBasketToStore(basket);
   }
 
-  submit(basket: Item[]){
+  submit() {
 
+    if (this.details.isCustomer()) {
+      const basket = this.getBasketFromStore();
+      // Create order
+      console.log("registerOrder");
+      this.orderSvc.registerOrder().subscribe(ordresp => {
+        // link customer to order
+        this.orderSvc.linkOrderToCustomer(ordresp.orderId, this.details.userDetails.customerId).subscribe();
+        // Create all order items
+        basket.forEach(item => {
+          console.log("registerOrderItem");
+          this.orderSvc.registerOrderItem(item.quantity).subscribe(itemresp => {
+            // link items to order
+            this.orderSvc.linkOrderItemToOrder(itemresp.orderItemId, ordresp.orderId).subscribe( resp => {
+              // link products to items
+              this.orderSvc.linkOrderItemToProduct(itemresp.orderItemId, item.product.productId).subscribe();
+            });
+
+
+
+          })
+        })
+      })
+    }
   }
 }
