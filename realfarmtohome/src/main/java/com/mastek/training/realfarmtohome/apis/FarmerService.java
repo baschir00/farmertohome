@@ -36,6 +36,13 @@ private FarmerRepository farmerRepository;
 
 @Autowired
 private ProductService productService;
+
+@GET
+@Path("/list")
+@Produces({MediaType.APPLICATION_JSON})
+public Iterable<Farmer> listAllProducts(){
+	return farmerRepository.findAll();
+}
 	
 @POST
 @Path("/register")
