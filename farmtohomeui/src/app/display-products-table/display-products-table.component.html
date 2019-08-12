@@ -16,6 +16,7 @@
       <th>Price(kg)</th>
       <th>Section</th>
       <th>description</th>
+      <td>Location</td>
       <th>basket</th>
     </tr>
   </thead>
@@ -35,6 +36,7 @@
       <td>{{ item.product.productName }}</td>
       <td>{{ item.product.unitPrice }}</td>
       <td>{{ item.product.description }}</td>
+      <td>{{ item.product.currentFarmer.farmerLocation }}</td>
       <td>{{ item.product.productType }}</td>
       <!-- set quantity of item to add to basket -->
       <td><input type="number" [(ngModel)]="item.quantity" /></td>

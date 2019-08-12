@@ -25,7 +25,9 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { DisplayandfindadminsComponent } from './displayandfindadmins/displayandfindadmins.component';
-
+import { MapApiComponent } from './map-api/map-api.component';
+import { AgmCoreModule } from '@agm/core';
+import { DisplayAdminProductsComponent } from './display-admin-products/display-admin-products.component';
 
 
 
@@ -52,6 +54,8 @@ import { DisplayandfindadminsComponent } from './displayandfindadmins/displayand
     RegisterAdminComponent,
     AdminhomeComponent,
     DisplayandfindadminsComponent,
+    MapApiComponent,
+    DisplayAdminProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,9 @@ import { DisplayandfindadminsComponent } from './displayandfindadmins/displayand
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC_JQ1Hvh5IGwVlzQiW-22Ee5JtR08aM4Y'
+    })
     //added for basket
   ],
 
