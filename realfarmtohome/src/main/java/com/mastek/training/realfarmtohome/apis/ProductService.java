@@ -112,21 +112,18 @@ public class ProductService {
 	@Path("/assign/orderItem")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //form data
 	@Produces({MediaType.APPLICATION_JSON})
-	public Product assignOrderItem(@FormParam("productId") int productId, @FormParam("orderItemId")int orderItemId) {
+	public OrderItem assignOrderItem(@FormParam("productId") int productId, @FormParam("orderItemId")int orderItemId) {
 		try {
 			//fetch the entities to be associated
 			Product prod = findByProductId(productId);
 			OrderItem item = orderItemService.findByOrderItemId(orderItemId);
 			//manage the association
-			prod.getManyorderitems().add(item);//One assigned with many
+			//prod.getManyorderitems().add(item);//One assigned with many
 			item.setCurrentProduct(prod); //many assigned with
 			//update the entity to save the association
-			prod = registerOrUpdateProduct(prod);
+			item = orderItemService.registerOrUpdateOrderItem(item);
 		
-			
-			
-			return prod;
-			
+			return item;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
