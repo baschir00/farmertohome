@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Admin } from './admin';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Admin } from './admin';
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +49,14 @@ export class AdminServiceService {
       this.rootURL + '/register', reqBody, httpOptions);
   }
 
-  loadAllAdminsFromSever(): Observable<Admin[]> {
+  loadAllAdminsFromSever(): Observable<Admin> {
     // [] ??
-    return this.httpsvc.get<Admin[]>(this.rootURL + '/list');
+    return this.httpsvc.get<Admin>(this.rootURL + '/list');
   }
 
+  deleteAdmin(adminId): Observable<Admin> {
 
+    return this.httpsvc.delete<Admin>(this.rootURL + '/delete/' + adminId);
+  }
 
 }
