@@ -29,7 +29,7 @@ export class FarmService {
 
     // TODO:
     const reqBody = "farmerName=" + farmerName + "&farmerLocation=" + farmerLocation
-      + "&farmerEmail=" + farmerEmail; // + "&farmerPassword=" + farmerPassword
+      + "&farmerEmail=" + farmerEmail  + "&farmerPassword=" + farmerPassword;
 
     console.log(reqBody);
 
@@ -83,5 +83,12 @@ export class FarmService {
       reqBody, httpOptions
     );
   }
+  loadAllFarmersFromSever(): Observable<Farmer> {
+    // [] ??
+    return this.httpsvc.get<Farmer>(this.rootURL + "/list");
+  }
+  deleteFarmerFromServer(farmerId): Observable<Farmer> {
 
+    return this.httpsvc.delete<Farmer>(this.rootURL +"/delete/" +farmerId)
+  }
 }

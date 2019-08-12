@@ -21,6 +21,7 @@ export class RegisterFarmerComponent implements OnInit {
     farmerLocation = farmerLocation.value;
     farmerEmail = farmerEmail.value;
     farmerPassword = farmerPassword.value;
+    
     console.log('Registering farmer : addFarmer');
     console.log(farmerName, farmerLocation, farmerEmail, farmerPassword);
 

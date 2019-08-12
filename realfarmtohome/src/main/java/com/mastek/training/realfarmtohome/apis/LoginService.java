@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.mastek.training.realfarmtohome.entities.Admin;
 import com.mastek.training.realfarmtohome.entities.Customer;
 import com.mastek.training.realfarmtohome.entities.Farmer;
+import com.mastek.training.realfarmtohome.repositories.AdminRepository;
 import com.mastek.training.realfarmtohome.repositories.CustomerRepository;
 import com.mastek.training.realfarmtohome.repositories.FarmerRepository;
 
@@ -27,6 +29,9 @@ public class LoginService {
 	@Autowired
 	// Import for Farmer.findByEmail()
 	FarmerRepository farmRepo;
+	
+	@Autowired
+	AdminRepository adminRepository;
 
 	@Autowired
 	// Import for Customer.findByEmail()
@@ -127,4 +132,57 @@ public class LoginService {
 			throw new Exception();
 		}
 	}
+	
+	@Transactional
+	@POST
+	@Path("/admin")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	// REST service for farmer login
+	// Returns 200 and Farmer details on successful login
+	// Or 400 on login failure
+	public Response adminLoginService(@FormParam("adminUsername") String adminUsername,
+			@FormParam("adminPassword") String adminPassword) {
+		System.out.println(adminUsername + " : " + adminPassword);
+		try {
+			// Attempt farmer login with provided details
+			Admin admin = adminLogin(adminUsername, adminPassword);
+			System.out.println(admin);
+			System.out.println("Admin value: " + admin);
+
+			// Return details on successful login
+			if (admin != null) {
+				return Response.status(Response.Status.OK).entity(admin).build();
+			} else {
+				return Response.status(Response.Status.BAD_REQUEST).entity("Admin_AUTH_FAILURE").build();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.serverError().entity("SERVER_ERROR").build();
+		}
+	}
+
+	// Check password for farmer based on email
+	public Admin adminLogin(String adminUsername, String adminPassword) throws Exception {
+		try {
+			// Get farmer by email
+			Admin admin = adminRepository.findByUsername(adminUsername);
+			System.out.println("admin username search by :" + adminUsername + " : " + admin);
+
+			// Check if farmer with email exists and if password matches expected
+			if (admin != null && adminPassword.equals(admin.getAdminPassword())) {
+				return admin;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception();
+		}
+	}
+
+	
+	
 }
+
+
