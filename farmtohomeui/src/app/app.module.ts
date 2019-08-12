@@ -21,6 +21,8 @@ import { ProductsComponent } from './products/products.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from "./registerproduct/registerproduct.component";
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
 
 
 
@@ -44,6 +46,8 @@ import { RegisterproductComponent } from "./registerproduct/registerproduct.comp
     BasketComponent,
     RegisterproductComponent,
     CustomerHomeComponent,
+    LoginAdminComponent,
+    RegisterAdminComponent,
   ],
   imports: [
     BrowserModule,
