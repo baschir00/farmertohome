@@ -23,6 +23,7 @@ import { RegistercustomerComponent } from './registercustomer/registercustomer.c
 import { RegisterproductComponent } from "./registerproduct/registerproduct.component";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { DisplayandfindadminsComponent } from './displayandfindadmins/displayandfindadmins.component';
 
 
@@ -49,6 +50,7 @@ import { DisplayandfindadminsComponent } from './displayandfindadmins/displayand
     CustomerHomeComponent,
     LoginAdminComponent,
     RegisterAdminComponent,
+    AdminhomeComponent,
     DisplayandfindadminsComponent,
   ],
   imports: [

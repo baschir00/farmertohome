@@ -19,7 +19,7 @@ export class CustomerService {
     return this.httpsvc.get<Customer>(this.rootURL + "/find/" + customerId);
   }
 
-  registerCustomer(customerName, customerAddress, customerEmail, customerPassword ) { 
+  registerCustomer(customerName, customerAddress, customerEmail, customerPassword ) {
     console.log('Registering customer : registerCustomer');
 
     const httpOptions = {
