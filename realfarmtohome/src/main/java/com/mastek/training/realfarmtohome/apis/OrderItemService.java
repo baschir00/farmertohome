@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.mastek.training.realfarmtohome.entities.Farmer;
 import com.mastek.training.realfarmtohome.entities.OrderItem;
 import com.mastek.training.realfarmtohome.repositories.OrderItemRepository;
 
@@ -27,6 +27,13 @@ public class OrderItemService {
 	
 	@Autowired
 	OrderItemRepository orderItemRepository;
+	
+	@GET
+	@Path("/list")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Iterable<OrderItem> listAllProducts(){
+		return orderItemRepository.findAll();
+	}
 	
 	@POST
     @Path("/register")
