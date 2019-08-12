@@ -86,9 +86,9 @@ export class FarmService {
       reqBody, httpOptions
     );
   }
-  loadAllFarmersFromSever(): Observable<Farmer> {
+  loadAllFarmersFromSever(): Observable<Farmer[]> {
     // [] ??
-    return this.httpsvc.get<Farmer>(this.rootURL + "/list");
+    return this.httpsvc.get<Farmer[]>(this.rootURL + "/list");
   }
   deleteFarmerFromServer(farmerId): Observable<Farmer> {
 

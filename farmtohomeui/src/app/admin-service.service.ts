@@ -49,9 +49,9 @@ export class AdminServiceService {
       this.rootURL + '/register', reqBody, httpOptions);
   }
 
-  loadAllAdminsFromSever(): Observable<Admin> {
+  loadAllAdminsFromSever(): Observable<Admin[]> {
     // [] ??
-    return this.httpsvc.get<Admin>(this.rootURL + '/list');
+    return this.httpsvc.get<Admin[]>(this.rootURL + '/list');
   }
 
   deleteAdmin(adminId): Observable<Admin> {
