@@ -42,6 +42,9 @@ export class DisplayandfindadminsComponent implements OnInit {
   saveAdmin(admin: Admin) {
     this.isInEditMode = false;
     this.editedId = -1;
+    this.admSvc.updateAdminOnServer(admin).subscribe( () =>  {
+      this.loadAdmins();
+    });
   }
 
   toggleAdmin() {

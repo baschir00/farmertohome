@@ -3,11 +3,13 @@
   {{ buttonName }}
 </button>
 <ng-container *ngIf="!showAdmin">
+    <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search Admins" />
   <table class="table">
-    <input type="text" [(ngModel)]="term" placeholder="Search Admins" />
+
     <tr>
       <th>Admin Id</th>
       <th>Admin Username</th>
+      <th></th>
     </tr>
     <tr
       *ngFor="
@@ -17,11 +19,11 @@
         let i = index
       "
     >
-        <td *ngIf="editedId !== a.adminId">{{ a.adminId }}</td>
-        <td *ngIf="editedId !== a.adminId">{{ a.adminUsername }}</td>
+        <td *ngIf="editedId !== a.adminId"><p>{{ a.adminId }}</p></td>
+        <td *ngIf="editedId !== a.adminId"><p>{{ a.adminUsername }}</p></td>
         <td *ngIf="editedId < 0">
           <button class="btn btn-sm btn-primary" (click)="editAdmin(a)">
-              <i class="fas fa-edit"></i>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
           </button>
           <button
             class="btn btn-sm btn-danger"
@@ -30,8 +32,8 @@
           <i class="fa fa-trash"></i>
           </button>
         </td>
-        <td *ngIf="editedId === a.adminId"><input [(ngModel)]="a.adminId" /></td>
-        <td *ngIf="editedId === a.adminId"><input [(ngModel)]="a.adminUsername" /></td>
+        <td *ngIf="editedId === a.adminId"><input class="form-control" [(ngModel)]="a.adminId" /></td>
+        <td *ngIf="editedId === a.adminId"><input class="form-control" [(ngModel)]="a.adminUsername" /></td>
         <td *ngIf="editedId === a.adminId">
           <button class="btn btn-sm btn-primary" (click)="saveAdmin(a)">
               <i class="fa fa fa-save"></i>
