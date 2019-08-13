@@ -37,7 +37,17 @@ export class CustomerService {
       this.rootURL + '/register', reqBody, httpOptions);
   }
 
-  updateFarmOnServer(customer): Observable<Customer> {
+
+  loadAllCustomerFromSever(): Observable<Customer[]> {
+    return this.httpsvc.get<Customer[]>(this.rootURL + '/list');
+  }
+
+  deleteCustomer(customerId): Observable<Customer> {
+
+    return this.httpsvc.delete<Customer>(this.rootURL + '/delete/' + customerId);
+  }
+
+  updateCustomerOnServer(customer): Observable<Customer> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'

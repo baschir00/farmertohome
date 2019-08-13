@@ -1,16 +1,24 @@
-<p>Manage Admins</p>
+<h1>Manage Admins</h1>
 <button (click)="toggleAdmin()" id="bt">
-  {{ buttonName }}
+  {{ buttonName1 }}
 </button>
-<ng-container *ngIf="!showAdmin">
-    <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search Admins" />
+
+<ng-container *ngIf="showAdmin">
+
+
+
+<input class="form-control" type="text" [(ngModel)]="term" placeholder="Search Admins" />
   <table class="table">
+
 
     <tr>
       <th>Admin Id</th>
       <th>Admin Username</th>
       <th></th>
     </tr>
+
+
+
     <tr
       *ngFor="
         let a of admins
@@ -47,10 +55,17 @@
   </table>
 </ng-container>
 
-<p>Manage Farmers</p>
 
+
+
+
+<h2>Registered Farmers</h2>
+<button (click)="toggleFarmer()" id="bt">
+    {{ buttonName2 }}
+  </button>
+<ng-container *ngIf="showFarmer">
 <table class="table">
-  <input type="text" [(ngModel)]="term2" placeholder="Search Farmer" />
+  <input class="form-control" type="text" [(ngModel)]="term2" placeholder="Search Farmer" />
   <tr>
     <th>Farmer Id</th>
     <th>Farmer Email</th>
@@ -65,11 +80,103 @@
       let i = index
     "
   >
-    <td>{{ a.farmerId }}</td>
-    <td>{{ a.farmerEmail }}</td>
-    <td>{{ a.farmerLocation }}</td>
-    <td>{{ a.farmerName }}</td>
-    <td><button (click)="deleteFarmer(a.farmerId)">Delete</button></td>
-  </tr>
-  <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
-</table>
+
+<td *ngIf="editedId !== a.farmerId"><p>{{ a.farmerId }}</p></td>
+        <td *ngIf="editedId !== a.farmerId"><p>{{ a.farmerEmail }}</p></td>
+        <td *ngIf="editedId !== a.farmerId"><p>{{ a.farmerLocation }}</p></td>
+        <td *ngIf="editedId !== a.farmerId"><p>{{ a.farmerName }}</p></td>
+        <td *ngIf="editedId < 0">
+          <button class="btn btn-sm btn-primary" (click)="editFarmer(a)">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteFarmer(a.farmerId)"
+          >
+          <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        <td *ngIf="editedId === a.farmerId"><input class="form-control" [(ngModel)]="a.farmerId" /></td>
+        <td *ngIf="editedId === a.farmerId"><input class="form-control" [(ngModel)]="a.farmerEmail" /></td>
+        <td *ngIf="editedId === a.farmerId"><input class="form-control" [(ngModel)]="a.farmerLocation" /></td>
+        <td *ngIf="editedId === a.farmerId"><input class="form-control" [(ngModel)]="a.farmerName" /></td>
+        <td *ngIf="editedId === a.farmerId">
+          <button class="btn btn-sm btn-primary" (click)="saveFarmer(a)">
+              <i class="fa fa fa-save"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="cancelFarmerEdit(a)">
+              <i class="fa fa-undo" aria-hidden="true"></i>
+          </button>
+        </td>
+    </tr>
+    <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+  </table>
+</ng-container>
+
+
+
+
+
+<h2>Registered Customers</h2>
+<button (click)="toggleCustomer()" id="bt">
+    {{ buttonName3 }}
+  </button>
+<ng-container *ngIf="showCustomer">
+
+
+    <table class="table">
+    <input class="form-control" type="text" [(ngModel)]="term3" placeholder="Search Customers" />
+
+        <tr>
+          <th>Customer Id</th>
+          <th>Customer Name</th>
+          <th>Customer Email</th>
+          <th>Customer Address</th>
+          <th>Customer Password</th>
+        </tr>
+
+        <tr
+          *ngFor="
+            let a of customer
+              | filter: term3
+              | paginate: { itemsPerPage: 10, currentPage: p_no };
+            let i = index
+          "
+        >
+            <td *ngIf="editedId !== a.customerId"><p>{{ a.customerId }}</p></td>
+            <td *ngIf="editedId !== a.customerId"><p>{{ a.customerName }}</p></td>
+            <td *ngIf="editedId !== a.customerId"><p>{{ a.customerEmail }}</p></td>
+            <td *ngIf="editedId !== a.customerId"><p>{{ a.customerAddress }}</p></td>
+            <td *ngIf="editedId !== a.customerId"><p>{{ a.customerPassword }}</p></td>
+            <td *ngIf="editedId < 0">
+              <button class="btn btn-sm btn-primary" (click)="editCustomer(a)">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deleteCustomer(a.customerId)"
+              >
+              <i class="fa fa-trash"></i>
+              </button>
+            </td>
+            <td *ngIf="editedId === a.customerId"><input class="form-control" [(ngModel)]="a.customerId" /></td>
+            <td *ngIf="editedId === a.customerId"><input class="form-control" [(ngModel)]="a.customerName" /></td>
+            <td *ngIf="editedId === a.customerId"><input class="form-control" [(ngModel)]="a.customerEmail" /></td>
+            <td *ngIf="editedId === a.customerId"><input class="form-control" [(ngModel)]="a.customerAddress" /></td>
+            <td *ngIf="editedId === a.customerId"><input class="form-control" [(ngModel)]="a.customerPassword" /></td>
+            <td *ngIf="editedId === a.customerId">
+              <button class="btn btn-sm btn-primary" (click)="saveCustomer(a)">
+                  <i class="fa fa fa-save"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="cancelCustomerEdit(a)">
+                  <i class="fa fa-undo" aria-hidden="true"></i>
+              </button>
+            </td>
+        </tr>
+        <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+      </table>
+    </ng-container>
+
+
+
+
