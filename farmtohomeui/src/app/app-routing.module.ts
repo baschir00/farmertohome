@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminhomeComponent } from "./adminhome/adminhome.component";
 import { BasketComponent } from './basket/basket.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
+import { DisplayAdminProductsComponent } from './display-admin-products/display-admin-products.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
+import { DisplayandfindadminsComponent } from './displayandfindadmins/displayandfindadmins.component';
+import { EditFarmerComponent } from './edit-farmer/edit-farmer.component';
 import { FarmerHomeComponent } from './farmer-home/farmer-home.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LogincustomerComponent } from './logincustomer/logincustomer.component';
 import { LogindashboardComponent } from './logindashboard/logindashboard.component';
 import { LoginfarmerComponent } from './loginfarmer/loginfarmer.component';
+import { MapApiComponent } from './map-api/map-api.component';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
-import { CustomerHomeComponent } from './customer-home/customer-home.component';
-import { LoginAdminComponent } from "./login-admin/login-admin.component";
-import { RegisterAdminComponent } from "./register-admin/register-admin.component";
-import { AdminhomeComponent } from "./adminhome/adminhome.component";
-import { DisplayandfindadminsComponent } from "./displayandfindadmins/displayandfindadmins.component";
-import { MapApiComponent } from './map-api/map-api.component';
-import { DisplayAdminProductsComponent } from './display-admin-products/display-admin-products.component';
 
 
 
@@ -32,14 +33,13 @@ const routes: Routes = [
   { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'adminhome', component: AdminhomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
+  { path: 'editFarmer', component: EditFarmerComponent },
   { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'registerAdmin', component: RegisterAdminComponent },
-  { path: 'displayAdmins', component:  DisplayandfindadminsComponent},
   { path: 'mapApi', component:  MapApiComponent},
   { path: 'adminProducts', component: DisplayAdminProductsComponent},
-  //added for basket
   { path: '', component: DisplayProductsTableComponent},
- //{ path: 'products', component: ProductsComponent },
+  { path: 'displayAdmins', component: DisplayandfindadminsComponent },
   { path: 'basket', component: BasketComponent },
   { path: '**', redirectTo: '' }
 ];
@@ -48,6 +48,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-//added for basket
+// added for basket
 
-export class AppRoutingModule {}
+export class AppRoutingModule { }

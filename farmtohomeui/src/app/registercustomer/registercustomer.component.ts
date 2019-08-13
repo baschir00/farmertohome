@@ -57,6 +57,5 @@ export class RegistercustomerComponent implements OnInit {
       this.invalidFormMessage = '';
 
     }
-
   }
 }

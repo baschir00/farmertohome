@@ -1,5 +1,5 @@
 export interface Orders {
-    basketId:number,
+    orderId:number,
     customerId:number
     Date:String
 }

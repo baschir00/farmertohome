@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LoginTypes } from './login-types.enum';
+import { Admin } from './admin';
 import { Customer } from './customer';
-import { Admin } from "./admin";
-import { Farmer } from "./farmer";
+import { Farmer } from './farmer';
+import { LoginTypes } from './login-types.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +25,13 @@ export class LoginDetailsService {
 
   // user getter and setter
   loginFarmer(details: Farmer) {
+    this.isLogedIn = true;
     this.userType = LoginTypes.FARMER;
     this.userDetails = details;
   }
 
   loginCustomer(details: Customer) {
+    this.isLogedIn = true;
     this.userType = LoginTypes.CUSTOMER;
     this.userDetails = details;
   }
@@ -41,15 +43,15 @@ export class LoginDetailsService {
 
   // Check loggedin user is a customer
   isCustomer() {
-    return this.userType === LoginTypes.CUSTOMER;
+    return this.isLogedIn && this.userType === LoginTypes.CUSTOMER;
   }
 
   // Check loggedin user is a customer
   isFarmer() {
-    return this.userType === LoginTypes.FARMER;
+    return this.isLogedIn && this.userType === LoginTypes.FARMER;
   }
 
   isAdmin() {
     return this.userType === LoginTypes.ADMIN;
   }
-  }
+}
