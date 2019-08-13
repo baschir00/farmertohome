@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderDB } from './order-db';
+import { OrderItems } from './order-items';
+import { Orders } from './orders';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,7 @@ export class OrderService {
     console.log("Creating Order");
 
     // Sent request
-    return this.httpSvc.post<Orders>(this.rootURL + "order/register", reqBody, this.httpOptions);
+    return this.httpsvc.post<Orders>(this.rootURL + "order/register", reqBody, this.httpOptions);
   }
 
   // Create Order item on server
@@ -47,7 +49,7 @@ export class OrderService {
     console.log(reqBody);
 
     // Sent request
-    return this.httpSvc.post<OrderItems>(this.rootURL + "orderItem/register", reqBody, this.httpOptions);
+    return this.httpsvc.post<OrderItems>(this.rootURL + "orderItem/register", reqBody, this.httpOptions);
   }
 
   // Link an item to it's order
@@ -60,7 +62,7 @@ export class OrderService {
     console.log(reqBody);
 
     // Sent request
-    return this.httpSvc.post<OrderItems>(this.rootURL + "order/assign/orderItem", reqBody, this.httpOptions);
+    return this.httpsvc.post<OrderItems>(this.rootURL + "order/assign/orderItem", reqBody, this.httpOptions);
   }
 
   // Link an order to it's product
@@ -73,7 +75,7 @@ export class OrderService {
     console.log(reqBody);
 
     // Sent request
-    return this.httpSvc.post<Orders>(this.rootURL + "order/assign/customer", reqBody, this.httpOptions);
+    return this.httpsvc.post<Orders>(this.rootURL + "order/assign/customer", reqBody, this.httpOptions);
   }
 
   // Link an item the it's product
@@ -86,7 +88,7 @@ export class OrderService {
     console.log(reqBody);
 
     // Sent request
-    return this.httpSvc.post<OrderItems>(this.rootURL + "product/assign/orderItem", reqBody, this.httpOptions);
+    return this.httpsvc.post<OrderItems>(this.rootURL + "product/assign/orderItem", reqBody, this.httpOptions);
   }
 
 
