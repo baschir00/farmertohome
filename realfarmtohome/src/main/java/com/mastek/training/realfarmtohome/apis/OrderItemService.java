@@ -2,6 +2,7 @@ package com.mastek.training.realfarmtohome.apis;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,7 +32,7 @@ public class OrderItemService {
 	@GET
 	@Path("/list")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Iterable<OrderItem> listAllProducts(){
+	public Iterable<OrderItem> listAllOrderItems(){
 		return orderItemRepository.findAll();
 	}
 	
@@ -65,5 +66,14 @@ public class OrderItemService {
 		}
 		
 	}
+	
+	@DELETE //delete http method
+	@Path("/delete/{orderItemId}")
+	public void deleteByOrderItemId(@PathParam("orderItemId") int orderItemId) {
+		 orderItemRepository.deleteById(orderItemId);
+	}
+	
+	
+	
 
 }

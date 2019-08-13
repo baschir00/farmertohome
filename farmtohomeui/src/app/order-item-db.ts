@@ -1,8 +1,9 @@
 import { OrderDB } from "./order-db";
-import { Product } from "./product.entity";
+import { Product } from "./product";
+
 
 export interface OrderItemDB {
     orderItemId:number
     orders:OrderDB
-    ptoducts:Product
+    products:Product
 }

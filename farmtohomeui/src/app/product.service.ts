@@ -70,6 +70,10 @@ findProductsById(productId: number): Observable<Product> {
     // [] ??
     return this.httpsvc.get<Product[]>(this.rootURL + "/list");
   }
+  deleteAllProductsFromServer(productId): Observable<Product[]> {
+
+    return this.httpsvc.delete<Product[]>(this.rootURL +"/delete/" +productId)
+  }
 
   createCustomerDetails(): Observable<Customer> {
 

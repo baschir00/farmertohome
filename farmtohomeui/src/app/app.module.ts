@@ -27,6 +27,8 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { DisplayandfindadminsComponent } from './displayandfindadmins/displayandfindadmins.component';
 import { MapApiComponent } from './map-api/map-api.component';
 import { AgmCoreModule } from '@agm/core';
+
+
 import { DisplayAdminProductsComponent } from './display-admin-products/display-admin-products.component';
 
 
@@ -65,6 +67,8 @@ import { DisplayAdminProductsComponent } from './display-admin-products/display-
     Ng2SearchPipeModule,
     NgxPaginationModule,
     AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyC_JQ1Hvh5IGwVlzQiW-22Ee5JtR08aM4Y'
     })
     //added for basket
