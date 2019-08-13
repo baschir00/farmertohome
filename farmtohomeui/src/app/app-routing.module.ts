@@ -5,6 +5,7 @@ import { BasketComponent } from './basket/basket.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { DisplayProductsTableComponent } from './display-products-table/display-products-table.component';
 import { DisplayandfindadminsComponent } from './displayandfindadmins/displayandfindadmins.component';
+import { EditFarmerComponent } from './edit-farmer/edit-farmer.component';
 import { FarmerHomeComponent } from './farmer-home/farmer-home.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LogincustomerComponent } from './logincustomer/logincustomer.component';
@@ -30,6 +31,8 @@ const routes: Routes = [
   { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'adminhome', component: AdminhomeComponent },
   { path: 'products', component: DisplayProductsTableComponent },
+  { path: 'editFarmer', component: EditFarmerComponent },
+
   { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'registerAdmin', component: RegisterAdminComponent },
   { path: 'displayAdmins', component: DisplayandfindadminsComponent },

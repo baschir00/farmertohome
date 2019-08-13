@@ -11,64 +11,84 @@ import { FarmService } from '../farm.service';
 })
 export class DisplayandfindadminsComponent implements OnInit {
 
-  admin: Admin
-  showAdmin:boolean 
-  buttonName:any 
-  farmer: Farmer
-  constructor( private admSvc: AdminServiceService,private farmSvc:FarmService) {
-    this.showAdmin=false;
-    this.buttonName="Show Admins"
-   }
+  isInEditMode: boolean;
+  admins: Admin[]
+  editedId: number;
+  showAdmin: boolean;
+  buttonName: any;
+  farmers: Farmer[];
 
-  ngOnInit() { 
-    this.loadAdmins()
+  constructor(private admSvc: AdminServiceService, private farmSvc: FarmService) {
+    this.showAdmin = false;
+    this.cancelAdminEdit();
+    this.buttonName = "Show Admins"
+  }
+
+  ngOnInit() {
+    this.loadAdmins();
     this.loadFarmers()
- 
+  }
 
+  cancelAdminEdit() {
+    this.isInEditMode = false;
+    this.editedId = -1;
+  }
+
+  editAdmin(admin: Admin) {
+    this.isInEditMode = true;
+    this.editedId = admin.adminId;
+  }
+
+  saveAdmin(admin: Admin) {
+    this.isInEditMode = false;
+    this.editedId = -1;
+    this.admSvc.updateAdminOnServer(admin).subscribe( () =>  {
+      this.loadAdmins();
+    });
   }
 
   toggleAdmin() {
     this.showAdmin = !this.showAdmin;
 
     // CHANGE THE NAME OF THE BUTTON.
-    if(this.showAdmin)  
+    if (this.showAdmin)
       this.buttonName = "Hide Admins";
     else
       this.buttonName = "Show Admins";
   }
 
-loadFarmers(){
-this.farmSvc.loadAllFarmersFromSever().subscribe(response => {
+  loadFarmers() {
+    this.farmSvc.loadAllFarmersFromSever().subscribe(response => {
 
-  this.farmer=response;
-}
-  
-  )
+      this.farmers = response;
+    }
 
-}
+    )
 
-deleteFarmer(farmerId){
-this.farmSvc.deleteFarmerFromServer(farmerId).subscribe(() => {
-  this.loadFarmers()
-})
+  }
 
-}
+  deleteFarmer(farmerId) {
+    this.farmSvc.deleteFarmerFromServer(farmerId).subscribe(() => {
+      this.loadFarmers()
+    })
+
+  }
 
 
-loadAdmins() {
-  this.admSvc.loadAllAdminsFromSever().subscribe(resp => {
+  loadAdmins() {
+    this.admSvc.loadAllAdminsFromSever().subscribe(resp => {
 
-    this.admin = resp;
-  })
-}
+      this.admins = resp;
+    })
+  }
 
-  deleteAdmin(adminId){
+  deleteAdmin(adminId) {
 
     this.admSvc.deleteAdmin(adminId).subscribe(() => {
       this.loadAdmins()
     })
 
- 
+
 
   }
 

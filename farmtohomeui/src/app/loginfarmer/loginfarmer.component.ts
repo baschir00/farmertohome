@@ -45,7 +45,7 @@ export class LoginfarmerComponent implements OnInit {
           // If login successful then save responce and nav to farmer hone page
           console.log('Authenication Success');
           this.loginDetails.loginFarmer(resp);
-          this.router.navigate(['/farmerhome']);
+          this.router.navigate(['/editFarmer']);
         },
         // If login failure
         errorResp => {

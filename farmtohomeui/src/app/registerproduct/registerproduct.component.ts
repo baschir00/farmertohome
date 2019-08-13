@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { FarmService } from '../farm.service';
 import { Product } from '../product';
+import { LoginDetailsService } from "../login-details.service";
 
 @Component({
   selector: 'app-registerproduct',
@@ -15,7 +16,7 @@ export class RegisterproductComponent implements OnInit {
   isProductFormValid: boolean
   invalidFormMessage: string
 
-  constructor(private productSvc: ProductService, private farmSvc: FarmService) {
+  constructor(private productSvc: ProductService, private farmSvc: FarmService, private details: LoginDetailsService) {
     this.farmerId = 4;
   }
 
@@ -49,7 +50,7 @@ export class RegisterproductComponent implements OnInit {
             //console.log("registered product");
             this.result = responseDep;
             //console.log(this.result, "results in");
-            this.farmSvc.assignProductToFarm(this.farmerId, this.result.productId)
+            this.farmSvc.assignProductToFarm(this.details.userDetails.farmerId , this.result.productId)
             .subscribe(
               respone => {
               this.result.productId = respone.productId

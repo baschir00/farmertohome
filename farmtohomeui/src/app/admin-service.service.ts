@@ -42,16 +42,15 @@ export class AdminServiceService {
         'Content-Type': 'application/x-www-form-urlencoded'
       })
     };
-    const reqBody = 'adminrId=' + admin.adminId + '&adminUsername=' +
+    const reqBody = 'adminId=' + admin.adminId + '&adminUsername=' +
       admin.adminUsername + '&adminPassword' + admin.adminPassword;
-    // post(URL,body,httpOptionswithHeaders)
+
     return this.httpsvc.post<Admin>(
       this.rootURL + '/register', reqBody, httpOptions);
   }
 
-  loadAllAdminsFromSever(): Observable<Admin> {
-    // [] ??
-    return this.httpsvc.get<Admin>(this.rootURL + '/list');
+  loadAllAdminsFromSever(): Observable<Admin[]> {
+    return this.httpsvc.get<Admin[]>(this.rootURL + '/list');
   }
 
   deleteAdmin(adminId): Observable<Admin> {
