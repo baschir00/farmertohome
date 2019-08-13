@@ -39,6 +39,7 @@ export class DisplayAdminProductsComponent implements OnInit {
   deleteOrder(orderId) {
     this.ordSvc.deleteOrderFromServer(orderId).subscribe(() => {
       this.loadOrders()
+      this.loadOrderItems()
     })
   }
 

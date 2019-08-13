@@ -4,6 +4,6 @@ import { Product } from "./product";
 
 export interface OrderItemDB {
     orderItemId:number
-    orders:OrderDB
-    products:Product
+    currentOrder:OrderDB
+    currentProduct:Product
 }
