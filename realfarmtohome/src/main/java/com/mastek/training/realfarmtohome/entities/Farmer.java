@@ -43,10 +43,18 @@ public class Farmer implements Serializable {
 
 	@FormParam("farmerName")
 	private String farmerName;
-
+	
 	// Farmer/farm location
 	@FormParam("farmerLocation")
 	private String farmerLocation;
+
+	// Farmer/farm location
+	@FormParam("farmerLocationLat")
+	private double farmerLocationLat;
+	
+	// Farmer/farm location
+	@FormParam("farmerLocationLat")
+	private double farmerLocationLng;
 
 	// Farmer login and contact email
 	@FormParam("farmerEmail")
@@ -95,6 +103,22 @@ public class Farmer implements Serializable {
 
 	public void setFarmerLocation(String farmerLocation) {
 		this.farmerLocation = farmerLocation;
+	}
+
+	public double getFarmerLocationLat() {
+		return farmerLocationLat;
+	}
+
+	public void setFarmerLocationLat(double farmerLocationLat) {
+		this.farmerLocationLat = farmerLocationLat;
+	}
+
+	public double getFarmerLocationLng() {
+		return farmerLocationLng;
+	}
+
+	public void setFarmerLocationLng(double farmerLocationLng) {
+		this.farmerLocationLng = farmerLocationLng;
 	}
 
 	public String getFarmerEmail() {
