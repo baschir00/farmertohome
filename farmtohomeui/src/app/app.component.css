@@ -1,17 +1,18 @@
 .jumbotron {
   margin-bottom: 0px;
-  background-image: url(../assets/img/jumbotronbackground.jpeg);
+  background-image: url(../assets/img/veg1.jpg);
   background-position: 0% 75%;
   background-size: cover;
   background-repeat: no-repeat;
-  color: white;
-  text-shadow: black 0.3em 0.3em 0.3em;
+  color: rgb(243, 237, 239);
+  font-size: 28px;
+  /* text-shadow: rgb(206, 34, 4) 0.3em 0.3em 0.3em; */
   background-attachment: fixed;
 }
 
 /* change the background color */
 .navbar-custom {
-  background-color: rgb(235, 211, 104);
+  background-color: rgb(#87D135);
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -27,7 +28,8 @@
 .navbar-custom .nav-item:focus .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
   color: rgb(49, 45, 28);
-  background-color: rgb(189, 164, 54);
+  
+  background-color: rgb(70, 189, 54);
 }
 
 /* .parent-container {
@@ -37,3 +39,17 @@
 /* .main-container {
    background-color: #EBD778;
 } */
+h2{
+background-color: rgb(252, 252, 252);
+color: black;
+text-align: center;
+border-style: double;
+border-radius: 5px;
+border-width: 15px;
+margin-left: auto;
+margin-right: auto;
+/* margin-top:auto;
+margin-bottom: auto; */
+display:inline;
+
+}
