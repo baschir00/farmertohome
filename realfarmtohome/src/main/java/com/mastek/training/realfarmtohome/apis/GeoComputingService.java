@@ -6,6 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mastek.training.realfarmtohome.entities.Customer;
 import com.mastek.training.realfarmtohome.entities.Farmer;
 
 @Component
@@ -16,7 +17,7 @@ public class GeoComputingService {
 	private String requestTemplate;
 
 	public GeoComputingService() {
-		this.setApiKey("AIzaSyB0K2U5UPdsElSZYcD22AsGjGN1DESg_-Y");
+		this.setApiKey("");
 		this.setRequestTemplate("https://maps.googleapis.com/maps/api/geocode/json?key=%s&address=%s");
 	}
 	
@@ -75,6 +76,20 @@ public class GeoComputingService {
 	    return farmer;
 	}
 	
+	public Farmer addCustomerCoordinates(Customer customer, String address) {
+		String json = getGeoCodeJSON(address);
+		
+		double[] coords = getCoordinatesFromJSON(json);
+		customer.setCustomerLocationLat(coords[0]);
+		customer.setCustomerLocationLng(coords[1]);
+	    
+	    return customer;
+	}
+	
+	public double calculateDistance() {
+		
+	}
+ 	
 	
 
 }
