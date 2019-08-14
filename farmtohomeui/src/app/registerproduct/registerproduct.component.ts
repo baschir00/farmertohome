@@ -78,8 +78,7 @@ export class RegisterproductComponent implements OnInit {
     }
 
   }
-
-  // loadProducts() {
+df
   //   this.productSvc.loadAllProductsFromSever().subscribe(response => {
   //   this.results = response
   //   })
