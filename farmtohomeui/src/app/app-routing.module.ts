@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'customerhome', component: CustomerHomeComponent },
   { path: 'adminhome',canActivate: [AdminauthGuard], component: AdminhomeComponent },
   { path: 'products',canActivate: [CustomerauthGuard], component: DisplayProductsTableComponent },
-  { path: 'editFarmer', component: EditFarmerComponent },
+  { path: 'editFarmer',canActivate: [FarmerauthGuard], component: EditFarmerComponent },
   { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'mapApi', component:  MapApiComponent},
   { path: 'adminProducts', component: DisplayAdminProductsComponent},
