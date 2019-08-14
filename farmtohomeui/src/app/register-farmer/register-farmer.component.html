@@ -1,38 +1,100 @@
-<p>register-farmer works!</p>
+<div *ngIf="!isFarmerFormValid" class="bg-danger text-white rounded">
+    {{ invalidFormMessage }}
+  </div>
 
-<form (submit)="addFarmer(fname, flocation, femail, fpassword)"> 
-
+<form (submit)="addFarmer()">
   <table class="table">
-    <tr>
-      <td>
-        <input name="name" placeholder="Name" #fname>
+<tr>
+        <td>
+        <!-- <input name="name" placeholder="Name" #fname /> -->
+        <input
+          class="form-control"
+          [(ngModel)]="farmer.farmerName"
+          ngModel [required]="true"
+          placeholder="Name"
+          name="farmerName"
+          id="farmerName"
+          #iFarmerName="ngModel"
+          minlength="1"
+          maxlength="45"
+        />
+
+        <span [hidden]="iFarmerName.untouched||iFarmerName.valid" class="bg-warning text-white rounded">
+          You must provide a name.</span
+        >
       </td>
     </tr>
     <tr>
       <td>
-        <input name="location" placeholder="location" #flocation>
+        <input
+        class="form-control"
+        [(ngModel)]="farmer.farmerLocation"
+        ngModel [required]="true"
+        placeholder="Location"
+        name="farmerLocation"
+        id="farmerLocation"
+        #iFarmerLocation="ngModel"
+        minlength="1"
+        maxlength="45"
+      />
+      <span [hidden]="iFarmerLocation.untouched||iFarmerLocation.valid" class="bg-warning text-white rounded">
+        You must provide an address.</span
+      >
       </td>
     </tr>
     <tr>
       <td>
-        <input name="email" placeholder="email" #femail>
+        <input
+        class="form-control"
+        [(ngModel)]="farmer.farmerEmail"
+        ngModel [email]="true" [required]="true"
+        placeholder="Email"
+        name="farmerEmail"
+        id="farmerEmail"
+        #iFarmerEmail="ngModel"
+        minlength="1"
+        maxlength="45"
+      />
+      <span [hidden]="iFarmerEmail.untouched||iFarmerEmail.valid" class="bg-warning text-white rounded">
+        You must provide a valid email address.</span
+      >
       </td>
     </tr>
     <tr>
       <td>
-        <input name="password" placeholder="password" #fpassword>
+        <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="farmer.farmerPassword"
+        ngModel [required]="true"
+        placeholder="Password"
+        name="farmerPassword"
+        id="farmerPassword"
+        #iFarmerPassword="ngModel"
+        minlength="6"
+        maxlength="45"
+      />
+      <span [hidden]="iFarmerPassword.untouched||iFarmerPassword.valid" class="bg-warning text-white rounded">
+        Your password must be atleast 6 characters.</span
+      >
       </td>
     </tr>
     <tr>
       <td>
-        <input type="submit" value="Add">
+        <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="farmerPasswordConfirm"
+        placeholder="Confirm Password"
+        name="farmerPassword"
+        id="farmerPassword"
+      />
+
       </td>
     </tr>
     <tr>
       <td>
-        <div [hidden]="invalidFormMessage">
-          {{invalidFormMessage}}
-        </div>
+        <input type="submit" value="Add" />
       </td>
     </tr>
   </table>
