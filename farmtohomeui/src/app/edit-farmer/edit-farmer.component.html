@@ -1,16 +1,16 @@
 <div class="jumbotron text-center">
         <h2>Farmer Homepage</h2>
     </div>
-    
-    
+
+
     <table>
         <tr>
             <td>farmer Id: </td>
             <td></td>
             <td>{{farmer.farmerId}}</td>
- 
-            
-            <td><button (click)="toggleEdits()">{{(isEditable)?"save":"Edit"}}</button></td> 
+
+
+            <td><button (click)="toggleEdits()">{{(isEditable)?"save":"Edit"}}</button></td>
          </tr>
          <tr>
                 <td>Name: </td>
@@ -23,36 +23,39 @@
                                 #inputEmpno="ngModel"
                                 minlength="3"
                                 maxlength="25">
-            
-            
+
+
                             <span [hidden]="inputFarmerId.valid || inputFarmerId.pristine" class="alert alert-danger">F should not be less than 3 digits</span> -->
                         </div>
                        </td>
         </tr>
-    
-    
+
+
     </table>
     <table>
             <tr>
                 <th>Product ID</th>
-               
+
                 <th>Product name</th>
                 <!-- <th>Customer Name</th> -->
                 <!-- <th><button (click)="showProjectForm()">+</button></th> -->
             </tr>
-    
+
             <tr *ngFor ="let p of assignments; let i = index">
                     <td>{{p.productId}}</td>
                     <td>{{p.productName}}</td>
                     <td><button (click)="deleteProduct(i, p.productId)">X</button></td>
                     <!-- <td>{{a.proName}}</td> -->
                     <!-- <td><button (click)="deleteProject(i)">x</button></td> -->
-    
+
             </tr>
-        
-        
-        
+
+
+
         </table>
-    
-    
-  
+
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/registerProduct">Register Product</a>
+      </li>
+
+

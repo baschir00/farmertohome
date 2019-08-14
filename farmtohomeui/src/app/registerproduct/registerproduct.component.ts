@@ -3,6 +3,7 @@ import { ProductService } from '../product.service';
 import { FarmService } from '../farm.service';
 import { Product } from '../product';
 import { LoginDetailsService } from "../login-details.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-registerproduct',
@@ -16,7 +17,8 @@ export class RegisterproductComponent implements OnInit {
   isProductFormValid: boolean
   invalidFormMessage: string
 
-  constructor(private productSvc: ProductService, private farmSvc: FarmService, private details: LoginDetailsService) {
+  constructor(private productSvc: ProductService, private farmSvc: FarmService,
+    private details: LoginDetailsService, private router: Router) {
     this.farmerId = 4;
   }
 
@@ -62,7 +64,7 @@ export class RegisterproductComponent implements OnInit {
 
       this.isProductFormValid = true;
       this.invalidFormMessage = '';
-
+      this.router.navigate(['/editFarmer']);
     }
 
   }
