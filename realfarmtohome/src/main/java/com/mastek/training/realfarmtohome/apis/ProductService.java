@@ -13,12 +13,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.mastek.training.realfarmtohome.entities.Order;
 import com.mastek.training.realfarmtohome.entities.OrderItem;
 import com.mastek.training.realfarmtohome.entities.Product;
@@ -50,8 +48,20 @@ public class ProductService {
 	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON) // object to be given in json
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Transactional
 	public Product registerOrUpdateProduct(@BeanParam Product prod) {
-		prod = productRepository.save(prod);
+		Product currentProd = findByProductId(prod.getProductId());
+		if(currentProd!=null) {
+			currentProd.setProductName(prod.getProductName());
+			currentProd.setDescription(prod.getDescription());
+			currentProd.setProductType(prod.getProductType());
+			currentProd.setUnitPrice(prod.getUnitPrice());
+		//	currentProd.setCurrentFarmer(prod.getCurrentFarmer());
+			prod = productRepository.save(currentProd);
+		}
+		else {
+			prod = productRepository.save(prod);
+		}
 		System.out.println("Product Registered" + prod);
 		return prod;
 	}
@@ -62,10 +72,12 @@ public class ProductService {
 		MediaType.APPLICATION_JSON, // object to be given in json
 		MediaType.APPLICATION_XML // Object to be given in XML
 	})
-	public Product findByProductId(@PathParam("productId")
-									int productId) {
+	@Transactional
+	public Product findByProductId(
+			@PathParam("productId")int productId) {
 		try {
-			return productRepository.findById(productId).get();			
+			Product prod = productRepository.findById(productId).get();
+			return prod;		
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
