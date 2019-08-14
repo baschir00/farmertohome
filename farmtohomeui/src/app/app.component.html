@@ -30,6 +30,7 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
     </li>
+<<<<<<< Updated upstream
     <li class="nav-item">
       <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
     </li>
@@ -40,10 +41,34 @@
     </li>
     <li>
     </div>
+=======
+    <li>
+      
+>>>>>>> Stashed changes
 
 
 
     </li>
+<<<<<<< Updated upstream
+=======
+
+    
+    <div  class="dropdown" >
+        <!-- Add an additional button , to-->
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login/Register
+          </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="/loginCustomer">Login/Register Customer</a>
+            <a class="dropdown-item" routerLink="/loginFarmer">Login/Register Farmer</a>
+        </div>
+        </div>
+        <div *ngIf="this.loginSvc.isLogedIn">
+            <li class="nav-item">
+              <a class="nav-link" (click)="this.logout()">Logout</a>
+            
+            </div>
+>>>>>>> Stashed changes
 
   </ul>
 </nav>
