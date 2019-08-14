@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from './customer.service';
-import { from } from 'rxjs';
-import { Customer } from './customer';
+import { BasketService } from "./basket.service";
 import { LoginDetailsService } from "./login-details.service";
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,18 +12,26 @@ export class AppComponent implements OnInit {
   //added for basket
   
 
-  constructor(private loginSvc:LoginDetailsService){
-
+  constructor(private loginSvc:LoginDetailsService , private basketSvc:BasketService){
+   
     
 
 
   }
 
   ngOnInit(){
-    
+     
 
   }
 
+
+    logout(){
+      this.loginSvc.logout()
+      this.basketSvc.clear();
+
+
+    }
+  
   }
 
 
