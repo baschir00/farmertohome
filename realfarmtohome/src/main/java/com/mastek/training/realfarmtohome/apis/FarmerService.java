@@ -43,7 +43,8 @@ private ProductService productService;
 public Iterable<Farmer> listAllProducts(){
 	return farmerRepository.findAll();
 }
-	
+
+
 @POST
 @Path("/register")
 @Produces(MediaType.APPLICATION_JSON) // object to be given in json

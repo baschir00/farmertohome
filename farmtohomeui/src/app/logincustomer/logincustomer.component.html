@@ -1,42 +1,80 @@
-<form class="" form (click)="loginCustomer()">
-  <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
-    {{ incorrectUserDetailsMessage }}
-  </p>
 
-  <div class="email">
-    <label for="email">Email</label>
-    <input
-      class="form-field"
-      type="text"
-      name="email"
-      id="email"
-      value=""
-      placeholder="Please enter your email"
-      [(ngModel)]="customerLoginDetails.customerEmail"
-    />
-  </div>
-  <div class="password">
-    <label for="password">Password</label>
-    <input
-      class="form-field"
-      type="password"
-      name="password"
-      id="password"
-      value=""
-      placeholder="please enter your password"
-      [(ngModel)]="customerLoginDetails.customerPassword"
-    />
-  </div>
 
-  <div class="login">
-    <label for="login"></label>
-    <input
-      class="btn btn-primary"
-      type="submit"
-      name="Login"
-      id="login"
-      placeholder="login"
-      value="Login"
-    />
-  </div>
-</form>
+  <form class="form-horizontal" class="form-signin" (click)="loginCustomer()">
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="jumbotron text-center" style="margin-top:20px;">
+              
+              <h2>Login Customer</h2> </div>
+              <hr>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="name">Email Address</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  
+                  <input 
+                  type="text" 
+                  id="email"
+                  class="form-control"
+                  value=""
+                  placeholder="Email address"
+                  [(ngModel)]="customerLoginDetails.customerEmail"
+                     required autofocus>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="password">Password</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group has-danger">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                      <input type="password" 
+                      id="password" 
+                      class="form-control" 
+                      type="text"
+                      placeholder="Password"
+                      value=""
+                      [(ngModel)]="customerLoginDetails.customerPassword" 
+                      required autofocus>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+             
+            `<button class="btn btn-primary"
+            type="submit"
+            name="Login"
+            id="login"
+            placeholder="login"
+            value="Login" class="btn btn-success"><i class="fa fa-user-plus"></i> Login </button>
+            
+          </div>
+         
+    
+          <div class="col-md-3">
+              <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
+                              {{ incorrectUserDetailsMessage }}
+                            </p>
+                      </span>
+              </div>
+          </div>
+      </div>
+      <p>Haven't Registered ? <a routerLink="/registerCustomer">Click Here</a></p>
+    </form>
