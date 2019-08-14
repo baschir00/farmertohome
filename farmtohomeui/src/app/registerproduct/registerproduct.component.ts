@@ -25,11 +25,7 @@ export class RegisterproductComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkPassword(password, comfirmpassword) {
-    if (password.value === comfirmpassword) {
 
-    }
-  }
 
   addProduct(productName, productType, description, unitPrice) {
     productName = productName.value;
@@ -57,6 +53,7 @@ export class RegisterproductComponent implements OnInit {
               respone => {
               this.result.productId = respone.productId
               this.result.farmerId = respone.farmerId
+              this.productSvc.loadAllProductsFromSever()
             }
           );
          }
@@ -68,4 +65,6 @@ export class RegisterproductComponent implements OnInit {
     }
 
   }
+
+
 }

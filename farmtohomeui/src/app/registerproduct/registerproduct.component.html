@@ -6,7 +6,7 @@
 
 
 
-            
+
                     <form class="form-horizontal"  (submit)="addProduct(productName,productType, description, unitPrice)" >
                     <div class="row">
                         <div class="col-md-3"></div>
@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                 <div class="input-group-addon" style="width: 2.6rem"></div>
-                                    <input type="text" id="producttype" #productType class="form-control" placeholder="Name" required autofocus>
+                                    <input type="text" id="producttype" #productName class="form-control" placeholder="Name" required autofocus>
                                 </div>
                             </div>
                             </div>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                       
+
                     </div>
                     <div class="row">
                         <div class="col-md-3 field-label-responsive">
@@ -70,14 +70,14 @@
                             </div>
                         </div>
                     </div>
-                    
-                  
+
+
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <button type="submit" value="add" class="btn btn-success"> Add Product</button>
                         </div>
-                  
+
                         <div class="col-md-3">
                             <div class="form-control-feedback">
                                     <span class="text-danger align-middle">

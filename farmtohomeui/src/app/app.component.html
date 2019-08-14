@@ -7,33 +7,20 @@
   <ul class="navbar-nav">
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/products">Find Products</a>
+      <a class="nav-link" routerLink="/products">Products</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/basket">My Basket</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
-    </li>
-
-    
 
     <li class="nav-item">
       <a class="nav-link" routerLink="/mapApi">View Map</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
-    </li>
+        <a class="nav-link" routerLink="/basket">My Basket</a>
+      </li>
 
     <li>
-      <div *ngIf="this.loginSvc.isLogedIn">
-    <li class="nav-item">
-      <a class="nav-link" (click)="this.logout()">Logout</a>
-    </li>
-    <li>
-    </div>
-    <div class="dropdown">
+
+    <div class="dropdown" *ngIf="!this.loginSvc.isLogedIn">
         <!-- Add an additional button , to-->
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Login/Register
@@ -44,13 +31,13 @@
         </div>
         </div>
 
-
-
-
-
+    <li>
+        <div *ngIf="this.loginSvc.isLogedIn">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/mapApi">View Map</a>
+        <a class="nav-link" (click)="this.logout()">Logout</a>
       </li>
+    </div>
+
   </ul>
 
 
