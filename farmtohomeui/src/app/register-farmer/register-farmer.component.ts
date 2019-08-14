@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FarmService } from '../farm.service';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterFarmerComponent implements OnInit {
   isFarmerFormValid: boolean;
   invalidFormMessage: string;
 
-  constructor(private farmSvc: FarmService) { }
+  constructor(private farmSvc: FarmService,private router: Router) { }
 
   ngOnInit() { }
 
@@ -35,7 +36,7 @@ export class RegisterFarmerComponent implements OnInit {
         .subscribe(
           responseDep => {
             console.log('registered farmer');
-
+            this.router.navigate(['loginFarmer'])
           }
         );
 

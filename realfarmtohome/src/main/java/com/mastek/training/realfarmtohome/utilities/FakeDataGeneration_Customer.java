@@ -26,11 +26,12 @@ public class FakeDataGeneration_Customer {
 		int n = 1000;
 		Faker faker = new Faker(new Locale ("en-GB"));
 		Customer customer = new Customer();
-		String name = faker.name().fullName();
-		String password = faker.bothify("%%##%%") ;
-		String email = faker.bothify("%%%##%%@gmail.com");
-		String streetAddress = faker.address().streetAddress();
+		
 		for (int i = 0; i < n; i++) {
+			String name = faker.name().fullName();
+			String password = faker.bothify("%%##%%") ;
+			String email = faker.bothify("%%%##%%@gmail.com");
+			String streetAddress = faker.address().streetAddress();
 			
 			customer.setCustomerName(faker.name().fullName());
 			customer.setCustomerAddress(faker.address().streetAddress());

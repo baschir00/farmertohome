@@ -52,6 +52,7 @@ public class FakeDataGeneration {
 			farmer.setFarmerPassword(faker.bothify("%%##%%"));
 			farmer.setFarmerEmail(faker.bothify("%%%##%%@gmail.com"));
 			farmerservice.registerOrUpdateFarmer(farmer);
+			farmerservice.assignProduct(1, 1)
 		}
 		
 		
