@@ -22,7 +22,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/products">Find Produts</a>
+      <a class="nav-link" routerLink="/products">Find Products</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="/basket">My Basket</a>
@@ -30,13 +30,32 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
+    </li>
+    <li>
+      <div *ngIf="this.loginSvc.isLogedIn">
+    <li class="nav-item">
+      <a class="nav-link" (click)="this.loginSvc.logout()">Logout</a>
+    </li>
+    <li>
+    </div>
+
+
+
+    </li>
+
   </ul>
 </nav>
+<!-- <table>
+  <td>
+*ngIf="isLogedIn" ><button (click)="isLogedIn()">Logout</button>
+</table> -->
 
 <div class="container parent-container">
-    <div class="row main-container">
-        <div class="col-sm-12">
-  <router-outlet></router-outlet>
-  </div>
+  <div class="row main-container">
+    <div class="col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { from } from 'rxjs';
 import { Customer } from './customer';
+import { LoginDetailsService } from "./login-details.service";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,19 @@ import { Customer } from './customer';
 //implements OnInit added for basket
 export class AppComponent implements OnInit {
   //added for basket
-  ngOnInit(){}
+  
+
+  constructor(private loginSvc:LoginDetailsService){
+
+    
+
+
+  }
+
+  ngOnInit(){
+    
+
+  }
 
   }
 

@@ -49,6 +49,7 @@ import { NgModule } from "@angular/core";
     RegisterAdminComponent,
     AdminhomeComponent,
     DisplayandfindadminsComponent,
+    
   ],
   imports: [
     BrowserModule,
