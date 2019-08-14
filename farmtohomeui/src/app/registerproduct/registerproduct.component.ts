@@ -12,10 +12,11 @@ import { Router } from "@angular/router";
 })
 export class RegisterproductComponent implements OnInit {
   result: Product;
-
   farmerId: number
   isProductFormValid: boolean
   invalidFormMessage: string
+  results: Product[]
+
 
   constructor(private productSvc: ProductService, private farmSvc: FarmService,
     private details: LoginDetailsService, private router: Router) {
@@ -23,6 +24,8 @@ export class RegisterproductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadProducts()
+
   }
 
 
@@ -53,18 +56,23 @@ export class RegisterproductComponent implements OnInit {
               respone => {
               this.result.productId = respone.productId
               this.result.farmerId = respone.farmerId
-              this.productSvc.loadAllProductsFromSever()
+
             }
           );
          }
        );
-
       this.isProductFormValid = true;
       this.invalidFormMessage = '';
       this.router.navigate(['/editFarmer']);
+      this.loadProducts()
     }
 
   }
 
+  loadProducts() {
+    this.productSvc.loadAllProductsFromSever().subscribe(response => {
+    this.results = response
+    })
+    }
 
 }

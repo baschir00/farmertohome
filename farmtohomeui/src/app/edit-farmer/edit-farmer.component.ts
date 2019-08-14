@@ -75,7 +75,7 @@ export class EditFarmerComponent implements OnInit {
   ngOnInit() {
     console.log("Login datails: ", this.details.userDetails);
     console.log("is farmer logedin : ", this.details.isFarmer);
-    this.loadFarmerProducts()
+
     if (this.details.isFarmer()) {
       //this.fetchCurrentFarmerFromService()
       this.farmer = this.details.userDetails
