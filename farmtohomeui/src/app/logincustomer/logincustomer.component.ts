@@ -44,7 +44,7 @@ export class LogincustomerComponent implements OnInit {
           // If login successful then save responce and nav to customer hone page
           console.log('Authenication Success');
           this.loginDetails.loginCustomer(resp);
-          this.router.navigate(['/customerhome']);
+          this.router.navigate(['/products']);
         },
         // If login failure
         errorResp => {
