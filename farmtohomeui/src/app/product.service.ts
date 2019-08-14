@@ -37,6 +37,20 @@ rootURL: string;
   // ];
 }
 
+updateProductOnServer(product): Observable<Product> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+  };
+  const reqBody = 'productId=' + product.productId + '&farmerId' + product.farmerId +
+  '&productName=' + product.productName + '&productType=' +
+  product.productType + '&description=' + product.description + '&unitPrice=' + product.unitPrice;
+// post(URL,body,httpOptionswithHeaders)
+return this.httpsvc.post<Product>(
+  this.rootURL + '/register', reqBody, httpOptions);
+
+}
 
 
 //added for basket
@@ -81,8 +95,6 @@ findProductsById(productId: number): Observable<Product> {
   }
 
 
-
-
   registerProduct(productName, productType, description, unitPrice): Observable<Product> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -121,7 +133,7 @@ findProductsById(productId: number): Observable<Product> {
     };
     return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByFarmer', httpOptions);
   }
- 
+
   deleteProductById(productId: number): Observable<Product> {
 
     const httpOptions = {

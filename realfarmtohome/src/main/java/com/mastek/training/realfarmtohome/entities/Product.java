@@ -43,7 +43,7 @@ import org.springframework.stereotype.Component;
 //@XmlRootElement
 
 public class Product implements Serializable {
-	
+	@FormParam("productId")
 	private int productId;
 	@FormParam("productName")
 	private String productName;
