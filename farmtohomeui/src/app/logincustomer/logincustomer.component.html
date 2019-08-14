@@ -23,7 +23,7 @@
                                         type="text"
                                        name="email"
                                        id="email"
-                                       value=""
+                                       
                                         placeholder="Please enter your email"
                                        [(ngModel)]="customerLoginDetails.customerEmail"
                                        required autofocus>
@@ -46,7 +46,7 @@
                                         type="password"
                                         name="password"
                                         id="password"
-                                        value=""
+                                        
                                         placeholder="please enter your password"
                                         [(ngModel)]="customerLoginDetails.customerPassword"
                                     required autofocus>
@@ -68,11 +68,11 @@
                         </div>
                   
                         <div class="col-md-3">
-                            <div class="form-control-feedback">
-                                    <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
-    {{ incorrectUserDetailsMessage }}
-                           </p>
-                            </div>
+                           
+                                <div *ngIf="isInvalidLogin" [hidden]="isInvalidLogin" class="error-message"  id="login-message">
+                                    {{invalidFormMessage}}
+                                  </div>
+                           
                         </div>
                     </div>
                   </form>
