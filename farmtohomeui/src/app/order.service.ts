@@ -13,7 +13,7 @@ export class OrderService {
   httpOptions;
 
   constructor(private httpsvc: HttpClient) {
-    this.rootURL = "http://localhost:5980/order";
+    this.rootURL = "http://localhost:5980/";
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -23,11 +23,11 @@ export class OrderService {
 
   loadAllOrdersFromSever(): Observable<OrderDB[]> {
     
-    return this.httpsvc.get<OrderDB[]>(this.rootURL + "/list");
+    return this.httpsvc.get<OrderDB[]>(this.rootURL + "order/list");
   }
   deleteOrderFromServer(orderId): Observable<OrderDB[]> {
 
-    return this.httpsvc.delete<OrderDB[]>(this.rootURL +"/delete/" +orderId)
+    return this.httpsvc.delete<OrderDB[]>(this.rootURL +"order/delete/" +orderId)
   }
 
   // Create Order on server

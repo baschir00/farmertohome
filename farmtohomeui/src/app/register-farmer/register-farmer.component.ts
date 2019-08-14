@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
 import { FarmService } from '../farm.service';
 import { Farmer } from "../farmer";
-import { NgModel } from "@angular/forms";
 
 
 @Component({
@@ -17,7 +16,7 @@ export class RegisterFarmerComponent implements OnInit {
   isFarmerFormValid: boolean;
   invalidFormMessage: string;
 
-  constructor(private farmSvc: FarmService) {
+  constructor(private farmSvc: FarmService , private router: Router) {
     this.farmer = { farmerId: 0, farmerName: "", farmerEmail: "", farmerLocation: "", farmerPassword: "" };
     this.farmerPasswordConfirm = "";
   }
@@ -51,18 +50,21 @@ export class RegisterFarmerComponent implements OnInit {
       this.isFarmerFormValid = false;
       this.invalidFormMessage =
         'Passwords don\'t match';
+        'Product Name numst be greater then 2 characters';
+      confirm("Inavlid Farmer Name")
     } else {
       console.log(4)
       this.farmSvc.registerFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword)
         .subscribe(
           responseDep => {
             console.log('registered farmer');
-
+            this.router.navigate(['loginFarmer'])
           }
         );
 
       this.isFarmerFormValid = true;
       this.invalidFormMessage = '';
+      this.router.navigate(['/loginFarmer']);
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from '../admin-service.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register-admin',
@@ -11,7 +12,8 @@ export class RegisterAdminComponent implements OnInit {
   isAdminFormValid: boolean;
   invalidFormMessage: string;
 
-  constructor(private adminSvc: AdminServiceService) { }
+  constructor(private adminSvc: AdminServiceService, private router: Router) { }
+
 
   ngOnInit() { }
 
@@ -37,6 +39,8 @@ export class RegisterAdminComponent implements OnInit {
 
       this.isAdminFormValid = true;
       this.invalidFormMessage = '';
+      this.router.navigate(['/displayadmin']);
+
     }
   }
 }

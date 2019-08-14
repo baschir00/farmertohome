@@ -17,30 +17,32 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from './registerproduct/registerproduct.component';
+import { AdminauthGuard } from '../guards/adminauth.guard';
+import { FarmerauthGuard } from '../guards/farmerauth.guard';
+import { CustomerauthGuard } from '../guards/customerauth.guard';
 
 
 
 const routes: Routes = [
-  { path: 'registerFarmer', component: RegisterFarmerComponent },
-  { path: 'registerCustomer', component: RegistercustomerComponent },
-  { path: 'registerProduct', component: RegisterproductComponent },
-  { path: 'registerAdmin', component: RegisterAdminComponent },
+  { path: 'registerFarmer', canDeactivate: [FarmerauthGuard], component: RegisterFarmerComponent },
+  { path: 'registerCustomer', canDeactivate: [CustomerauthGuard], component: RegistercustomerComponent },
+  { path: 'registerProduct',canActivate: [FarmerauthGuard], component: RegisterproductComponent },
+  { path: 'registerAdmin', component: RegisterAdminComponent, canDeactivate: [AdminauthGuard]},
   { path: 'loginDashBoard', component: LogindashboardComponent },
   { path: 'loginCustomer', component: LogincustomerComponent },
   { path: 'loginFarmer', component: LoginfarmerComponent },
   { path: 'loginAdmin', component: LoginAdminComponent },
   { path: 'farmerhome', component: FarmerHomeComponent },
   { path: 'customerhome', component: CustomerHomeComponent },
-  { path: 'adminhome', component: AdminhomeComponent },
-  { path: 'products', component: DisplayProductsTableComponent },
+  { path: 'adminhome',canActivate: [AdminauthGuard], component: AdminhomeComponent },
+  { path: 'products',canActivate: [CustomerauthGuard], component: DisplayProductsTableComponent },
   { path: 'editFarmer', component: EditFarmerComponent },
   { path: 'registerCustomer', component: RegistercustomerComponent },
-  { path: 'registerAdmin', component: RegisterAdminComponent },
   { path: 'mapApi', component:  MapApiComponent},
   { path: 'adminProducts', component: DisplayAdminProductsComponent},
   { path: '', component: DisplayProductsTableComponent},
-  { path: 'displayAdmins', component: DisplayandfindadminsComponent },
-  { path: 'basket', component: BasketComponent },
+  { path: 'displayAdmins', component: DisplayandfindadminsComponent, canActivate: [AdminauthGuard], children:[{ path: 'adminProducts', component: DisplayAdminProductsComponent},  { path: 'registerAdmin', component: RegisterAdminComponent }]},
+  { path: 'basket',canActivate: [CustomerauthGuard],component: BasketComponent },
   { path: '**', redirectTo: '' }
 ];
 
