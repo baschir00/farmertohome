@@ -52,6 +52,7 @@ import { RegisterproductComponent } from "./registerproduct/registerproduct.comp
     RegisterAdminComponent,
     AdminhomeComponent,
     DisplayandfindadminsComponent,
+    
     MapApiComponent,
     DisplayAdminProductsComponent,
   ],
