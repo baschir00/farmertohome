@@ -22,7 +22,6 @@ import { RegisterproductComponent } from './registerproduct/registerproduct.comp
 
 const routes: Routes = [
   { path: 'registerFarmer', component: RegisterFarmerComponent },
-  { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'registerProduct', component: RegisterproductComponent },
   { path: 'registerAdmin', component: RegisterAdminComponent },
   { path: 'loginDashBoard', component: LogindashboardComponent },

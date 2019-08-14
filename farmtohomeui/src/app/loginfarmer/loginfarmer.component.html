@@ -1,42 +1,81 @@
-<form class="" form (click)="loginFarmer()">
-  <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
-    {{ incorrectUserDetailsMessage }}
-  </p>
+<form class="form-horizontal"  form (click)="loginFarmer()" >
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="jumbotron text-center" style="margin-top:20px;">
+            <h2>Login Farmer</h2>
+          </div>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="email">Email Address</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                    <input
+                       class="form-control"
+                        type="text"
+                       name="email"
+                       id="email"
+                       value=""
+                        placeholder="Please enter your email"
+                       [(ngModel)]="farmerLoginDetails.farmerEmail"
+                       required autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password">Password</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group has-danger">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                    <input 
+                       class="form-control"
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        id="password"
+                        value=""
+                        placeholder="please enter your password"
+                        [(ngModel)]="farmerLoginDetails.farmerPassword"
+                    required autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <input
+              class="btn btn-primary"
+                type="submit"
+                 name="Login"
+                 id="login"
+               placeholder="login"
+              value="Login">
+        </div>
+  
+        <div class="col-md-3">
+            <div class="form-control-feedback">
+                    <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
+{{ incorrectUserDetailsMessage }}
+           </p>
+            </div>
+        </div>
+    </div>
+  </form>
 
-  <div class="email">
-    <label for="email">Email</label>
-    <input
-      class="form-field"
-      type="text"
-      name="email"
-      id="email"
-      value=""
-      placeholder="Please enter your email"
-      [(ngModel)]="farmerLoginDetails.farmerEmail"
-    />
-  </div>
-  <div class="password">
-    <label for="password">Password</label>
-    <input
-      class="form-field"
-      type="password"
-      name="password"
-      id="password"
-      value=""
-      placeholder="please enter your password"
-      [(ngModel)]="farmerLoginDetails.farmerPassword"
-    />
-  </div>
+  <p>Haven't Registered? <a routerLink="/registerFarmer">Click here </a> </p>
 
-  <div class="login">
-    <label for="login"></label>
-    <input
-      class="btn btn-primary"
-      type="submit"
-      name="Login"
-      id="login"
-      placeholder="login"
-      value="Login"
-    />
-  </div>
-</form>
+      
+
