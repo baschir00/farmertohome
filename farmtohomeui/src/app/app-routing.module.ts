@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'registerFarmer', canDeactivate: [FarmerauthGuard], component: RegisterFarmerComponent },
   { path: 'registerCustomer', canDeactivate: [CustomerauthGuard], component: RegistercustomerComponent },
   { path: 'registerProduct',canActivate: [FarmerauthGuard], component: RegisterproductComponent },
-  { path: 'registerAdmin', component: RegisterAdminComponent, canDeactivate: [AdminauthGuard]},
+  { path: 'registerAdmin', component: RegisterAdminComponent,canActivate: [AdminauthGuard], canDeactivate: [AdminauthGuard]},
   { path: 'loginDashBoard', component: LogindashboardComponent },
   { path: 'loginCustomer', component: LogincustomerComponent },
   { path: 'loginFarmer', component: LoginfarmerComponent },
