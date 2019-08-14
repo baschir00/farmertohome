@@ -142,5 +142,14 @@ public class Farmer implements Serializable {
 		return "Farmer [farmerId=" + farmerId + ", farmerName=" + farmerName + ", farmerLocation=" + farmerLocation
 				+ ", farmerEmail=" + farmerEmail + ", farmerPassword=" + farmerPassword + "]";
 	}
+	
+	public double[] coordinates() {
+		return new double[] { getFarmerLocationLat(), getFarmerLocationLng() };
+	}
+	
+//	public void setCoordinates(double lat, double lon) {
+//		setFarmerLocationLat(lat);
+//		setFarmerLocationLng(lon);
+//	}
 
 }

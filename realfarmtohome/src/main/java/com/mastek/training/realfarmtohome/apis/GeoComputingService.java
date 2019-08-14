@@ -66,8 +66,8 @@ public class GeoComputingService {
 		return coords;
 	}
 	
-	public Farmer addFarmerCoordinates(Farmer farmer, String address) {
-		String json = getGeoCodeJSON(address);
+	public Farmer addFarmerCoordinates(Farmer farmer) {
+		String json = getGeoCodeJSON(farmer.getFarmerLocation());
 		
 		double[] coords = getCoordinatesFromJSON(json);
 		farmer.setFarmerLocationLat(coords[0]);
@@ -76,7 +76,7 @@ public class GeoComputingService {
 	    return farmer;
 	}
 	
-	public Farmer addCustomerCoordinates(Customer customer, String address) {
+	public Customer addCustomerCoordinates(Customer customer, String address) {
 		String json = getGeoCodeJSON(address);
 		
 		double[] coords = getCoordinatesFromJSON(json);
@@ -86,8 +86,25 @@ public class GeoComputingService {
 	    return customer;
 	}
 	
-	public double calculateDistance() {
+	// get dist in km between two points
+	public double calculateDistance(double[] pos1, double[] pos2) {
+		// earth's Radius in meters
+		int earthRadius = 6378137;
 		
+		// Get dist in Radians
+		double distanceLatatude = Math.toRadians(pos2[0] - pos1[0]);
+		double distanceLongitude = Math.toRadians(pos2[1] - pos1[1]);
+		
+		// calculate dist in meters
+		double a = Math.pow(Math.sin(distanceLatatude / 2), 2) + 
+				Math.cos(Math.toRadians(pos1[0])) * 
+				Math.cos(Math.toRadians(pos2[0])) * 
+				Math.pow(Math.sin(distanceLongitude / 2), 2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		double distance = earthRadius * c;
+		
+		// Convert to KM
+		return distance / 1000;
 	}
  	
 	

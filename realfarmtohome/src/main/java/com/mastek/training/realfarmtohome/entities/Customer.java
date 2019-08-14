@@ -39,6 +39,14 @@ public class Customer implements Serializable {
 
 	@FormParam("customerAddress")
 	private String customerAddress;
+	
+	// Farmer/farm location
+	@FormParam("customerLocationLat")
+	private double customerLocationLat;
+	
+	// Farmer/farm location
+	@FormParam("customerLocationLat")
+	private double customerLocationLng;
 
 	@FormParam("customerEmail")
 	@Column(unique=true)
@@ -80,6 +88,22 @@ public class Customer implements Serializable {
 		this.customerAddress = customerAddress;
 	}
 
+	public double getCustomerLocationLat() {
+		return customerLocationLat;
+	}
+
+	public void setCustomerLocationLat(double customerLocationLat) {
+		this.customerLocationLat = customerLocationLat;
+	}
+
+	public double getCustomerLocationLng() {
+		return customerLocationLng;
+	}
+
+	public void setCustomerLocationLng(double customerLocationLng) {
+		this.customerLocationLng = customerLocationLng;
+	}
+
 	public String getCustomerEmail() {
 		return customerEmail;
 	}
@@ -111,5 +135,14 @@ public class Customer implements Serializable {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
+	
+	public double[] coordinates() {
+		return new double[] { getCustomerLocationLat(), getCustomerLocationLng() };
+	}
+	
+//	public void setCoordinates(double lat, double lon) {
+//		setCustomerLocationLat(lat);
+//		setCustomerLocationLng(lon);
+//	}
 
 }
