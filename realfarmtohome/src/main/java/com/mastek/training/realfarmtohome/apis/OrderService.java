@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.mastek.training.realfarmtohome.entities.Customer;
+import com.mastek.training.realfarmtohome.entities.Farmer;
 import com.mastek.training.realfarmtohome.entities.Order;
 import com.mastek.training.realfarmtohome.entities.OrderItem;
 import com.mastek.training.realfarmtohome.repositories.OrderRepository;
@@ -37,6 +38,16 @@ public class OrderService {
 	@Autowired
 	OrderItemService orderItemService;
 		
+	
+	@GET
+	@Path("/list")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Iterable<Order> listAllOrders(){
+		return orderRepository.findAll();
+	}
+		
+	
+	
 	@POST
     @Path("/register")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
