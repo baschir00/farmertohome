@@ -24,7 +24,7 @@ export class RegisterproductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadProducts()
+    // this.loadProducts()
 
   }
 
@@ -64,15 +64,14 @@ export class RegisterproductComponent implements OnInit {
       this.isProductFormValid = true;
       this.invalidFormMessage = '';
       this.router.navigate(['/editFarmer']);
-      this.loadProducts()
+      // this.loadProducts()
     }
 
   }
 
-  loadProducts() {
-    this.productSvc.loadAllProductsFromSever().subscribe(response => {
-    this.results = response
-    })
-    }
-
+  // loadProducts() {
+  //   this.productSvc.loadAllProductsFromSever().subscribe(response => {
+  //   this.results = response
+  //   })
+  //   }
 }
