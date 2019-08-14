@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FarmService } from '../farm.service';
 import { Router } from "@angular/router";
+import { AssertNotNull } from "@angular/compiler";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterFarmerComponent implements OnInit {
   isFarmerFormValid: boolean;
   invalidFormMessage: string;
 
-  constructor(private farmSvc: FarmService,private router: Router) { }
+  constructor(private farmSvc: FarmService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -22,7 +23,7 @@ export class RegisterFarmerComponent implements OnInit {
     farmerLocation = farmerLocation.value;
     farmerEmail = farmerEmail.value;
     farmerPassword = farmerPassword.value;
-    
+
     console.log('Registering farmer : addFarmer');
     console.log(farmerName, farmerLocation, farmerEmail, farmerPassword);
 
@@ -43,6 +44,7 @@ export class RegisterFarmerComponent implements OnInit {
 
       this.isFarmerFormValid = true;
       this.invalidFormMessage = '';
+      this.router.navigate(['/loginFarmer']);
     }
   }
 }
