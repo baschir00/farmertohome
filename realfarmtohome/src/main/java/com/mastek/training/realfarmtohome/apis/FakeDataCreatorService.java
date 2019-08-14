@@ -2,6 +2,11 @@ package com.mastek.training.realfarmtohome.apis;
 
 import java.util.Locale;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -14,6 +19,7 @@ import com.mastek.training.realfarmtohome.entities.Product;
 
 @Component
 @Scope("singleton")
+@Path("/fake/")
 public class FakeDataCreatorService {
 
 	@Autowired
@@ -28,12 +34,39 @@ public class FakeDataCreatorService {
 	@Autowired
 	AdminService adminservice;
 	
+	@Autowired
+	FakeDataCreatorService service;
+	
+	@Autowired
+	FarmerService farmerService;
+	
 	
 	Faker faker;
 
 	
 	public FakeDataCreatorService() {
 		faker = new Faker(new Locale("en-GB"));
+	}
+
+	
+	@GET
+	@Path("/create")
+	@Produces({MediaType.APPLICATION_JSON})
+	public void createData() {
+		Farmer farmer;
+		Product product;
+		for (int i = 0; i < 50; i++) {
+			service.genCustomer();
+			farmer = service.genFarmer();
+			for (int j = 0; j < 3; j++) {
+				product = service.genProduct();
+				farmerService.assignProduct(farmer.getFarmerId(), product.getProductId());
+			}
+			
+			service.genAdmin();
+			System.out.println(i);
+		}
+		
 	}
 
 	public Customer genCustomer() {
