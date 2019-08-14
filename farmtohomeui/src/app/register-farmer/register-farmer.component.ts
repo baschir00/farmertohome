@@ -29,6 +29,7 @@ export class RegisterFarmerComponent implements OnInit {
       this.isFarmerFormValid = false;
       this.invalidFormMessage =
         'Product Name numst be greater then 2 characters';
+      confirm("Inavlid Farmer Name")
     } else {
 
       this.farmSvc.registerFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword)
