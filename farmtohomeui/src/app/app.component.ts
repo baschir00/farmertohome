@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BasketService } from "./basket.service";
 import { LoginDetailsService } from "./login-details.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,17 +11,17 @@ import { Router } from '@angular/router';
 //implements OnInit added for basket
 export class AppComponent implements OnInit {
   //added for basket
-  
 
-  constructor(private loginSvc:LoginDetailsService , private basketSvc:BasketService,private router:Router){
-   
-    
+
+  constructor(private loginSvc:LoginDetailsService , private basketSvc:BasketService, private router:Router){
+
+
 
 
   }
 
   ngOnInit(){
-     
+
 
   }
 
@@ -31,9 +31,8 @@ export class AppComponent implements OnInit {
       this.basketSvc.clear();
       this.router.navigate(['/products'])
 
-
     }
-  
+
   }
 
 

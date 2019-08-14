@@ -16,6 +16,8 @@ export class RegisterproductComponent implements OnInit {
   farmerId: number
   isProductFormValid: boolean
   invalidFormMessage: string
+  results: Product[]
+
 
   constructor(private productSvc: ProductService, private farmSvc: FarmService,
     private details: LoginDetailsService, private router: Router) {
@@ -24,13 +26,11 @@ export class RegisterproductComponent implements OnInit {
 
   ngOnInit() {
     this.loadProducts()
+    // this.loadProducts()
+
   }
 
-  checkPassword(password, comfirmpassword) {
-    if (password.value === comfirmpassword) {
 
-    }
-  }
 
   loadProducts() {
     this.productSvc.loadAllProductsFromSever().subscribe(response => {
@@ -65,16 +65,23 @@ export class RegisterproductComponent implements OnInit {
               this.result.productId = respone.productId
               this.result.farmerId = respone.farmerId
               this.loadProducts()
+
             }
           );
          }
        );
-
       this.isProductFormValid = true;
       this.invalidFormMessage = '';
       this.router.navigate(['/editFarmer']);
       
+      // this.loadProducts()
     }
 
   }
+
+  // loadProducts() {
+  //   this.productSvc.loadAllProductsFromSever().subscribe(response => {
+  //   this.results = response
+  //   })
+  //   }
 }
