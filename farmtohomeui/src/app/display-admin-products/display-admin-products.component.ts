@@ -13,11 +13,19 @@ import { ProductService } from '../product.service';
 })
 export class DisplayAdminProductsComponent implements OnInit {
 
+  showProducts:boolean
+  buttonName4:any
   allOrders: OrderDB[]
   allOrderItems: OrderItemDB[]
   allProducts: Product[]
+  editedId: number;
+  isInEditMode: boolean;
 
-  constructor(private ordSvc: OrderService, private ordItemSvc: OrderItemService, private proSvc : ProductService) { }
+  constructor(private ordSvc: OrderService, private ordItemSvc: OrderItemService, private proSvc : ProductService) {
+    this.showProducts = false;
+    this.cancelProductsEdit();
+    this.buttonName4 = "Show Products"
+   }
 
   ngOnInit() {
 
@@ -26,14 +34,11 @@ export class DisplayAdminProductsComponent implements OnInit {
     this.loadProducts()
   }
 
+  //-------------------- order edit ----------------------
   loadOrders() {
-
     this.ordSvc.loadAllOrdersFromSever().subscribe(response => {
-
       this.allOrders = response
-
     })
-
   }
 
   deleteOrder(orderId) {
@@ -46,34 +51,56 @@ export class DisplayAdminProductsComponent implements OnInit {
   loadOrderItems() {
     this.ordItemSvc.loadAllOrderItemsFromSever().subscribe(response => {
       this.allOrderItems = response
-
     })
-
   }
-
 
   deleteOrderItems(orderItemId) {
     this.ordItemSvc.deleteOrderItemsFromServer(orderItemId).subscribe(() => {
       this.loadOrderItems()
     })
+  }
 
+
+  //-------------------- Product edit ------------------------
+
+  toggleProducts() {
+    this.showProducts = !this.showProducts;
+
+    // CHANGE THE NAME OF THE BUTTON.
+    if (this.showProducts)
+      this.buttonName4 = "Hide Products";
+    else
+      this.buttonName4 = "Show Products";
+  }
+
+  cancelProductsEdit() {
+    this.isInEditMode = false;
+    this.editedId = -1;
   }
 
   loadProducts() {
     this.proSvc.loadAllProductsFromSever().subscribe(response => {
       this.allProducts = response
-
     })
-
   }
 
+  editProducts(product: Product) {
+    this.isInEditMode = true;
+    this.editedId = product.productId;
+  }
 
   deleteProducts(productId) {
     this.proSvc.deleteAllProductsFromServer(productId).subscribe(() => {
       this.loadProducts()
     })
-
   }
 
-
+  saveProducts(product: Product) {
+    this.isInEditMode = false;
+    this.editedId = -1;
+    this.proSvc.updateProductOnServer(product).subscribe( () =>  {
+      this.loadProducts();
+    });
+  }
 }
+

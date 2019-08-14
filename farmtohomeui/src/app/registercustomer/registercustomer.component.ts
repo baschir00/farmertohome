@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { from } from 'rxjs';
 import { Customer } from '../customer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registercustomer',
@@ -14,7 +15,7 @@ export class RegistercustomerComponent implements OnInit {
   isCustomerFormValid: boolean
   invalidFormMessage: string
 
-  constructor(private customerSvc: CustomerService) {
+  constructor(private customerSvc: CustomerService, private router: Router) {
 
   }
 
@@ -49,6 +50,7 @@ export class RegistercustomerComponent implements OnInit {
         .subscribe(
           responseDep => {
             console.log("registered customer");
+            this.router.navigate(['/loginCustomer']);
 
           }
         );

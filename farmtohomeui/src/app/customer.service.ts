@@ -55,8 +55,8 @@ export class CustomerService {
     };
 
     const reqBody = 'customerId=' + customer.customerId +
-      '&customerName=' + customer.Customer + '&customerAddress=' +
-      customer.Customer + '&customerEmail' + customer.customerEmail + '&customerPassword' + customer.customerPassword;
+      '&customerName=' + customer.customerName + '&customerAddress=' +
+      customer.customerAddress + '&customerEmail' + customer.customerEmail + '&customerPassword' + customer.customerPassword;
     // post(URL,body,httpOptionswithHeaders)
     return this.httpsvc.post<Customer>(
       this.rootURL + '/register', reqBody, httpOptions);

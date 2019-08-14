@@ -45,17 +45,31 @@ export class DisplayandfindadminsComponent implements OnInit {
     this.loadCustomers();
   }
 
+
+  // -------------admin edits---------------------------
+  toggleAdmin() {
+    this.showAdmin = !this.showAdmin;
+
+    // CHANGE THE NAME OF THE BUTTON.
+    if (this.showAdmin)
+      this.buttonName1 = "Hide Admins";
+    else
+      this.buttonName1 = "Show Admins";
+  }
+
+  loadAdmins() {
+    this.admSvc.loadAllAdminsFromSever().subscribe(resp => {
+      this.admins = resp;
+    })
+  }
+
+  deleteAdmin(adminId) {
+    this.admSvc.deleteAdmin(adminId).subscribe(() => {
+      this.loadAdmins()
+    })
+  }
+
   cancelAdminEdit() {
-    this.isInEditMode = false;
-    this.editedId = -1;
-  }
-
-  cancelFarmerEdit() {
-    this.isInEditMode = false;
-    this.editedId = -1;
-  }
-
-  cancelCustomerEdit() {
     this.isInEditMode = false;
     this.editedId = -1;
   }
@@ -63,16 +77,6 @@ export class DisplayandfindadminsComponent implements OnInit {
   editAdmin(admin: Admin) {
     this.isInEditMode = true;
     this.editedId = admin.adminId;
-  }
-
-  editFarmer(farmer: Farmer) {
-    this.isInEditMode = true;
-    this.editedId = farmer.farmerId;
-  }
-
-  editCustomer(customer: Customer) {
-    this.isInEditMode = true;
-    this.editedId = customer.customerId;
   }
 
   saveAdmin(admin: Admin) {
@@ -83,31 +87,9 @@ export class DisplayandfindadminsComponent implements OnInit {
     });
   }
 
-  saveFarmer(farmer: Farmer) {
-    this.isInEditMode = false;
-    this.editedId = -1;
-    this.farmSvc.updateFarmOnServer(farmer).subscribe( () =>  {
-      this.loadFarmers();
-    });
-  }
+  //-----------------------------------------
 
-  saveCustomer(customer: Customer) {
-    this.isInEditMode = false;
-    this.editedId = -1;
-    this.custSvc.updateCustomerOnServer(customer).subscribe( () =>  {
-      this.loadCustomers();
-    });
-  }
-
-  toggleAdmin() {
-    this.showAdmin = !this.showAdmin;
-
-    // CHANGE THE NAME OF THE BUTTON.
-    if (this.showAdmin)
-      this.buttonName1 = "Hide Admins";
-    else
-      this.buttonName1 = "Show Admins";
-  }
+  //--------Farmer edit-------------------------
 
   toggleFarmer() {
     this.showFarmer = !this.showFarmer;
@@ -119,6 +101,39 @@ export class DisplayandfindadminsComponent implements OnInit {
       this.buttonName2 = "Show Farmers";
   }
 
+  cancelFarmerEdit() {
+    this.isInEditMode = false;
+    this.editedId = -1;
+  }
+
+  deleteFarmer(farmerId) {
+    this.farmSvc.deleteFarmerFromServer(farmerId).subscribe(() => {
+      this.loadFarmers()
+    })
+  }
+
+  editFarmer(farmer: Farmer) {
+    this.isInEditMode = true;
+    this.editedId = farmer.farmerId;
+  }
+
+  saveFarmer(farmer: Farmer) {
+    this.isInEditMode = false;
+    this.editedId = -1;
+    this.farmSvc.updateFarmOnServer(farmer).subscribe( () =>  {
+      this.loadFarmers();
+    });
+  }
+
+  loadFarmers() {
+    this.farmSvc.loadAllFarmersFromSever().subscribe(response => {
+      this.farmers = response;
+    })
+  }
+
+  //-------------Customer editable ---------------------------
+
+
   toggleCustomer() {
     this.showCustomer = !this.showCustomer;
 
@@ -129,58 +144,33 @@ export class DisplayandfindadminsComponent implements OnInit {
       this.buttonName3 = "Show Customers";
   }
 
-  loadFarmers() {
-    this.farmSvc.loadAllFarmersFromSever().subscribe(response => {
-
-      this.farmers = response;
-    }
-
-    )
-
-  }
-
-  deleteFarmer(farmerId) {
-    this.farmSvc.deleteFarmerFromServer(farmerId).subscribe(() => {
-      this.loadFarmers()
-    })
-
-  }
-
-
-  loadAdmins() {
-    this.admSvc.loadAllAdminsFromSever().subscribe(resp => {
-
-      this.admins = resp;
-    })
-  }
-
-  deleteAdmin(adminId) {
-
-    this.admSvc.deleteAdmin(adminId).subscribe(() => {
-      this.loadAdmins()
-    })
-
-
-
-  }
-
-
-
   loadCustomers() {
     this.custSvc.loadAllCustomerFromSever().subscribe(resp => {
-
       this.customer = resp;
     })
   }
 
-  deleteCustomer(customerId) {
+  saveCustomer(customer: Customer) {
+    this.isInEditMode = false;
+    this.editedId = -1;
+    this.custSvc.updateCustomerOnServer(customer).subscribe( () =>  {
+      this.loadCustomers();
+    });
+  }
 
+  deleteCustomer(customerId) {
     this.custSvc.deleteCustomer(customerId).subscribe(() => {
       this.loadCustomers()
     })
-
-
-
   }
 
+  cancelCustomerEdit() {
+    this.isInEditMode = false;
+    this.editedId = -1;
+  }
+
+  editCustomer(customer: Customer) {
+    this.isInEditMode = true;
+    this.editedId = customer.customerId;
+  }
 }

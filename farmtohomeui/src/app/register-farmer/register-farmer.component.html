@@ -1,39 +1,84 @@
-<p>register-farmer works!</p>
+<div class="jumbotron text-center" style="margin-top:20px;"> <h2>Farmer Registration</h2> </div>
 
-<form (submit)="addFarmer(fname, flocation, femail, fpassword)"> 
 
-  <table class="table">
-    <tr>
-      <td>
-        <input name="name" placeholder="Name" #fname>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input name="location" placeholder="location" #flocation>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input name="email" placeholder="email" #femail>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input name="password" placeholder="password" #fpassword>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type="submit" value="Add">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div [hidden]="invalidFormMessage">
-          {{invalidFormMessage}}
-        </div>
-      </td>
-    </tr>
-  </table>
-</form>
+ <form class="form-horizontal"  (submit)="addFarmer(fname, flocation, femail, fpassword)" >
+                    <div class="row">
+           <div class="col-md-3"></div>
+           <div class="col-md-6">
+               <h2>Register New Farmer</h2>
+               <hr>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-md-3 field-label-responsive">
+               <label for="name">Name</label>
+           </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                                    <input name="name" placeholder="Name" #fname class="form-control" placeholder="Name" required autofocus>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 field-label-responsive">
+                            <label for="email">E-Mail Address</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                                        <input type="text" placeholder="Email" id="email" #femail class="form-control" required autofocus>
+                               </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 field-label-responsive">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-danger">
+                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                                    <input type="text" id="password"  #fpassword class="form-control" placeholder="Password"
+                                    required autofocus>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 field-label-responsive">
+                            <label for="location">Location</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-danger">
+                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map" aria-hidden="true"></i></div>
+                                    <input type="text" name="location" class="form-control"  #flocation placeholder="Location">
+  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <button type="submit" value="Add" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+                        </div>
+                  
+                        <div class="col-md-3">
+                            <div class="form-control-feedback">
+                                    <span class="text-danger align-middle">
+                                        <div [hidden]="invalidFormMessage">
+                                            {{invalidFormMessage}}
+                                          </div>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                  </form>
