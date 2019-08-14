@@ -3,6 +3,7 @@ import { Admin } from './admin';
 import { Customer } from './customer';
 import { Farmer } from './farmer';
 import { LoginTypes } from './login-types.enum';
+import { BasketService } from "./basket.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,7 @@ export class LoginDetailsService {
 
   constructor() {
     // Defaults
-    this.isLogedIn = false;
-    this.userType = null;
-    this.userDetails = {};
+    this.logout();
   }
 
   // user getter and setter
@@ -37,8 +36,17 @@ export class LoginDetailsService {
   }
 
   loginAdmin(details: Admin) {
+    this.isLogedIn = true;
     this.userType = LoginTypes.ADMIN;
     this.userDetails = details;
+    
+  }
+
+  logout()
+  {
+    this.isLogedIn = false;
+    this.userType = null;
+    this.userDetails = {};
   }
 
   // Check loggedin user is a customer

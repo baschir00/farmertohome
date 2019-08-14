@@ -52,7 +52,7 @@ public class Product implements Serializable {
 	@FormParam("productType")
 	private String productType;
 	@FormParam("unitPrice")
-	private int unitPrice;
+	private double unitPrice;
 	private Farmer currentFarmer;
 	private Set<OrderItem> manyorderitems = new HashSet<>();
 	
@@ -71,7 +71,7 @@ public class Product implements Serializable {
 	public String getProductType() {
 		return productType;
 	}
-	public int getUnitPrice() {
+	public double getUnitPrice() {
 		return unitPrice;
 	}
 	public void setProductId(int productId) {
@@ -86,7 +86,7 @@ public class Product implements Serializable {
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
-	public void setUnitPrice(int unitPrice) {
+	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 

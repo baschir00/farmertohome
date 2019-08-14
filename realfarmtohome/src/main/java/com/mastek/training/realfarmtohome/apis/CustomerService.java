@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mastek.training.realfarmtohome.entities.Customer;
+import com.mastek.training.realfarmtohome.entities.Farmer;
 import com.mastek.training.realfarmtohome.repositories.CustomerRepository;
 
 @Component
@@ -57,6 +58,13 @@ public class CustomerService {
 
 	}
 
+	
+	@GET
+	@Path("/list")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Iterable<Customer> listAllCustomers(){
+		return customerRepository.findAll();
+	}
 	
 	@Path("/delete/{customerId}") // Method with path param
 	@DELETE // http method

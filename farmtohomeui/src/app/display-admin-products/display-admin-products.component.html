@@ -1,0 +1,93 @@
+
+<p>Manage Orders</p>
+
+<table class="table">
+        <input type="text" [(ngModel)]="term" placeholder="Search Order" />
+      <tr>
+        <th>Order Id</th>
+        <th>Customer Id</th>
+        <th>Customer Name</th>
+        <th>Customer Email</th>
+        <th>Customer Address</th>
+      </tr>
+      <tr 
+        *ngFor="
+          let a of allOrders
+            | filter: term
+            | paginate: { itemsPerPage: 10, currentPage: p_no };
+          let i = index
+        "
+      >
+        <td>{{a.orderId }} </td>
+        <td>{{a.currentCustomer.customerId}}</td>
+        <td>{{ a.currentCustomer.customerName}}</td>
+        <td>{{ a.currentCustomer.customerEmail}}</td>
+        <td>{{ a.currentCustomer.customerAddress}}</td> 
+        <td><button (click)="deleteOrder(a.orderId)">Delete</button></td>
+      </tr>
+   <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+  </table>
+
+  
+<p>Manage Order Items</p>
+
+<table class="table">
+        <input type="text" [(ngModel)]="term2" placeholder="Search Order Items" />
+      <tr>
+        <th>Order Item Id</th>
+        <th>Order Id</th>
+        <th>Customer Id</th>
+        <th>Customer Email</th>
+        <th>Product Id</th>
+        <th>Product Name</th>
+      </tr>
+      <tr 
+        *ngFor="
+          let a of allOrderItems
+            | filter: term2
+            | paginate: { itemsPerPage: 10, currentPage: p_no };
+          let i = index
+        "
+      >
+        <td>{{a.orderItemId }} </td>
+        <td>{{a.currentOrder.orderId }} </td>
+        <td>{{a.currentOrder.currentCustomer.customerId }} </td>
+        <td>{{a.currentOrder.currentCustomer.customerEmail }} </td>
+        <td>{{a.currentProduct.productId }} </td>
+        <td>{{a.currentProduct.productName }} </td>
+        <td><button (click)="deleteOrderItems(a.orderItemId)">Delete</button></td>
+      </tr>
+   <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+  </table>
+
+  
+  <p>Manage Products</p>
+
+  <table class="table">
+          <input type="text" [(ngModel)]="term3" placeholder="Search Products" />
+        <tr>
+          <th>Product Id</th>
+          <th>Product Description</th>
+          <th>Product Name</th>
+          <th>Product Type</th>
+          <th>Product Price</th>
+          <th>Farmer Id</th>
+        </tr>
+        <tr 
+          *ngFor="
+            let a of allProducts
+              | filter: term3
+              | paginate: { itemsPerPage: 10, currentPage: p_no };
+            let i = index
+          "
+        >
+          <td>{{a.productId }} </td>
+          <td>{{a.description}}</td>
+          <td>{{a.productName}}</td>
+          <td>{{a.productType}}</td>
+          <td>{{a.unitPrice}}</td>
+          <td>{{a.currentFarmer.farmerId}}</td>
+          <td><button (click)="deleteProducts(a.productId)">Delete</button></td>
+        </tr>
+     <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+    </table>

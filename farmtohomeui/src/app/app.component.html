@@ -19,6 +19,7 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
     </li>
+
     <div class="dropdown">
         <!-- Add an additional button , to-->
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,19 +28,37 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" routerLink="/loginCustomer">Login/Register Customer</a>
             <a class="dropdown-item" routerLink="/loginFarmer">Login/Register Farmer</a>
-           
         </div>
         </div>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/displayAdmins">View Admins</a>
+    </li>
+    <li>
+      <div *ngIf="this.loginSvc.isLogedIn">
+    <li class="nav-item">
+      <a class="nav-link" (click)="this.logout()">Logout</a>
+    </li>
+    <li>
+    </div>
+
+
+
+    </li>
+
   </ul>
 
 
   
 </nav>
+<!-- <table>
+  <td>
+*ngIf="isLogedIn" ><button (click)="isLogedIn()">Logout</button>
+</table> -->
 
 <div class="container parent-container">
-    <div class="row main-container">
-        <div class="col-sm-12">
-  <router-outlet></router-outlet>
-  </div>
+  <div class="row main-container">
+    <div class="col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
