@@ -11,6 +11,7 @@ import { Farmer } from "../farmer";
 })
 export class RegisterFarmerComponent implements OnInit {
 
+  isRegistered: boolean;
   farmer: Farmer;
   farmerPasswordConfirm: string;
   isFarmerFormValid: boolean;
@@ -19,6 +20,7 @@ export class RegisterFarmerComponent implements OnInit {
   constructor(private farmSvc: FarmService , private router: Router) {
     this.farmer = { farmerId: 0, farmerName: "", farmerEmail: "", farmerLocation: "", farmerPassword: "" };
     this.farmerPasswordConfirm = "";
+    this.isRegistered = false;
   }
 
   ngOnInit() {
@@ -50,7 +52,6 @@ export class RegisterFarmerComponent implements OnInit {
       this.isFarmerFormValid = false;
       this.invalidFormMessage =
         'Passwords don\'t match';
-        'Product Name numst be greater then 2 characters';
     } else if (farmerLocation.length < 1) {
       console.log(2)
       this.isFarmerFormValid = false;
@@ -62,10 +63,10 @@ export class RegisterFarmerComponent implements OnInit {
         .subscribe(
           responseDep => {
             console.log('registered farmer');
+            this.isRegistered = true;
             this.router.navigate(['loginFarmer'])
           }
         );
-
       this.isFarmerFormValid = true;
       this.invalidFormMessage = '';
     }
