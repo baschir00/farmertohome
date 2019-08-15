@@ -50,6 +50,7 @@ export class RegistercustomerComponent implements OnInit {
         .subscribe(
           responseDep => {
             console.log("registered customer");
+            confirm("Sumbitted Details")
             this.router.navigate(['/loginCustomer']);
 
           }

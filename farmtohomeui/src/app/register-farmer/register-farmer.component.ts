@@ -38,7 +38,9 @@ export class RegisterFarmerComponent implements OnInit {
         .subscribe(
           responseDep => {
             console.log('registered farmer');
+            confirm("Sumbitted Details")
             this.router.navigate(['loginFarmer'])
+            
           }
         );
 

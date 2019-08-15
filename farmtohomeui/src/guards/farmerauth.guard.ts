@@ -11,7 +11,7 @@ export class FarmerauthGuard implements CanActivate, CanActivateChild,CanDeactiv
   constructor(private lgnSvc:LoginDetailsService){}
   canDeactivate(component: RegisterFarmerComponent,): boolean {
     if (component.addFarmer ) {
-         confirm('Are you sure you want to discard your changes?');
+         confirm('Confirm all your changes before exiting');
         
     }
 

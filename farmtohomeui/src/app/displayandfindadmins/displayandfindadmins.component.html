@@ -1,5 +1,5 @@
-<h1>Manage Admins</h1>
-<button (click)="toggleAdmin()" id="bt">
+<h4>Manage Admins</h4>
+<button class="btn btn-primary" (click)="toggleAdmin()" id="bt">
   {{ buttonName1 }}
 </button>
 
@@ -56,8 +56,8 @@
 </ng-container>
 
 
-<h2>Registered Farmers</h2>
-<button (click)="toggleFarmer()" id="bt">
+<h4>Registered Farmers</h4>
+<button class="btn btn-primary" (click)="toggleFarmer()" id="bt">
     {{ buttonName2 }}
   </button>
 <ng-container *ngIf="showFarmer">
@@ -114,8 +114,8 @@
 
 
 
-<h2>Registered Customers</h2>
-<button (click)="toggleCustomer()" id="bt">
+<h4>Registered Customers</h4>
+<button class="btn btn-primary" (click)="toggleCustomer()" id="bt">
     {{ buttonName3 }}
   </button>
 <ng-container *ngIf="showCustomer">
