@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'editFarmer',canActivate: [FarmerauthGuard], component: EditFarmerComponent },
   { path: 'registerCustomer', component: RegistercustomerComponent },
   { path: 'mapApi', component:  MapApiComponent},
-  { path: 'adminProducts', component: DisplayAdminProductsComponent},
+  { path: 'adminProducts',canActivate: [AdminauthGuard], component: DisplayAdminProductsComponent},
   { path: '', component: DisplayProductsTableComponent},
   { path: 'displayAdmins', component: DisplayandfindadminsComponent, canActivate: [AdminauthGuard], children:[{ path: 'adminProducts', component: DisplayAdminProductsComponent},  { path: 'registerAdmin', component: RegisterAdminComponent }]},
   { path: 'basket',canActivate: [CustomerauthGuard],component: BasketComponent },
