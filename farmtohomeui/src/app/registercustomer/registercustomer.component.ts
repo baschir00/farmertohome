@@ -11,12 +11,16 @@ import { Router } from '@angular/router';
 })
 export class RegistercustomerComponent implements OnInit {
 
-
+  isRegistered: boolean;
+  customer: Customer;
+  customerPasswordConfirm: string;
   isCustomerFormValid: boolean
   invalidFormMessage: string
 
   constructor(private customerSvc: CustomerService, private router: Router) {
-
+    this.customer = { customerId: 0, customerName: "", customerEmail: "", customerAddress: "", customerPassword: "" };
+    this.customerPasswordConfirm = "";
+    this.isRegistered = true;
   }
 
 
@@ -31,29 +35,45 @@ export class RegistercustomerComponent implements OnInit {
   }
 
   addCustomer(customerName, customerEmail, customerAddress,customerPassword) {
-    customerName = customerName.value;
-    customerEmail = customerEmail.value;
-    customerAddress = customerAddress.value;
-    customerPassword = customerPassword.value;
+    customerName = this.customer.customerName;
+    customerEmail = this.customer.customerEmail;
+    customerAddress = this.customer.customerAddress;
+    customerPassword = this.customer.customerPassword;
     console.log('Registering Customer : addCustomer');
     console.log(customerName, customerAddress, customerEmail,customerPassword
     );
 
 
-    if (customerName.length < 2) {
+    if (customerName.length < 1) {
+      console.log(1)
       this.isCustomerFormValid = false;
       this.invalidFormMessage =
-        'Customer Name numst be greater then 2 characters';
-        confirm("Inavlid  Name")
-      } else {
+        'Name field is required';
+    } else if (customerEmail.length < 1) {
+      console.log(2)
+      this.isCustomerFormValid = false;
+      this.invalidFormMessage =
+        'Email field is required';
+    } else if (customerPassword !== this.customerPasswordConfirm) {
+      console.log(3)
+      this.isCustomerFormValid = false;
+      this.invalidFormMessage =
+        'Passwords don\'t match';
+    //
+    } else if (customerAddress.length < 1) {
+      console.log(2)
+      this.isCustomerFormValid = false;
+      this.invalidFormMessage =
+        'Adress field is required';
+    } else {
 
       this.customerSvc.registerCustomer(customerName, customerAddress, customerEmail, customerPassword)
         .subscribe(
           responseDep => {
 
             console.log("registered customer");
+            this.isRegistered = true;
             this.router.navigate(['/loginCustomer']);
-
           }
         );
 

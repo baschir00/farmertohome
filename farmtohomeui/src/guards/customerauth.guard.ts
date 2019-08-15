@@ -12,14 +12,14 @@ export class CustomerauthGuard implements CanActivate, CanActivateChild,CanDeact
   constructor(private lgnSvc:LoginDetailsService){}
 
   canDeactivate(component: RegistercustomerComponent,): boolean {
-    if (component.addCustomer ) {
-        confirm('Are you sure you want to discard your changes?');
-       
+    if (!component.isRegistered) {
+      return confirm('Are you sure you want to discard your changes?');
+
     }
 
     return true;
 }
-  
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -32,10 +32,10 @@ export class CustomerauthGuard implements CanActivate, CanActivateChild,CanDeact
          return false;
        }
       else{
-       
+
         return  true
-      
-        
+
+
       }
   }
   canActivateChild(
@@ -43,5 +43,5 @@ export class CustomerauthGuard implements CanActivate, CanActivateChild,CanDeact
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }
-  
+
 }

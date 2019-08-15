@@ -12,10 +12,11 @@ import { Router } from "@angular/router";
 })
 export class RegisterproductComponent implements OnInit {
   result: Product;
+  results: Product[];
   farmerId: number
   isProductFormValid: boolean
   invalidFormMessage: string
-  results: Product[]
+
 
 
   constructor(private productSvc: ProductService, private farmSvc: FarmService,
@@ -24,11 +25,18 @@ export class RegisterproductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadProducts()
     // this.loadProducts()
 
   }
 
 
+
+  loadProducts() {
+    this.productSvc.loadAllProductsFromSever().subscribe(response => {
+      this.results = response
+    })
+  }
 
   addProduct(productName, productType, description, unitPrice) {
     productName = productName.value;
@@ -67,8 +75,7 @@ export class RegisterproductComponent implements OnInit {
     }
 
   }
-
-  // loadProducts() {
+df
   //   this.productSvc.loadAllProductsFromSever().subscribe(response => {
   //   this.results = response
   //   })
