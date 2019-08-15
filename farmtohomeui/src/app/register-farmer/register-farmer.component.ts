@@ -51,8 +51,12 @@ export class RegisterFarmerComponent implements OnInit {
       this.invalidFormMessage =
         'Passwords don\'t match';
         'Product Name numst be greater then 2 characters';
-      confirm("Inavlid Farmer Name")
-    } else {
+    } else if (farmerLocation.length < 1) {
+      console.log(2)
+      this.isFarmerFormValid = false;
+      this.invalidFormMessage =
+        'Adress field is required';
+    }else {
       console.log(4)
       this.farmSvc.registerFarmer(farmerName, farmerLocation, farmerEmail, farmerPassword)
         .subscribe(
@@ -64,7 +68,6 @@ export class RegisterFarmerComponent implements OnInit {
 
       this.isFarmerFormValid = true;
       this.invalidFormMessage = '';
-      this.router.navigate(['/loginFarmer']);
     }
   }
 }
