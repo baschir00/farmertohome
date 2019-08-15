@@ -3,36 +3,42 @@
     </div>
 
 
-    <table>
+    <table class="table">
         <tr>
-            <td>farmer Id: </td>
-            <td></td>
+            <th>Farmer Id: </th>
+          
             <td>{{farmer.farmerId}}</td>
          </tr>
          <tr>
-                <td>Name: </td>
+                <th>Name: </th>
                 <td>{{farmer.farmerName}}</td>
         </tr>
 
     </table>
-    <table>
+    <br>
+    <table class="table">
       <tr>
         <th>Product ID</th>
         <th>Product name</th>
+        <th>Delete Products</th>
                 <!-- <th>Customer Name</th> -->
                 <!-- <th><button (click)="showProjectForm()">+</button></th> -->
           </tr>
           <tr *ngFor ="let p of assignments; let i = index">
                     <td>{{p.productId}}</td>
                     <td>{{p.productName}}</td>
-                    <td><button (click)="deleteProduct(i, p.productId)">X</button></td>
+                    <td>
+                    <button class="btn btn-sm btn-danger" (click)="deleteProduct(i, p.productId)">
+                      <i class="fa fa-trash"></i>
+                  </button>
+                </td>
                     <!-- <td>{{a.proName}}</td> -->
                     <!-- <td><button (click)="deleteProject(i)">x</button></td> -->
           </tr>
     </table>
-<br><br><br>
+<br>
 
-  <button class="nav-link" routerLink="/registerProduct">Register Product</button>
+  <button class="btn btn-primary" routerLink="/registerProduct">Register Product</button>
 
 
 

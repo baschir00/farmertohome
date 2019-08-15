@@ -65,6 +65,7 @@ export class RegisterFarmerComponent implements OnInit {
             console.log('registered farmer');
             this.isRegistered = true;
             this.router.navigate(['loginFarmer'])
+            
           }
         );
       this.isFarmerFormValid = true;

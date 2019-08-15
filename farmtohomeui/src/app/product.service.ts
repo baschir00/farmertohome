@@ -122,6 +122,7 @@ findProductsById(productId: number): Observable<Product> {
     };
     return this.httpsvc.get<Product[]>(this.rootURL + '/fetchByProductName', httpOptions);
   }
+
   findProductsByFarmerId(farmerId: string): Observable<Product[]> {
 
     const httpOptions = {

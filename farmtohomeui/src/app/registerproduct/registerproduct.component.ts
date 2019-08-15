@@ -4,6 +4,7 @@ import { FarmService } from '../farm.service';
 import { Product } from '../product';
 import { LoginDetailsService } from "../login-details.service";
 import { Router } from "@angular/router";
+import { EditFarmerComponent } from '../edit-farmer/edit-farmer.component';
 
 @Component({
   selector: 'app-registerproduct',
@@ -12,12 +13,10 @@ import { Router } from "@angular/router";
 })
 export class RegisterproductComponent implements OnInit {
   result: Product;
-  results: Product[];
+
   farmerId: number
   isProductFormValid: boolean
   invalidFormMessage: string
-  
-
 
   constructor(private productSvc: ProductService, private farmSvc: FarmService,
     private details: LoginDetailsService, private router: Router) {
@@ -25,17 +24,13 @@ export class RegisterproductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadProducts()
-    // this.loadProducts()
-
+   
   }
 
+  checkPassword(password, comfirmpassword) {
+    if (password.value === comfirmpassword) {
 
-
-  loadProducts() {
-    this.productSvc.loadAllProductsFromSever().subscribe(response => {
-      this.results = response
-    })
+    }
   }
 
   addProduct(productName, productType, description, unitPrice) {
@@ -64,23 +59,16 @@ export class RegisterproductComponent implements OnInit {
               respone => {
               this.result.productId = respone.productId
               this.result.farmerId = respone.farmerId
-              this.loadProducts()
-
+              this.router.navigate(['/editFarmer']);
             }
           );
          }
        );
+      
       this.isProductFormValid = true;
       this.invalidFormMessage = '';
-      this.router.navigate(['/editFarmer']);
-      
       // this.loadProducts()
     }
 
   }
-df
-  //   this.productSvc.loadAllProductsFromSever().subscribe(response => {
-  //   this.results = response
-  //   })
-  //   }
 }

@@ -1,8 +1,8 @@
-
-<p>Manage Orders</p>
-
+<br>
+<h3>Manage Orders</h3>
+<br>
 <table class="table">
-        <input type="text" [(ngModel)]="term" placeholder="Search Order" />
+        <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search Order" />
       <tr>
         <th>Order Id</th>
         <th>Customer Id</th>
@@ -23,16 +23,16 @@
         <td>{{ a.currentCustomer.customerName}}</td>
         <td>{{ a.currentCustomer.customerEmail}}</td>
         <td>{{ a.currentCustomer.customerAddress}}</td>
-        <td><button (click)="deleteOrder(a.orderId)">Delete</button></td>
+        <td><button class="btn btn-primary" (click)="deleteOrder(a.orderId)">Delete</button></td>
       </tr>
    <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
 
-
-<p>Manage Order Items</p>
-
+  <br>
+<h3>Manage Order Items</h3>
+<br>
 <table class="table">
-        <input type="text" [(ngModel)]="term2" placeholder="Search Order Items" />
+        <input class="form-control" type="text" [(ngModel)]="term2" placeholder="Search Order Items" />
       <tr>
         <th>Order Item Id</th>
         <th>Order Id</th>
@@ -60,8 +60,9 @@
    <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
 
-
-  <p>Manage Products</p>
+  <br>
+  <h3>Manage Products</h3>
+  <br>
   <!-- <button (click)="toggleProducts()" id="bt">
       {{ buttonName4 }}
     </button>

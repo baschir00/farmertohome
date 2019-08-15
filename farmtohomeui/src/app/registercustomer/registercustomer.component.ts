@@ -70,6 +70,7 @@ export class RegistercustomerComponent implements OnInit {
       this.customerSvc.registerCustomer(customerName, customerAddress, customerEmail, customerPassword)
         .subscribe(
           responseDep => {
+
             console.log("registered customer");
             this.isRegistered = true;
             this.router.navigate(['/loginCustomer']);
