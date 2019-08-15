@@ -31,10 +31,10 @@ export class EditFarmerComponent implements OnInit {
     private router: Router) {
 
     this.isEditable = false
-    this.farmer = { farmerId: 0, 
-      farmerEmail: "n/a", 
-      farmerLocation: "n/a", 
-      farmerName: "n/a", 
+    this.farmer = { farmerId: 0,
+      farmerEmail: "n/a",
+      farmerLocation: "n/a",
+      farmerName: "n/a",
       farmerPassword: "n/a" }
     //
     //this.productId=13
@@ -67,23 +67,24 @@ export class EditFarmerComponent implements OnInit {
     this.prod2Svc.deleteProductById(productId).subscribe(response=> {
       this.loadFarmerProducts()
     })
-    
-      
+
+
     }
-    
+
 
   ngOnInit() {
     console.log("Login datails: ", this.details.userDetails);
     console.log("is farmer logedin : ", this.details.isFarmer);
-    
+
     if (this.details.isFarmer()) {
       //this.fetchCurrentFarmerFromService()
       this.farmer = this.details.userDetails
       this.loadFarmerProducts()
-
     } else {
-      this.router.navigate(['/loginFarmer'])
+     this.router.navigate(['/loginFarmer'])
+
     }
+
   }
 
   loadFarmerProducts() {
