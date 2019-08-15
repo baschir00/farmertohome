@@ -86,9 +86,12 @@ export class BasketComponent implements OnInit {
       console.log("basketService.submit: inner func");
       console.log("basketService.clear")
       this.basketService.clear();
+      confirm("Order Submitted")
       console.log("loadBasket")
 
       this.loadBasket();
+      this.router.navigate(['/products']);
+
     } else {
       console.log("Not loggedin");
       this.router.navigate(['/loginCustomer']);

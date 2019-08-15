@@ -4,10 +4,11 @@
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
-                          <div class="jumbotron text-center" style="margin-top:20px;">
-                            <h2>Login Customer</h2>
-                          </div>
+                        
+                            <h2>Customer Login</h2>
+                          
                             <hr>
+                            <br>
                         </div>
                     </div>
                     <div class="row">
@@ -23,7 +24,7 @@
                                         type="text"
                                        name="email"
                                        id="email"
-                                       
+
                                         placeholder="Please enter your email"
                                        [(ngModel)]="customerLoginDetails.customerEmail"
                                        required autofocus>
@@ -31,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-3 field-label-responsive">
                             <label for="password">Password</label>
@@ -40,13 +41,13 @@
                             <div class="form-group has-danger">
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                    <input 
+                                    <input
                                        class="form-control"
                                         placeholder="Password"
                                         type="password"
                                         name="password"
                                         id="password"
-                                        
+
                                         placeholder="please enter your password"
                                         [(ngModel)]="customerLoginDetails.customerPassword"
                                     required autofocus>
@@ -54,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                  
+
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
@@ -66,20 +67,20 @@
                                placeholder="login"
                               value="Login">
                         </div>
-                  
+
                         <div class="col-md-3">
-                           
+
                                 <div *ngIf="isInvalidLogin" [hidden]="isInvalidLogin" class="error-message"  id="login-message">
                                     {{invalidFormMessage}}
                                   </div>
-                           
+
                         </div>
                     </div>
                   </form>
 
                   <p>Haven't Registered? <a routerLink="/registerCustomer">Click here </a> </p>
 
-                      
 
 
-                  
+
+

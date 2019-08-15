@@ -1,84 +1,230 @@
-<div class="jumbotron text-center" style="margin-top:20px;"> <h2>Farmer Registration</h2> </div>
+<form class="form-horizontal" (submit)="addFarmer()">
 
+  <!-- Page title -->
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2>Register New Farmer</h2>
+      <hr />
+    </div>
+  </div>
 
- <form class="form-horizontal"  (submit)="addFarmer(fname, flocation, femail, fpassword)" >
-                    <div class="row">
-           <div class="col-md-3"></div>
-           <div class="col-md-6">
-               <h2>Register New Farmer</h2>
-               <hr>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-md-3 field-label-responsive">
-               <label for="name">Name</label>
-           </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                    <input name="name" placeholder="Name" #fname class="form-control" placeholder="Name" required autofocus>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 field-label-responsive">
-                            <label for="email">E-Mail Address</label>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                                        <input type="text" placeholder="Email" id="email" #femail class="form-control" required autofocus>
-                               </div>
-                            </div>
-                        </div>
+  <!-- Error message after submit -->
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="form-control-feedback">
+        <span class="bg-danger text-white rounded error-message">
+          <div [hidden]="isFarmerFormValid">
+            {{ invalidFormMessage }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 field-label-responsive">
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group has-danger">
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                    <input type="text" id="password"  #fpassword class="form-control" placeholder="Password"
-                                    required autofocus>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 field-label-responsive">
-                            <label for="location">Location</label>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group has-danger">
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map" aria-hidden="true"></i></div>
-                                    <input type="text" name="location" class="form-control"  #flocation placeholder="Location">
+  <!-- Name Capture Area -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="name">Name</label>
+    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Icon -->
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem">
+            <i class="fa fa-user"></i>
+          </div>
 
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <button type="submit" value="Add" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
-                        </div>
+          <!-- Name field  -->
+          <input
+            name="name"
+            placeholder="Name"
+            #fname
+            class="form-control"
+            placeholder="Name"
+            required
+            autofocus
+            [(ngModel)]="farmer.farmerName"
+            #iFarmerName="ngModel"
+          />
+        </div>
 
-                        <div class="col-md-3">
-                            <div class="form-control-feedback">
-                                    <span class="text-danger align-middle">
-                                        <div [hidden]="invalidFormMessage">
-                                            {{invalidFormMessage}}
-                                          </div>
-                                    </span>
-                            </div>
-                        </div>
-                    </div>
-                  </form>
+        <!-- invalid input warning -->
+        <div>
+          <span
+            [hidden]="iFarmerName.untouched || iFarmerName.valid"
+            class="bg-warning text-white rounded error-message"
+          >
+            You must provide a name.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email Capture Area -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="email">E-Mail Address</label>
+    </div>
+
+    <!-- icon -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem">
+            <i class="fa fa-at"></i>
+          </div>
+
+          <!-- Email input field -->
+          <input
+            type="text"
+            placeholder="Email"
+            id="email"
+            name="email"
+            #femail
+            class="form-control"
+            required
+            autofocus
+            email
+            [(ngModel)]="farmer.farmerEmail"
+            [email]="true"
+            #iFarmerEmail="ngModel"
+          />
+        </div>
+
+        <!-- invalid input warning -->
+        <div>
+          <span
+            [hidden]="iFarmerEmail.untouched || iFarmerEmail.valid"
+            class="bg-warning text-white rounded error-message"
+          >
+            You must provide a valid email address.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Capture Area -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="password">Password</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+           <!-- Icon -->
+          <div class="input-group-addon" style="width: 2.6rem">
+            <i class="fa fa-key"></i>
+          </div>
+
+          <!-- Password input -->
+          <input
+            type="password"
+            id="password"
+            name="password"
+            #fpassword
+            class="form-control"
+            placeholder="Password"
+            required
+            autofocus
+            [(ngModel)]="farmer.farmerPassword"
+            #iFarmerPassword="ngModel"
+            minlength="6"
+            maxlength="45"
+          />
+        </div>
+
+        <!-- invalid input warning -->
+        <div>
+          <span
+            [hidden]="iFarmerPassword.untouched || iFarmerPassword.valid"
+            class="bg-warning text-white rounded rror-message"
+          >
+            Your password must be atleast 6 characters.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password confomation Capture Area -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="password">Confirm Password</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem">
+            <i class="fa fa-key"></i>
+          </div>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            #fpassword
+            class="form-control"
+            placeholder="Confirm Password"
+            required
+            autofocus
+            [(ngModel)]="farmerPasswordConfirm"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Capture Area -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="location">Address</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem">
+            <i class="fa fa-map" aria-hidden="true"></i>
+          </div>
+
+          <!-- Address Field -->
+          <input
+            type="text"
+            name="location"
+            class="form-control"
+            #flocation
+            placeholder="Address"
+            required
+            autofocus
+            [(ngModel)]="farmer.farmerLocation"
+            #iFarmerLocation="ngModel"
+          />
+        </div>
+
+        <!-- invalid input warning -->
+        <div>
+          <span
+            [hidden]="iFarmerLocation.untouched || iFarmerLocation.valid"
+            class="bg-warning text-white rounded error-message"
+          >
+            You must provide an address.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button-->
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <button type="submit" value="Add" class="btn btn-success">
+        <i class="fa fa-user-plus"></i> Register
+      </button>
+    </div>
+  </div>
+</form>

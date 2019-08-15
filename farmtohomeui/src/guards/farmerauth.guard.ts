@@ -10,11 +10,9 @@ import { RegisterFarmerComponent } from '../app/register-farmer/register-farmer.
 export class FarmerauthGuard implements CanActivate, CanActivateChild,CanDeactivate<RegisterFarmerComponent> {
   constructor(private lgnSvc:LoginDetailsService){}
   canDeactivate(component: RegisterFarmerComponent,): boolean {
-    if (component.addFarmer ) {
-         confirm('Confirm all your changes before exiting');
-        
+    if (!component.isRegistered) {
+        return confirm('Are you sure you want to discard your changes?');
     }
-
     return true;
 }
   canActivate(
@@ -24,10 +22,10 @@ export class FarmerauthGuard implements CanActivate, CanActivateChild,CanDeactiv
         return true;
       }
       else{
-        
+
          confirm("ONLY FARMER CAN ACCESS")
          return false;
-        
+
       }
   }
   canActivateChild(
@@ -35,5 +33,5 @@ export class FarmerauthGuard implements CanActivate, CanActivateChild,CanDeactiv
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }
-  
+
 }

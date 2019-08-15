@@ -1,42 +1,76 @@
-<form class="" form (click)="loginAdmin()">
-  <p *ngIf="isInvalidLogin" id="login-message" class="error-message">
-    {{ incorrectUserDetailsMessage }}
-  </p>
 
-  <div class="username">
-    <label for="username">Username</label>
-    <input
-      class="form-field"
-      type="text"
-      name="username"
-      id="username"
-      value=""
-      placeholder="Please enter your admin username"
-      [(ngModel)]="adminLoginDetails.adminUsername"
-    />
-  </div>
-  <div class="password">
-    <label for="password">Password</label>
-    <input
-      class="form-field"
-      type="password"
-      name="password"
-      id="password"
-      value=""
-      placeholder="please enter your password"
-      [(ngModel)]="adminLoginDetails.adminPassword"
-    />
+  <form class="form-horizontal"  form (click)="loginAdmin()" >
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+              <h2>Login Admin</h2>
+              <hr>
+              <br>
+          </div>
+      </div>
+  <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="username">Admin username</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input
+                     class="form-control"
+                      type="text"
+                     name="username"
+                     id="username"
+
+                      placeholder="Please enter your username"
+                     [(ngModel)]="adminLoginDetails.adminUsername"
+                     required autofocus>
+              </div>
+          </div>
+      </div>
   </div>
 
-  <div class="login">
-    <label for="login"></label>
-    <input
-      class="btn btn-primary"
-      type="submit"
-      name="Login"
-      id="login"
-      placeholder="login"
-      value="Login"
-    />
+  <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="password">Password</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group has-danger">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                  <input
+                     class="form-control"
+                      placeholder="Password"
+                      type="password"
+                      name="password"
+                      id="password"
+
+                      placeholder="please enter your password"
+                      [(ngModel)]="adminLoginDetails.adminPassword"
+                  required autofocus>
+              </div>
+          </div>
+      </div>
   </div>
+
+  <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <input
+            class="btn btn-primary"
+              type="submit"
+               name="Login"
+               id="login"
+             placeholder="login"
+            value="Login">
+      </div>
+
+      <div class="col-md-3">
+
+          <div *ngIf="isInvalidLogin" [hidden]="isInvalidLogin" class="error-message"  id="login-message">
+              {{invalidFormMessage}}
+            </div>
+
+  </div>
+</div>
 </form>

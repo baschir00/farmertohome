@@ -3,7 +3,7 @@
   {{ buttonName1 }}
 </button>
 
-<ng-container *ngIf="showAdmin">
+<ng-container *ngIf="showAdmin"> -->
 
 
 
@@ -53,14 +53,14 @@
     </tr>
     <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
-</ng-container>
+<!-- </ng-container> -->
 
 
 <h4>Registered Farmers</h4>
 <button class="btn btn-primary" (click)="toggleFarmer()" id="bt">
     {{ buttonName2 }}
   </button>
-<ng-container *ngIf="showFarmer">
+<ng-container *ngIf="showFarmer"> -->
 <table class="table">
   <input class="form-control" type="text" [(ngModel)]="term2" placeholder="Search Farmer" />
   <tr>
@@ -108,8 +108,7 @@
     </tr>
     <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
-</ng-container>
-
+<!-- </ng-container> -->
 
 
 
@@ -118,7 +117,7 @@
 <button class="btn btn-primary" (click)="toggleCustomer()" id="bt">
     {{ buttonName3 }}
   </button>
-<ng-container *ngIf="showCustomer">
+<ng-container *ngIf="showCustomer"> -->
 
 
     <table class="table">
@@ -172,6 +171,5 @@
         </tr>
         <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
       </table>
-    </ng-container>
+    <!-- </ng-container> -->
 
-    
