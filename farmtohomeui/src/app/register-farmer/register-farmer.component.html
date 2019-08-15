@@ -1,4 +1,6 @@
 <form class="form-horizontal" (submit)="addFarmer()">
+
+  <!-- Page title -->
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -6,6 +8,8 @@
       <hr />
     </div>
   </div>
+
+  <!-- Error message after submit -->
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -18,16 +22,22 @@
       </div>
     </div>
   </div>
+
+  <!-- Name Capture Area -->
   <div class="row">
     <div class="col-md-3 field-label-responsive">
       <label for="name">Name</label>
     </div>
+
+    <!-- Icon -->
     <div class="col-md-6">
       <div class="form-group has-danger">
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon" style="width: 2.6rem">
             <i class="fa fa-user"></i>
           </div>
+
+          <!-- Name field  -->
           <input
             name="name"
             placeholder="Name"
@@ -40,6 +50,8 @@
             #iFarmerName="ngModel"
           />
         </div>
+
+        <!-- invalid input warning -->
         <div>
           <span
             [hidden]="iFarmerName.untouched || iFarmerName.valid"
@@ -51,16 +63,22 @@
       </div>
     </div>
   </div>
+
+  <!-- Email Capture Area -->
   <div class="row">
     <div class="col-md-3 field-label-responsive">
       <label for="email">E-Mail Address</label>
     </div>
+
+    <!-- icon -->
     <div class="col-md-6">
       <div class="form-group">
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon" style="width: 2.6rem">
             <i class="fa fa-at"></i>
           </div>
+
+          <!-- Email input field -->
           <input
             type="text"
             placeholder="Email"
@@ -76,6 +94,8 @@
             #iFarmerEmail="ngModel"
           />
         </div>
+
+        <!-- invalid input warning -->
         <div>
           <span
             [hidden]="iFarmerEmail.untouched || iFarmerEmail.valid"
@@ -87,6 +107,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Password Capture Area -->
   <div class="row">
     <div class="col-md-3 field-label-responsive">
       <label for="password">Password</label>
@@ -94,9 +116,13 @@
     <div class="col-md-6">
       <div class="form-group has-danger">
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+           <!-- Icon -->
           <div class="input-group-addon" style="width: 2.6rem">
             <i class="fa fa-key"></i>
           </div>
+
+          <!-- Password input -->
           <input
             type="password"
             id="password"
@@ -112,6 +138,8 @@
             maxlength="45"
           />
         </div>
+
+        <!-- invalid input warning -->
         <div>
           <span
             [hidden]="iFarmerPassword.untouched || iFarmerPassword.valid"
@@ -123,6 +151,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Password confomation Capture Area -->
   <div class="row">
     <div class="col-md-3 field-label-responsive">
       <label for="password">Confirm Password</label>
@@ -149,6 +179,7 @@
     </div>
   </div>
 
+  <!-- Address Capture Area -->
   <div class="row">
     <div class="col-md-3 field-label-responsive">
       <label for="location">Address</label>
@@ -159,6 +190,8 @@
           <div class="input-group-addon" style="width: 2.6rem">
             <i class="fa fa-map" aria-hidden="true"></i>
           </div>
+
+          <!-- Address Field -->
           <input
             type="text"
             name="location"
@@ -171,6 +204,8 @@
             #iFarmerLocation="ngModel"
           />
         </div>
+
+        <!-- invalid input warning -->
         <div>
           <span
             [hidden]="iFarmerLocation.untouched || iFarmerLocation.valid"
@@ -183,6 +218,7 @@
     </div>
   </div>
 
+  <!-- Submit Button-->
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
