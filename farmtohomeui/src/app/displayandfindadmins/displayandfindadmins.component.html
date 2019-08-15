@@ -1,9 +1,11 @@
-<h1>Manage Admins</h1>
-<button (click)="toggleAdmin()" id="bt">
+<br>
+<h3>Manage Admins</h3>
+<br>
+<!-- <button (click)="toggleAdmin()" id="bt">
   {{ buttonName1 }}
 </button>
 
-<ng-container *ngIf="showAdmin">
+<ng-container *ngIf="showAdmin"> -->
 
 
 
@@ -53,14 +55,15 @@
     </tr>
     <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
-</ng-container>
+<!-- </ng-container> -->
 
-
-<h2>Registered Farmers</h2>
-<button (click)="toggleFarmer()" id="bt">
+<br>
+<h3>Registered Farmers</h3>
+<br>
+<!-- <button (click)="toggleFarmer()" id="bt">
     {{ buttonName2 }}
   </button>
-<ng-container *ngIf="showFarmer">
+<ng-container *ngIf="showFarmer"> -->
 <table class="table">
   <input class="form-control" type="text" [(ngModel)]="term2" placeholder="Search Farmer" />
   <tr>
@@ -108,17 +111,18 @@
     </tr>
     <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
-</ng-container>
+<!-- </ng-container> -->
 
 
 
 
-
-<h2>Registered Customers</h2>
-<button (click)="toggleCustomer()" id="bt">
+<br>
+<h3>Registered Customers</h3>
+<br>
+<!-- <button (click)="toggleCustomer()" id="bt">
     {{ buttonName3 }}
   </button>
-<ng-container *ngIf="showCustomer">
+<ng-container *ngIf="showCustomer"> -->
 
 
     <table class="table">
@@ -172,6 +176,5 @@
         </tr>
         <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
       </table>
-    </ng-container>
+    <!-- </ng-container> -->
 
-    

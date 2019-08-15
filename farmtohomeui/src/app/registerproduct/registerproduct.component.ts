@@ -56,14 +56,13 @@ export class RegisterproductComponent implements OnInit {
               respone => {
               this.result.productId = respone.productId
               this.result.farmerId = respone.farmerId
-
+              this.router.navigate(['/editFarmer']);
             }
           );
          }
        );
       this.isProductFormValid = true;
       this.invalidFormMessage = '';
-      this.router.navigate(['/editFarmer']);
       // this.loadProducts()
     }
 

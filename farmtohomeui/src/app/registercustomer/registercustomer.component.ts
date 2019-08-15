@@ -44,11 +44,13 @@ export class RegistercustomerComponent implements OnInit {
       this.isCustomerFormValid = false;
       this.invalidFormMessage =
         'Customer Name numst be greater then 2 characters';
-    } else {
+        confirm("Inavlid  Name")
+      } else {
 
       this.customerSvc.registerCustomer(customerName, customerAddress, customerEmail, customerPassword)
         .subscribe(
           responseDep => {
+
             console.log("registered customer");
             this.router.navigate(['/loginCustomer']);
 
