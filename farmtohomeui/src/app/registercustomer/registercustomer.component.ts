@@ -20,7 +20,7 @@ export class RegistercustomerComponent implements OnInit {
   constructor(private customerSvc: CustomerService, private router: Router) {
     this.customer = { customerId: 0, customerName: "", customerEmail: "", customerAddress: "", customerPassword: "" };
     this.customerPasswordConfirm = "";
-    this.isRegistered = true;
+    this.isRegistered = false;
   }
 
 

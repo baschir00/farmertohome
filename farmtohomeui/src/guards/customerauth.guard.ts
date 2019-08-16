@@ -9,14 +9,14 @@ import { RegistercustomerComponent } from '../app/registercustomer/registercusto
 })
 export class CustomerauthGuard implements CanActivate, CanActivateChild,CanDeactivate<RegistercustomerComponent> {
 
-  constructor(private lgnSvc:LoginDetailsService, private router : Router){}
+  constructor(private lgnSvc:LoginDetailsService){}
 
   canDeactivate(component: RegistercustomerComponent,): boolean {
     if (!component.isRegistered) {
       return confirm('Are you sure you want to discard your changes?');
 
     }
-    
+
 
     return true;
 }

@@ -1,5 +1,5 @@
 <br>
-<h3>Manage Orders</h3>
+<h4>Manage Orders</h4>
 <br>
 <table class="table">
         <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search Order" />
@@ -29,7 +29,7 @@
   </table>
 
   <br>
-<h3>Manage Order Items</h3>
+<h4>Manage Order Items</h4>
 <br>
 <table class="table">
         <input class="form-control" type="text" [(ngModel)]="term2" placeholder="Search Order Items" />
@@ -55,13 +55,13 @@
         <td>{{a.currentOrder.currentCustomer.customerEmail }} </td>
         <td>{{a.currentProduct.productId }} </td>
         <td>{{a.currentProduct.productName }} </td>
-        <td><button (click)="deleteOrderItems(a.orderItemId)">Delete</button></td>
+        <td><button class="btn btn-primary" (click)="deleteOrderItems(a.orderItemId)">Delete</button></td>
       </tr>
    <pagination-controls (pageChange)="p_no = $event"></pagination-controls>
   </table>
 
   <br>
-  <h3>Manage Products</h3>
+  <h4>Manage Products</h4>
   <br>
   <!-- <button (click)="toggleProducts()" id="bt">
       {{ buttonName4 }}
