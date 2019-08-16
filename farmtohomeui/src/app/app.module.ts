@@ -30,6 +30,7 @@ import { RegisterFarmerComponent } from './register-farmer/register-farmer.compo
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from "./registerproduct/registerproduct.component";
 import { OrderTableComponent } from './order-table/order-table.component';
+import { EditmodalComponent } from './editmodal/editmodal.component';
 
 @NgModule({
   declarations: [
@@ -53,10 +54,11 @@ import { OrderTableComponent } from './order-table/order-table.component';
     RegisterAdminComponent,
     AdminhomeComponent,
     DisplayandfindadminsComponent,
-    
+
     MapApiComponent,
     DisplayAdminProductsComponent,
     OrderTableComponent,
+    EditmodalComponent,
   ],
   imports: [
     BrowserModule,
