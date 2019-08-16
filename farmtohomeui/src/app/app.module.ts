@@ -29,6 +29,7 @@ import { RegisterAdminComponent } from "./register-admin/register-admin.componen
 import { RegisterFarmerComponent } from './register-farmer/register-farmer.component';
 import { RegistercustomerComponent } from './registercustomer/registercustomer.component';
 import { RegisterproductComponent } from "./registerproduct/registerproduct.component";
+import { OrderTableComponent } from './order-table/order-table.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { RegisterproductComponent } from "./registerproduct/registerproduct.comp
     
     MapApiComponent,
     DisplayAdminProductsComponent,
+    OrderTableComponent,
   ],
   imports: [
     BrowserModule,
