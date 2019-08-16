@@ -13,25 +13,17 @@ export class AppComponent implements OnInit {
   //added for basket
 
 
-  constructor(private loginSvc:LoginDetailsService , private basketSvc:BasketService, private router:Router){
+  constructor(private loginSvc:LoginDetailsService , private basketSvc:BasketService, private router:Router){}
+
+  ngOnInit(){}
 
 
-
+  logout(){
+    this.loginSvc.logout()
+    this.basketSvc.clear();
+    this.router.navigate(['/products'])
 
   }
-
-  ngOnInit(){
-
-
-  }
-
-
-    logout(){
-      this.loginSvc.logout()
-      this.basketSvc.clear();
-      this.router.navigate(['/products'])
-
-    }
 
   }
 

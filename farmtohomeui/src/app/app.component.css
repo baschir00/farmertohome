@@ -38,8 +38,8 @@
 /* .main-container {
    background-color: #EBD778;
 } */
-button {
+.nav-button {
     margin-left:5px;
     margin-right:5px;
-    background-color: darkolivegreen;
+    /* background-color: darkolivegreen; */
 }
