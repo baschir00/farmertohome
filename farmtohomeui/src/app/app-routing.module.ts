@@ -20,6 +20,7 @@ import { RegisterproductComponent } from './registerproduct/registerproduct.comp
 import { AdminauthGuard } from '../guards/adminauth.guard';
 import { FarmerauthGuard } from '../guards/farmerauth.guard';
 import { CustomerauthGuard } from '../guards/customerauth.guard';
+import { OrderTableComponent } from "./order-table/order-table.component";
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: '', component: DisplayProductsTableComponent},
   { path: 'displayAdmins', component: DisplayandfindadminsComponent, canActivate: [AdminauthGuard], children:[{ path: 'adminProducts', component: DisplayAdminProductsComponent},  { path: 'registerAdmin', component: RegisterAdminComponent }]},
   { path: 'basket',canActivate: [CustomerauthGuard],component: BasketComponent },
+  { path: 'customerOrders',canActivate: [CustomerauthGuard],component: OrderTableComponent },
   { path: '**', redirectTo: '' }
 ];
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderDB } from './order-db';
@@ -25,6 +25,18 @@ export class OrderService {
 
     return this.httpsvc.get<OrderDB[]>(this.rootURL + "order/list");
   }
+
+  loadOrdersByCustomer(id): Observable<OrderDB[]> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      params: new HttpParams().set("customerId", id)
+    };
+    return this.httpsvc.get<OrderDB[]>(this.rootURL + "order/list", httpOptions);
+  }
+
   deleteOrderFromServer(orderId): Observable<OrderDB[]> {
 
     return this.httpsvc.delete<OrderDB[]>(this.rootURL +"order/delete/" +orderId)

@@ -1,1 +1,26 @@
-<p>order-table works!</p>
+<table class="table">
+    <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search Order" />
+  <tr>
+    <th>Order Id</th>
+    <th>Customer Id</th>
+    <th>Customer Name</th>
+    <th>Customer Email</th>
+    <th>Customer Address</th>
+  </tr>
+  <tr
+    *ngFor="
+      let a of allOrders
+        | filter: term
+        | paginate: { itemsPerPage: 10, currentPage: p_no };
+      let i = index
+    "
+  >
+    <td>{{a.orderId}} </td>
+    <td>{{a.currentCustomer.customerId}}</td>
+    <td>{{ a.currentCustomer.customerName}}</td>
+    <td>{{ a.currentCustomer.customerEmail}}</td>
+    <td>{{ a.currentCustomer.customerAddress}}</td>
+    <td><!-- Add ollie's code here --></td>
+  </tr>
+<pagination-controls (pageChange)="p_no = $event"></pagination-controls>
+</table>
