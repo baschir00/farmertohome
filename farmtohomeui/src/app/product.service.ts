@@ -22,33 +22,26 @@ rootURL: string;
     // intializes the url
     this.rootURL = 'http://localhost:5980/product';
 
-    //added for basket
-  //   this.products = [
-  //     { productId: 1, productName: 'Potatos', unitPrice: 3, description:'British Veg', productType:'Fruit & Veg' },
-  //     { productId: 2, productName: 'Bananas', unitPrice: 2, description:'Yellow Bananas', productType:'Fruit & Veg' },
-  //     { productId: 3, productName: 'Salmon', unitPrice: 7, description:'Fresh Salmon', productType:'Meat & Fish' },
-  //     { productId: 4, productName: 'Chicken', unitPrice: 5, description:'Poultry', productType:'Meat & Fish' },
-  //     { productId: 5, productName: 'Ham', unitPrice: 6, description:'From a Pig', productType:'Meat & Fish' },
-  //     { productId: 6, productName: 'PorkChops', unitPrice: 5, description:'From a Pig', productType:'Meat & Fish' },
-  //     { productId: 7, productName: 'Onion', unitPrice: 1, description:'Large Onions', productType:'Fruit & Veg' },
-  //     { productId: 8, productName: 'Orange', unitPrice: 2, description:'its Orange', productType:'Fruit & Veg' },
-  //     { productId: 9, productName: 'Beef', unitPrice: 6, description:'British Beef', productType:'Meat & Fish' },
-  //     { productId: 10, productName: 'Apple', unitPrice: 1, description:'Green apples', productType:'Fruit & Veg' },
-  // ];
 }
 
+// Update existing product
 updateProductOnServer(product): Observable<Product> {
+
+  // Set HTTP access headders
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     })
   };
+
+  // Create request body
   const reqBody = 'productId=' + product.productId + '&farmerId' + product.farmerId +
   '&productName=' + product.productName + '&productType=' +
   product.productType + '&description=' + product.description + '&unitPrice=' + product.unitPrice;
-// post(URL,body,httpOptionswithHeaders)
-return this.httpsvc.post<Product>(
-  this.rootURL + '/register', reqBody, httpOptions);
+
+  // Post update request to server
+  return this.httpsvc.post<Product>(
+    this.rootURL + '/register', reqBody, httpOptions);
 
 }
 

@@ -22,7 +22,7 @@ export class OrderService {
   }
 
   loadAllOrdersFromSever(): Observable<OrderDB[]> {
-    
+
     return this.httpsvc.get<OrderDB[]>(this.rootURL + "order/list");
   }
   deleteOrderFromServer(orderId): Observable<OrderDB[]> {
@@ -43,7 +43,7 @@ export class OrderService {
   registerOrderItem(quantity): Observable<any> {
     console.log("Creating Order Item");
     // Create request body
-    const reqBody = "quantity" + quantity;
+    const reqBody = "quantity=" + quantity;
 
     // DEBUG: reqBody content
     console.log(reqBody);

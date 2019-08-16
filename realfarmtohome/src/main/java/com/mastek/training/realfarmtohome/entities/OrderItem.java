@@ -27,17 +27,23 @@ private Order currentOrder;
 
 private Product currentProduct;
 
+@FormParam("quantity")
+private double quantity;
+
+
+// Item ID
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
 public int getOrderItemId() {
 	return orderItemId;
 }
+
 public void setOrderItemId(int orderItemId) {
 	this.orderItemId = orderItemId;
 }
 
 
-
+// Parent order object
 @ManyToOne
 @JoinColumn(name="FK_OrderId")
 public Order getCurrentOrder() {
@@ -48,13 +54,25 @@ public void setCurrentOrder(Order currentOrder) {
 }
 
 
+// Associated product
 @ManyToOne
 @JoinColumn(name="FK_ProductId")
 public Product getCurrentProduct() {
 	return currentProduct;
 }
+
 public void setCurrentProduct(Product currentProduct) {
 	this.currentProduct = currentProduct;
+}
+
+
+// Quantity sold
+public double getQuantity() {
+	return quantity;
+}
+
+public void setQuantity(double quantity) {
+	this.quantity = quantity;
 }
 	
 
